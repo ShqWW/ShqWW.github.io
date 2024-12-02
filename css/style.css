@@ -1,12 +1,12 @@
 :root {
-  --red-0: #f00;
-  --red-1: #ff5252;
-  --red-2: #ff7c7c;
-  --red-3: #ffafaf;
-  --red-4: #ffd0d0;
-  --red-5: #ffe4e4;
-  --red-5-5: #ffecec;
-  --red-6: #fff3f3;
+  --red-0: #00f; /* 深蓝色 */
+  --red-1: #36f; /* 较亮蓝色 */
+  --red-2: #69f; /* 更亮蓝色 */
+  --red-3: #9cf; /* 浅蓝色 */
+  --red-4: #cce5ff; /* 非常浅蓝色 */
+  --red-5: #e6f2ff; /* 极浅蓝色 */
+  --red-5-5: #f2f8ff; /* 极浅蓝色 */
+  --red-6: #f9fcff; /* 几乎白色 */
   --black-white: #000;
   --head-color: rgba(255,255,255,0.8);
   --grey-9: #999;
@@ -26,8 +26,8 @@
   --color-meta-shadow: var(--red-6);
   --color-hover-shadow: rgba(150,150,150,0.1);
   --color-h2-after: var(--red-1);
-  --color-red-6-shadow: rgba(255,78,78,0.6);
-  --color-red-3-shadow: rgba(255,78,78,0.3);
+  --color-red-6-shadow: rgba(0,78,255,0.6); /* 深蓝色阴影 */
+  --color-red-3-shadow: rgba(0,78,255,0.3); /* 较浅蓝色阴影 */
   --highlight-nav: #e6e6e6;
   --highlight-scrollbar: #d6d6d6;
   --highlight-background: #f7f7f7;
@@ -50,13 +50,18 @@
   --top-icon: url("../images/mimi.png");
 }
 [data-theme="dark"]:root {
-  --red-0: var(--red-1);
-  --red-4: rgba(255,208,208,0.5);
-  --red-5: rgba(255,228,228,0.2);
-  --red-5-5: rgba(255,236,236,0.1);
-  --red-6: rgba(255,243,243,0.2);
+  --red-0: #ff4500; /* 橙红色 */
+  --red-1: #ff6347; /* 较亮橙红色 */
+  --red-2: #ff7a61; /* 更亮橙红色 */
+  --red-3: #ff9c8b; /* 浅橙红色 */
+  --red-4: #ffc0b3; /* 非常浅橙红色 */
+  --red-5: #ffe0d9; /* 极浅橙红色 */
+  --red-5-5: #fff0ec; /* 极浅橙红色 */
+  --red-6: #fff7f5; /* 几乎白色 */
   --black-white: #fff;
   --head-color: rgba(0,0,0,0.7);
+  --color-red-6-shadow: rgba(255,78,78,0.6);
+  --color-red-3-shadow: rgba(255,78,78,0.3);
   --color-archive-year: #999;
   --color-default: #999;
   --color-border: var(--red-5);
@@ -2449,11 +2454,8 @@ pre .javascript .function {
   color: #1e90ff;
 }
 .icon-github {
-  color: #191717;
-  transition: 1s;
-}
-[data-theme="dark"] .icon-github {
   color: #bc88ff;
+  transition: 1s;
 }
 .sidebar-menu-icon,
 .sidebar-menu-link {
@@ -2816,4 +2818,9 @@ pre .javascript .function {
   backdrop-filter: blur(10px); /* 毛玻璃效果 */
   -webkit-backdrop-filter: blur(10px); /* 兼容 WebKit 浏览器 */
   padding: 10px; /* 可选：添加内边距 */
+}
+#nav-moon-btn,
+#nav-sun-btn {
+  transform: scale(1.4);
+  margin-top: -6%;
 }

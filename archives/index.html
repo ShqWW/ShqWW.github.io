@@ -68,6 +68,34 @@
 <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css">
 
   
+
+  <!-- 引入Mathjax CDN -->
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- 可选：自定义Mathjax配置 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      TeX: {
+          equationNumbers: {
+              autoNumber: "AMS",
+              useLabelIds: true
+          }
+      },
+      tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true,
+          processEnvironments: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      CommonHTML: {
+          linebreaks: { automatic: true }
+      },
+      messageStyle: "none",
+      MathMenu: { showLocale: false, showRenderer: false }
+  });
+</script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
   <body>
@@ -268,14 +296,6 @@
       </div>
     
       <div class="archives-tag-list-item" data-aos="zoom-in">
-        <a class="archives-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-      </div>
-    
-      <div class="archives-tag-list-item" data-aos="zoom-in">
-        <a class="archives-tag-list-link" href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">扩散模型</a>
-      </div>
-    
-      <div class="archives-tag-list-item" data-aos="zoom-in">
         <a class="archives-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>
       </div>
     
@@ -284,7 +304,15 @@
       </div>
     
       <div class="archives-tag-list-item" data-aos="zoom-in">
+        <a class="archives-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+      </div>
+    
+      <div class="archives-tag-list-item" data-aos="zoom-in">
         <a class="archives-tag-list-link" href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+      </div>
+    
+      <div class="archives-tag-list-item" data-aos="zoom-in">
+        <a class="archives-tag-list-link" href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">扩散模型</a>
       </div>
     
   </div>
@@ -295,11 +323,11 @@
       </div>
     
       <div class="archives-category-list-item" data-aos="zoom-in">
-        <a class="archives-category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        <a class="archives-category-list-link" href="/categories/Web/">Web</a>
       </div>
     
       <div class="archives-category-list-item" data-aos="zoom-in">
-        <a class="archives-category-list-link" href="/categories/Web/">Web</a>
+        <a class="archives-category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
       </div>
     
   </div>

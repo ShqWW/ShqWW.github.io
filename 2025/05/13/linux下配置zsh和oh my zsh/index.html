@@ -74,6 +74,34 @@
 <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css">
 
   
+
+  <!-- 引入Mathjax CDN -->
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- 可选：自定义Mathjax配置 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      TeX: {
+          equationNumbers: {
+              autoNumber: "AMS",
+              useLabelIds: true
+          }
+      },
+      tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true,
+          processEnvironments: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      CommonHTML: {
+          linebreaks: { automatic: true }
+      },
+      messageStyle: "none",
+      MathMenu: { showLocale: false, showRenderer: false }
+  });
+</script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
   <body>
@@ -152,7 +180,7 @@
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-bash%E5%92%8Czsh%E4%BA%92%E7%9B%B8%E5%88%87%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">0. bash和zsh互相切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85Oh-My-zsh"><span class="toc-number">2.</span> <span class="toc-text">1. 安装Oh My zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">2. 设置主题</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-bash%E5%92%8Czsh%E4%BA%92%E7%9B%B8%E5%88%87%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text"> 0. bash和zsh互相切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85oh-my-zsh"><span class="toc-number">2.</span> <span class="toc-text"> 1. 安装Oh My zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> 2. 设置主题</span></a></li></ol>
       
   </div>
 </div>
@@ -257,16 +285,19 @@
       
         <p>Linux下配置zsh和oh my zsh方法。</p>
 <span id="more"></span>
-
-<h3 id="0-bash和zsh互相切换"><a href="#0-bash和zsh互相切换" class="headerlink" title="0. bash和zsh互相切换"></a>0. bash和zsh互相切换</h3><p>bash切换zsh:</p>
+<h3 id="0-bash和zsh互相切换"><a class="markdownIt-Anchor" href="#0-bash和zsh互相切换"></a> 0. bash和zsh互相切换</h3>
+<p>bash切换zsh:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
 <p>zsh切换bash:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
-<h3 id="1-安装Oh-My-zsh"><a href="#1-安装Oh-My-zsh" class="headerlink" title="1. 安装Oh My zsh"></a>1. 安装Oh My zsh</h3><p>使用如下命令克隆Oh My zsh项目:</p>
+<h3 id="1-安装oh-my-zsh"><a class="markdownIt-Anchor" href="#1-安装oh-my-zsh"></a> 1. 安装Oh My zsh</h3>
+<p>使用如下命令克隆Oh My zsh项目:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh</span><br></pre></td></tr></table></figure>
 <p>复制到ZShell文件夹下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
-<h3 id="2-设置主题"><a href="#2-设置主题" class="headerlink" title="2. 设置主题"></a>2. 设置主题</h3><p>可以在<code>~/.oh-my-zsh/themes</code>中寻找合适的主题，也可以自定义主题。<br>自定义主题的示例，新建<code>~/.oh-my-zsh/themes/mytheme.zsh-theme</code>，填入如下内容（以下内容仅为参考，可自己定义）：</p>
+<h3 id="2-设置主题"><a class="markdownIt-Anchor" href="#2-设置主题"></a> 2. 设置主题</h3>
+<p>可以在<code>~/.oh-my-zsh/themes</code>中寻找合适的主题，也可以自定义主题。<br />
+自定义主题的示例，新建<code>~/.oh-my-zsh/themes/mytheme.zsh-theme</code>，填入如下内容（以下内容仅为参考，可自己定义）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">CRUNCH_BRACKET_COLOR=&quot;%&#123;$fg[white]%&#125;&quot;</span><br><span class="line">CRUNCH_TIME_COLOR=&quot;%&#123;$fg[cyan]%&#125;&quot;</span><br><span class="line">CRUNCH_RVM_COLOR=&quot;%&#123;$fg[magenta]%&#125;&quot;</span><br><span class="line">CRUNCH_DIR_COLOR=&quot;%&#123;$fg[cyan]%&#125;&quot;</span><br><span class="line">CRUNCH_GIT_BRANCH_COLOR=&quot;%&#123;$fg[green]%&#125;&quot;</span><br><span class="line">CRUNCH_GIT_CLEAN_COLOR=&quot;%&#123;$fg[green]%&#125;&quot;</span><br><span class="line">CRUNCH_GIT_DIRTY_COLOR=&quot;%&#123;$fg[red]%&#125;&quot;</span><br><span class="line">CRUNCH_SYMBOL_COLOR=&quot;%&#123;$fg[yellow]%&#125;&quot;</span><br><span class="line"></span><br><span class="line"># These Git variables are used by the oh-my-zsh git_prompt_info helper:</span><br><span class="line">ZSH_THEME_GIT_PROMPT_PREFIX=&quot;$CRUNCH_BRACKET_COLOR:$CRUNCH_GIT_BRANCH_COLOR&quot;</span><br><span class="line">ZSH_THEME_GIT_PROMPT_SUFFIX=&quot;&quot;</span><br><span class="line">ZSH_THEME_GIT_PROMPT_CLEAN=&quot; $CRUNCH_GIT_CLEAN_COLOR✓&quot;</span><br><span class="line">ZSH_THEME_GIT_PROMPT_DIRTY=&quot; $CRUNCH_GIT_DIRTY_COLOR✗&quot;</span><br><span class="line"></span><br><span class="line"># Our elements:</span><br><span class="line">CRUNCH_TIME_=&quot;$CRUNCH_BRACKET_COLOR&#123;$CRUNCH_SYMBOL_COLOR&quot;zsh&quot;$CRUNCH_TIME_COLOR%T$CRUNCH_BRACKET_COLOR&#125;%&#123;$reset_color%&#125;&quot;</span><br><span class="line">ZSH_THEME_RUBY_PROMPT_PREFIX=&quot;$CRUNCH_BRACKET_COLOR&quot;[&quot;$CRUNCH_RVM_COLOR&quot;</span><br><span class="line">ZSH_THEME_RUBY_PROMPT_SUFFIX=&quot;$CRUNCH_BRACKET_COLOR&quot;]&quot;%&#123;$reset_color%&#125;&quot;</span><br><span class="line">CRUNCH_RVM_=&#x27;$(ruby_prompt_info)&#x27;</span><br><span class="line">CRUNCH_DIR_=&quot;$CRUNCH_DIR_COLOR%~\$(git_prompt_info) &quot;</span><br><span class="line">CRUNCH_PROMPT=&quot;$CRUNCH_BRACKET_COLOR➭ &quot;</span><br><span class="line"></span><br><span class="line"># Put it all together!</span><br><span class="line">PROMPT=&quot;$CRUNCH_TIME_$CRUNCH_RVM_$CRUNCH_DIR_$CRUNCH_PROMPT%&#123;$reset_color%&#125;&quot;</span><br></pre></td></tr></table></figure>
 <p>编辑<code>~/.zshrc</code>文件中主题的位置<code>ZSH_THEME=$theme_name</code>，修改为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo -e &quot;\e[33m φ(≧ω≦*)♪\e[0m \e[36m Welcome to\e[0m \e[36m zsh !!\e[0m&quot; #此处为欢迎语可以不填</span><br><span class="line">ZSH_THEME=&quot;mytheme&quot;</span><br></pre></td></tr></table></figure>
@@ -366,7 +397,7 @@
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-bash%E5%92%8Czsh%E4%BA%92%E7%9B%B8%E5%88%87%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">0. bash和zsh互相切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85Oh-My-zsh"><span class="toc-number">2.</span> <span class="toc-text">1. 安装Oh My zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">2. 设置主题</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-bash%E5%92%8Czsh%E4%BA%92%E7%9B%B8%E5%88%87%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text"> 0. bash和zsh互相切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85oh-my-zsh"><span class="toc-number">2.</span> <span class="toc-text"> 1. 安装Oh My zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> 2. 设置主题</span></a></li></ol>
       
   </div>
 </div>

@@ -67,6 +67,34 @@
 <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css">
 
   
+
+  <!-- 引入Mathjax CDN -->
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- 可选：自定义Mathjax配置 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      TeX: {
+          equationNumbers: {
+              autoNumber: "AMS",
+              useLabelIds: true
+          }
+      },
+      tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true,
+          processEnvironments: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      CommonHTML: {
+          linebreaks: { automatic: true }
+      },
+      messageStyle: "none",
+      MathMenu: { showLocale: false, showRenderer: false }
+  });
+</script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>

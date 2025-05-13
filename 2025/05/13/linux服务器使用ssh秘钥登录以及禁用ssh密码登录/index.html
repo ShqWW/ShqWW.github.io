@@ -74,6 +74,34 @@
 <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css">
 
   
+
+  <!-- 引入Mathjax CDN -->
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- 可选：自定义Mathjax配置 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      TeX: {
+          equationNumbers: {
+              autoNumber: "AMS",
+              useLabelIds: true
+          }
+      },
+      tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true,
+          processEnvironments: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      CommonHTML: {
+          linebreaks: { automatic: true }
+      },
+      messageStyle: "none",
+      MathMenu: { showLocale: false, showRenderer: false }
+  });
+</script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
   <body>
@@ -152,7 +180,7 @@
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">0. 使用密钥登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text">1. 基本修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%A2%9D%E5%A4%96%E4%BF%AE%E6%94%B9"><span class="toc-number">3.</span> <span class="toc-text">2. 额外修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">3. 权限设置</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text"> 0. 使用密钥登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text"> 1. 基本修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%A2%9D%E5%A4%96%E4%BF%AE%E6%94%B9"><span class="toc-number">3.</span> <span class="toc-text"> 2. 额外修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text"> 3. 权限设置</span></a></li></ol>
       
   </div>
 </div>
@@ -257,25 +285,24 @@
       
         <p>linux服务器使用ssh秘钥登录以及禁用ssh密码登录。</p>
 <span id="more"></span>
-
-<h3 id="0-使用密钥登录"><a href="#0-使用密钥登录" class="headerlink" title="0. 使用密钥登录"></a>0. 使用密钥登录</h3><p>任意电脑（服务端 客户端都可以）执行：</p>
+<h3 id="0-使用密钥登录"><a class="markdownIt-Anchor" href="#0-使用密钥登录"></a> 0. 使用密钥登录</h3>
+<p>任意电脑（服务端 客户端都可以）执行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-<p>将产生密码电脑的<del>&#x2F;.ssh&#x2F;id_rsa.pub (活着现成的公钥) 中的内容复制到 服务器对应账户下的 &#96;</del>&#x2F;.ssh&#x2F;authorized_keys<code>，私钥存在主机上的</code><del>&#x2F;.ssh&#x2F;id_rsa<code> 也可以对每个服务器账户单独配置私钥， 编辑</code></del>&#x2F;..ssh&#x2F;config&#96;, 结尾加入：</p>
+<p>将产生密码电脑的~/.ssh/id_rsa.pub (活着现成的公钥) 中的内容复制到 服务器对应账户下的 <code>~/.ssh/authorized_keys</code>，私钥存在主机上的<code>~/.ssh/id_rsa</code><br />
+也可以对每个服务器账户单独配置私钥， 编辑<code>~/..ssh/config</code>, 结尾加入：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host $configname</span><br><span class="line">	HostName $IP</span><br><span class="line">	User $USERNAME</span><br><span class="line">	Port $PORT</span><br><span class="line">	PreferredAuthentications publickey</span><br><span class="line">	IdentityFile $PATH_OF_RSA</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-基本修改"><a href="#1-基本修改" class="headerlink" title="1. 基本修改"></a>1. 基本修改</h3><p>编辑<code>sshd</code>文件：</p>
+<h3 id="1-基本修改"><a class="markdownIt-Anchor" href="#1-基本修改"></a> 1. 基本修改</h3>
+<p>编辑<code>sshd</code>文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
 <p>找到 PermitRootLogin 改为禁用密码登录（取消注释 ）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication no </span><br><span class="line">ChallengeResponseAuthentication no</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-额外修改"><a href="#2-额外修改" class="headerlink" title="2. 额外修改"></a>2. 额外修改</h3><p>如果是Ubuntu，则还需要额外修改：</p>
+<h3 id="2-额外修改"><a class="markdownIt-Anchor" href="#2-额外修改"></a> 2. 额外修改</h3>
+<p>如果是Ubuntu，则还需要额外修改：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config.d/50-cloud-init.conf</span><br></pre></td></tr></table></figure>
 <p>修改为以下设置：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication no</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-权限设置"><a href="#3-权限设置" class="headerlink" title="3. 权限设置"></a>3. 权限设置</h3><p>一般默认权限不需要修改，但如果用户手欠修改了权限导致登录不上，则在该用户目录下进行以下权限操作：</p>
+<h3 id="3-权限设置"><a class="markdownIt-Anchor" href="#3-权限设置"></a> 3. 权限设置</h3>
+<p>一般默认权限不需要修改，但如果用户手欠修改了权限导致登录不上，则在该用户目录下进行以下权限操作：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chown -R $username:$username .ssh #修改所属组和用户</span><br><span class="line">chmod 755 .ssh  #修改权限</span><br><span class="line">chmod 755  ~/.ssh/authorized_keys  #修改权限</span><br><span class="line">chmod 750 ./   #修改用户目录权限 （大坑 网上查不到）</span><br></pre></td></tr></table></figure>
 
       
@@ -372,7 +399,7 @@
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">0. 使用密钥登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text">1. 基本修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%A2%9D%E5%A4%96%E4%BF%AE%E6%94%B9"><span class="toc-number">3.</span> <span class="toc-text">2. 额外修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">3. 权限设置</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text"> 0. 使用密钥登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text"> 1. 基本修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%A2%9D%E5%A4%96%E4%BF%AE%E6%94%B9"><span class="toc-number">3.</span> <span class="toc-text"> 2. 额外修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text"> 3. 权限设置</span></a></li></ol>
       
   </div>
 </div>

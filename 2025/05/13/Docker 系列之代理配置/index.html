@@ -75,6 +75,34 @@
 <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css">
 
   
+
+  <!-- 引入Mathjax CDN -->
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<!-- 可选：自定义Mathjax配置 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      TeX: {
+          equationNumbers: {
+              autoNumber: "AMS",
+              useLabelIds: true
+          }
+      },
+      tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true,
+          processEnvironments: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      CommonHTML: {
+          linebreaks: { automatic: true }
+      },
+      messageStyle: "none",
+      MathMenu: { showLocale: false, showRenderer: false }
+  });
+</script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
   <body>
@@ -153,7 +181,7 @@
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">1. 系统代理配置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEdocker%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">2. 配置docker代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%B9%E5%99%A8%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">3. 容器代理配置</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text"> 1. 系统代理配置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEdocker%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text"> 2. 配置docker代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%B9%E5%99%A8%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text"> 3. 容器代理配置</span></a></li></ol>
       
   </div>
 </div>
@@ -258,8 +286,8 @@
       
         <p>本文从不同角度介绍docker使用过程中的代理配置。</p>
 <span id="more"></span>
-
-<h2 id="1-系统代理配置方法"><a href="#1-系统代理配置方法" class="headerlink" title="1. 系统代理配置方法"></a>1. 系统代理配置方法</h2><p>此方法适用于容器环境配置以及镜像打包。</p>
+<h2 id="1-系统代理配置方法"><a class="markdownIt-Anchor" href="#1-系统代理配置方法"></a> 1. 系统代理配置方法</h2>
+<p>此方法适用于容器环境配置以及镜像打包。</p>
 <ol>
 <li>新建<code>proxy</code>文本文件（名字可以更换）：</li>
 </ol>
@@ -273,22 +301,23 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source proxy</span><br></pre></td></tr></table></figure>
 <p>永久生效需要将上述命令填入环境变量中 例如<code>.bashrc</code>中。</p>
-<h2 id="2-配置docker代理"><a href="#2-配置docker代理" class="headerlink" title="2. 配置docker代理"></a>2. 配置docker代理</h2><p>此设置适用于镜像上传与拉取。</p>
+<h2 id="2-配置docker代理"><a class="markdownIt-Anchor" href="#2-配置docker代理"></a> 2. 配置docker代理</h2>
+<p>此设置适用于镜像上传与拉取。</p>
 <ol>
-<li><p>编辑<code>/etc/docker/daemon.json</code>文件</p>
-<p> 如果需要自定义代理 （推荐）则填入：</p>
+<li>
+<p>编辑<code>/etc/docker/daemon.json</code>文件</p>
+<p>如果需要自定义代理 （推荐）则填入：</p>
 </li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;proxies&quot;: &#123;</span><br><span class="line">  &quot;http-proxy&quot;: &quot;http://27.0.0.1:7890&quot;,</span><br><span class="line">  &quot;https-proxy&quot;: &quot;http://127.0.0.1:7890&quot;,</span><br><span class="line">  &quot;no-proxy&quot;: &quot;localhost,127.0.0.1&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;&nbsp;如果需要设置其他现成镜像源，例如飞牛OS的docker镜像源，则填入：</p>
+<p>  如果需要设置其他现成镜像源，例如飞牛OS的docker镜像源，则填入：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;insecure-registries&quot;:[&quot;127.0.0.1:19827&quot;], &quot;live-restore&quot;:true, &quot;registry-mirrors&quot;:[&quot;https://docker.ketches.cn&quot;]&#125;</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>编辑好后重启docker和daemon服务：</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-容器代理配置"><a href="#3-容器代理配置" class="headerlink" title="3. 容器代理配置"></a>3. 容器代理配置</h2><p>适用于运行期内容器的代理。</p>
+<h2 id="3-容器代理配置"><a class="markdownIt-Anchor" href="#3-容器代理配置"></a> 3. 容器代理配置</h2>
+<p>适用于运行期内容器的代理。</p>
 <p>在对应docker-compose.yaml 文件下设置环境变量，例如</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">      - HTTP_PROXY=http://host.docker.internal:7890</span><br><span class="line">      - HTTPS_PROXY=http://host.docker.internal:7890</span><br><span class="line">extra_hosts:</span><br><span class="line">      - &quot;host.docker.internal:host-gateway&quot;</span><br></pre></td></tr></table></figure>
 
@@ -373,7 +402,7 @@
   <h3 class="toc-title">文章目录</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">1. 系统代理配置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEdocker%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">2. 配置docker代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%B9%E5%99%A8%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">3. 容器代理配置</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text"> 1. 系统代理配置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEdocker%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text"> 2. 配置docker代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%B9%E5%99%A8%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text"> 3. 容器代理配置</span></a></li></ol>
       
   </div>
 </div>

@@ -1,0 +1,601 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN"  data-theme="dark" >
+  <head>
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":"复制成功(*^▽^*)","fail":"复制失败 (ﾟ⊿ﾟ)ﾂ","copyright":{"enable":false,"count":50,"content":"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！"}};window.REIMU_CONFIG.anchor_icon = 'f0f6';</script>
+  
+  
+  <title>
+    主成分分析和线性回归对比 |
+    
+    MIMI的小窝
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Microsoft%20Yahei:400,400italic,700,700italic%7CUbuntu%20Mono:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Microsoft%20Yahei:400,400italic,700,700italic%7CUbuntu%20Mono:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@6.5.1/css/regular.min.css">
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@6.5.1/css/solid.min.css">
+
+    <link rel="preload" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@6.5.1/css/brands.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@6.5.1/css/v5-font-face.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@6.5.1/css/v4-font-face.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  
+  
+    <meta name="description" content="给定一系列样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="主成分分析和线性回归对比">
+<meta property="og:url" content="http://example.com/2025/05/13/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94/index.html">
+<meta property="og:site_name" content="MIMI的小窝">
+<meta property="og:description" content="给定一系列样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-13T13:39:59.803Z">
+<meta property="article:modified_time" content="2025-05-13T13:39:59.803Z">
+<meta property="article:author" content="CatW">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="图形学">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link rel="shortcut icon" href="/images/mimi.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+    
+      
+        
+<link rel="stylesheet" href="https://npm.webcache.cn/katex@0.16.11/dist/katex.min.css">
+
+      
+    
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css">
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav">
+    
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+            &#xf015;
+          </div>
+          <a class="main-nav-link" href="/">首页</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+            &#xf187;
+          </div>
+          <a class="main-nav-link" href="/archives">归档</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+            &#xf05a;
+          </div>
+          <a class="main-nav-link" href="/about">关于</a>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+    
+    
+  </nav>
+</div>
+<header id="header">
+  
+    <img fetchpriority="high" src="/covers/pca.png" alt="主成分分析和线性回归对比">
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <a href="/" id="logo">
+            <h1 data-aos="slide-up">主成分分析和线性回归对比</h1>
+          </a>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content">
+          
+            <aside id="sidebar">
+  <div class="sidebar-wrapper wrap-sticky">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.</span> <span class="toc-text">1. 线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2. 主成分分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">特点总结：</span></a></li></ol>
+      
+  </div>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="CatW" class="lazyload">
+  <div class="sidebar-author-name">CatW</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">7</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+    <div class="icon-email sidebar-social-icon">
+      <a href=mailto:haoruw@outlook.com itemprop="url" target="_blank" aria-label="email" rel="noopener external nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/ShqWW itemprop="url" target="_blank" aria-label="github" rel="noopener external nofollow noreferrer"></a>
+    </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon ">
+          &#xf015;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon ">
+          &#xf187;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon ">
+          &#xf05a;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+  
+</div>
+</div>
+      
+      
+        <div class="sidebar-btn-wrapper" style="position:static">
+          <div class="sidebar-toc-btn current"></div>
+          <div class="sidebar-common-btn"></div>
+        </div>
+      
+    </div>
+  </div>
+
+  
+</aside>
+
+          
+          <section id="main"><article id="post-主成分分析和线性回归对比" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <div class="date-circle">
+    <div class="date-wrapper">
+      <time class="date-year" datetime="2025-05-13T13:39:59.803Z">2025</time>
+      <time class="date-day" datetime="2025-05-13T13:39:59.803Z">05月</time>
+    </div>
+  </div>
+</div>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" data-aos="zoom-in">机器学习</a>
+  </div>
+
+
+    </div>
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <p>给定一系列样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。</p>
+<span id="more"></span>
+<p>由于两类方法比较经典，教程也较多，本文不再详细介绍二类方法。</p>
+<p>假定样本点为：</p>
+<p>$$<br>\begin{align}<br>\left( \hat{x}_1,\hat{y}_1 \right) ,\left( \hat{x}_2,\hat{y}_2 \right) ,\dots ,\left( \hat{x}_N,\hat{y}_N \right)<br>\end{align}<br>$$</p>
+<h2 id="1-线性回归"><a href="#1-线性回归" class="headerlink" title="1. 线性回归"></a>1. 线性回归</h2><p>线性回归假设直线方程为: $y&#x3D;kx+b$, 众所周知它的优化目标是尽可能减小预测$y_i$以及真值 $\hat{y}_i$之间的距离的平方：</p>
+<p>$$<br>\begin{align}<br>\min \sum_{i&#x3D;1}^N{\left( y_i-\hat{y}<em>i \right) ^2}\Rightarrow \underset{k,b}{\min}\sum</em>{i&#x3D;1}^N{\left( kx_i+b-\hat{y}_i \right) ^2}<br>\end{align}<br>$$</p>
+<p>上式就是我们熟知的最小二乘法。对$k$和$b$分别求偏导并令偏导为0即可求解出最终的$\hat{k}$和$\hat{b}$。推导过程和最终结果省略。</p>
+<h2 id="2-主成分分析"><a href="#2-主成分分析" class="headerlink" title="2. 主成分分析"></a>2. 主成分分析</h2><p>与线性回归不同，主成分分析的优化目标是最小化点到直线距离，假设直线方程为$ax+by+c&#x3D;0$。 简单起见，如果假设样本点均值和最终的直线截距均为0, 则直线方程简化为 $ax+by&#x3D;0$.</p>
+<p>从解析几何的性质可知：假设某个样本点坐标为 </p>
+<p>$$<br>\begin{align}<br>\left( \hat{x}_i,\hat{y}_i \right)<br>\end{align}<br>$$</p>
+<p>那么这个样本点到直线距离如下：</p>
+<p>$$<br>\begin{align}<br>d_i&#x3D;\frac{a\hat{x}_i+b\hat{y}_i}{\sqrt{a^2+b^2}}<br>\end{align}<br>$$</p>
+<p>最终优化目标可以表示为最小化所有点到直线的距离平方和：</p>
+<p>$$<br>\begin{align}<br>\min \sum_{i&#x3D;1}^N{d_{i}^{2}}<br>\end{align}<br>$$</p>
+<p>如果把优化参数写成列向量的形式 $\boldsymbol{w}\equiv\left(a;b\right) \in \mathbb{R}^{2\times1}$ 数据点写成行向量的形式 $\boldsymbol{p}_i\equiv\left(\hat{x}_i,\hat{y}_i\right) \in \mathbb{R}^{1\times2}$,那么公式(4)可以写成如下表达：</p>
+<p>$$<br>\begin{align}<br>d_i&#x3D;\frac{\boldsymbol{p}_i\boldsymbol{w}}{\left| \boldsymbol{w}\right|_2}<br>\end{align}<br>$$</p>
+<p>如果约束 $\left| \boldsymbol{w}\right| _2&#x3D;1$，并且所有点集合用大矩阵  $\boldsymbol{P}\equiv \left( \boldsymbol{p}_1;\boldsymbol{p}_2;\dots ;\boldsymbol{p}_N \right) \in \mathbb{R}^{n\times2}$表示，那么优化目标(5)可以转化为：</p>
+<p>$$<br>\begin{align}<br>\underset{\boldsymbol{w}}{\min}\sum_{i&#x3D;1}^N{\left( \boldsymbol{p}_i\boldsymbol{w} \right) ^2 },,, s.t. ,\left| \boldsymbol{w} \right| _2&#x3D;1<br>\<br>\Rightarrow \underset{\boldsymbol{w}}{\min},,\boldsymbol{w}^T\boldsymbol{P}^T\boldsymbol{Pw},,, s.t., \boldsymbol{w}^T\boldsymbol{w}&#x3D;1<br>\end{align}<br>$$</p>
+<p>上式可以使用拉格朗日乘子法求解：</p>
+<p>$$<br>\begin{align}<br>\boldsymbol{w}^T\boldsymbol{P}^T\boldsymbol{Pw}+\lambda \boldsymbol{w}^T\boldsymbol{w}<br>\end{align}<br>$$</p>
+<p>对 $\boldsymbol{w}$求偏导并令导数为零：</p>
+<p>$$<br>\begin{align}<br>2\boldsymbol{P}^T\boldsymbol{Pw}+2\lambda \boldsymbol{w}&#x3D;0<br>\<br>\Rightarrow \boldsymbol{P}^T\boldsymbol{Pw}&#x3D;\left( -\lambda \right) \boldsymbol{w}<br>\end{align}<br>$$</p>
+<p>问题转化为对协方差矩阵（零均值假设）$\boldsymbol{P}^T\boldsymbol{P} \in \mathbb{R}^{2\times 2}$求特征值和特征向量。下面分析拉格朗日乘子$\lambda$的物理意义，由于2阶方阵最多有两个特征值，那么应该选取哪个特征值呢？ 特征值有如下性质推导：</p>
+<p>$$<br>\begin{align}<br>\sum_{i&#x3D;1}^N{d_{i}^{2}}&amp;&#x3D;\boldsymbol{w}^T\boldsymbol{P}^T\boldsymbol{Pw}<br>\<br>&amp;&#x3D;\left( -\lambda \right) \boldsymbol{w}^T\left( -\lambda \right) \boldsymbol{w}<br>\<br>&amp;&#x3D;\lambda ^2\boldsymbol{w}^T\boldsymbol{w}&#x3D;\lambda^2<br>\end{align}<br>$$</p>
+<p>可知，优化目标值就是特征值的平方，由于我们希望优化目标值越小越好，因此选择绝对值较小的特征值对应的特征向量作为最终的解。</p>
+<h2 id="特点总结："><a href="#特点总结：" class="headerlink" title="特点总结："></a>特点总结：</h2><ul>
+<li>线性回归通常用于两变量相关性分析以及机器学习预测， 它的侧重点是变量分析和预测本身, 数据点的坐标分量物理意义明确。但是优化目标和结果高度依赖坐标轴的选取和建立。</li>
+<li>主成分分析直接建模点到直线的距离，它不依赖坐标系的选取，优化结果具有旋转、镜像等变性。适合几何建模。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+      
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag">图形学</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" data-aos="fade-up">
+    
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          <img data-src="/covers/hexo.png" data-sizes="auto" alt="hexo-theme-reimu 博客主题定制与修改" class="lazyload">
+        
+        <a href="/2025/05/13/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+          
+            hexo-theme-reimu 博客主题定制与修改
+          
+        </h3>
+      </div>
+    
+    
+    <div class="article-nav-link-wrap article-nav-link-right">
+      
+        <img data-src="/covers/secure.jpg" data-sizes="auto" alt="linux服务器使用ssh秘钥登录以及禁用ssh密码登录" class="lazyload">
+      
+      <a href="/2025/05/13/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+        
+          linux服务器使用ssh秘钥登录以及禁用ssh密码登录
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+</section>
+          
+        </div>
+        <footer id="footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      2024-2025
+      <span class="footer-info-sep rotate"></span>
+      CatW
+    </div>
+    
+    
+    
+    
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      <div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class" >
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.</span> <span class="toc-text">1. 线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2. 主成分分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">特点总结：</span></a></li></ol>
+      
+  </div>
+</div>
+</div>
+      <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="CatW" class="lazyload">
+  <div class="sidebar-author-name">CatW</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">7</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+    <div class="icon-email sidebar-social-icon">
+      <a href=mailto:haoruw@outlook.com itemprop="url" target="_blank" aria-label="email" rel="noopener external nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/ShqWW itemprop="url" target="_blank" aria-label="github" rel="noopener external nofollow noreferrer"></a>
+    </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon ">
+          &#xf015;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon ">
+          &#xf187;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon ">
+          &#xf05a;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+  
+</div>
+</div>
+    
+  </div>
+  
+    <div class="sidebar-btn-wrapper">
+      <div class="sidebar-toc-btn current"></div>
+      <div class="sidebar-common-btn"></div>
+    </div>
+  
+</nav>
+
+    </div>
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.0.6/dist/index.umd.js" integrity="sha384-vkGvf25gm1C1PbcoD5dNfc137HzNL&#x2F;hr1RKA5HniJOaawtvUmH5lTVFgFAruE9Ge" crossorigin="anonymous"></script>
+
+  <script>
+    window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["#ff5252","#ff7c7c","#ffafaf","#ffd0d0"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["#ff0000"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        
+        const pswp = () => {
+          if (_$$('.article-entry a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-entry',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+          if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-gallery',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+
+
+
+
+
+
+
+
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.0.0' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+  
+
+
+  </body>
+  </html>
+

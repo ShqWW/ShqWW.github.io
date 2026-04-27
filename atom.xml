@@ -65,10 +65,10 @@
       <pubDate>Wed, 27 Nov 2024 16:00:00 GMT</pubDate>
     </item>
     <item>
-      <title>linux服务器使用ssh秘钥登录以及禁用ssh密码登录</title>
-      <link>http://shqww.github.io/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/</link>
+      <title>Linux下配置zsh和oh my zsh</title>
+      <link>http://shqww.github.io/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/</link>
       <description>
-        <![CDATA[<p>linux服务器使用ssh秘钥登录以及禁用ssh密码登录。</p>]]>
+        <![CDATA[<p>Linux下配置zsh和oh my zsh方法。</p>]]>
       </description>
       <author>ShqWW</author>
       <category domain="http://shqww.github.io/categories/Linux/">Linux</category>
@@ -77,10 +77,10 @@
       <pubDate>Wed, 27 Nov 2024 16:00:00 GMT</pubDate>
     </item>
     <item>
-      <title>Linux下配置zsh和oh my zsh</title>
-      <link>http://shqww.github.io/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/</link>
+      <title>linux服务器使用ssh秘钥登录以及禁用ssh密码登录</title>
+      <link>http://shqww.github.io/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/</link>
       <description>
-        <![CDATA[<p>Linux下配置zsh和oh my zsh方法。</p>]]>
+        <![CDATA[<p>linux服务器使用ssh秘钥登录以及禁用ssh密码登录。</p>]]>
       </description>
       <author>ShqWW</author>
       <category domain="http://shqww.github.io/categories/Linux/">Linux</category>

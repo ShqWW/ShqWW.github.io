@@ -1,0 +1,713 @@
+  <!DOCTYPE html>
+  <html lang="en"  
+      data-theme-mode="true"
+  >
+  <head>
+  <meta charset="utf-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+  <script data-pjax>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'true');
+  </script>
+
+    <script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "true");
+  </script>
+
+    <script async src="https://hm.baidu.com/hm.js?true"></script>
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    _hmt.push(["_trackPageview", location.pathname]);
+  </script>
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功","en":"Copy successfully"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.anchor_icon = 'f1b0';window.REIMU_CONFIG.code_block = {"expand":100};window.REIMU_CONFIG.base = 'http://shqww.github.io';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  <title>
+    Docker 系列之代理配置 | MIMI的小窝
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preload" as="style" href="https://fontsapi.zeoseven.com/292/main/result.css" onload="this.rel='stylesheet'" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/regular.min.css" integrity="sha384-4qYppzjH8EiA+cGdaubu2vL7Rk8WGiqCSj7oRuP1uwtFWkfKNHD20lPfcrbQc8dU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/solid.min.css" integrity="sha384-wbMWab3UDSPm2kvIgVOn&#x2F;d9KPTecgPU1+Nb3zoQrm&#x2F;oVu0EkPL6IaKinjbwW0rum" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css" integrity="sha384-KTGeC2hIMzpeQakhsmzB9bZfhCD5xZZCgI1iZH6f/O457SxzlkzTQg/WXFNoi3ih" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v5-font-face.min.css" integrity="sha384-nJ1ThfldViXoLpJ6jlKcP2beas8BMbYq26SG9Hi8cH89bZi4RZ644v7helMCqJxd" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css" integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous">
+    <meta name="description" content="本文从不同角度介绍docker使用过程中的代理配置。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 系列之代理配置">
+<meta property="og:url" content="http://shqww.github.io/en/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="MIMI的小窝">
+<meta property="og:description" content="本文从不同角度介绍docker使用过程中的代理配置。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-27T06:55:16.585Z">
+<meta property="article:author" content="ShqWW">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="MIMI的小窝" type="application/rss+xml">
+    <link rel="shortcut icon" href="/images/mimi.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+      <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+    <div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/en/">
+            <div class="main-nav-icon icon ">
+                  &#xf015;
+            </div>
+          <span class="main-nav-link">Home</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/en/archives">
+            <div class="main-nav-icon icon ">
+                  &#xf187;
+            </div>
+          <span class="main-nav-link">Archives</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/en/about">
+            <div class="main-nav-icon icon ">
+                  &#xf05a;
+            </div>
+          <span class="main-nav-link">About</span>
+        </a>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
+  </nav>
+    <nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">English</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
+            <li data-value="zh-CN" role="option" aria-selected="false">简体中文</li>
+            <li data-value="en" role="option" class="selected" aria-selected="true">English</li>
+        </ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};
+              langMap['zh-CN'] = '/2024/11/28/Docker 系列之代理配置/';
+              langMap['en'] = '/en/2024/11/28/Docker 系列之代理配置/';
+            selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/docker.png" alt="Docker 系列之代理配置">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">Docker 系列之代理配置</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar" style="margin-bottom: 10px;"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text"> 1. 系统代理配置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEdocker%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text"> 2. 配置docker代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%B9%E5%99%A8%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text"> 3. 容器代理配置</span></a></li></ol>
+</div>
+</div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-Docker 系列之代理配置" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <div class="date-circle">
+    <div class="date-wrapper">
+      <time class="date-year" datetime="2024-11-27T16:00:00.000Z">2024</time>
+      <time class="date-day" datetime="2024-11-27T16:00:00.000Z">11-28</time>
+    </div>
+  </div>
+</div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>本文从不同角度介绍docker使用过程中的代理配置。</p>
+<span id="more"></span>
+<h2 id="1-系统代理配置方法"><a class="markdownIt-Anchor" href="#1-系统代理配置方法"></a> 1. 系统代理配置方法</h2>
+<p>此方法适用于容器环境配置以及镜像打包。</p>
+<ol>
+<li>新建<code>proxy</code>文本文件（名字可以更换）：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch proxy</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>编辑<code>proxy</code>，填入以下信息：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 设置代理环境变量</span><br><span class="line">export HTTP_PROXY=&quot;http://127.0.0.1:7890&quot;</span><br><span class="line">export http_proxy=&quot;http://127.0.0.1:7890&quot;</span><br><span class="line">export HTTPS_PROXY=&quot;http://127.0.0.1:7890&quot;</span><br><span class="line">export https_proxy=&quot;http://127.0.0.1:7890&quot;</span><br><span class="line">export SOCKS_PROXY=&quot;socks5://127.0.0.1:7891&quot;</span><br><span class="line">export socks_proxy=&quot;socks5://127.0.0.1:7891&quot;</span><br><span class="line">export NO_PROXY=&quot;localhost,127.0.0.1&quot;</span><br><span class="line">export no_proxy=&quot;localhost,127.0.0.1&quot;</span><br><span class="line"></span><br><span class="line"># 输出当前的代理设置</span><br><span class="line">echo &quot;当前代理设置如下:&quot;</span><br><span class="line">echo &quot;HTTP_PROXY: $HTTP_PROXY&quot;</span><br><span class="line">echo &quot;http_proxy: $http_proxy&quot;</span><br><span class="line">echo &quot;HTTPS_PROXY: $HTTPS_PROXY&quot;</span><br><span class="line">echo &quot;https_proxy: $https_proxy&quot;</span><br><span class="line">echo &quot;SOCKS_PROXY: $SOCKS_PROXY&quot;</span><br><span class="line">echo &quot;socks_proxy: $socks_proxy&quot;</span><br><span class="line">echo &quot;NO_PROXY: $NO_PROXY&quot;</span><br><span class="line">echo &quot;no_proxy: $no_proxy&quot;</span><br><span class="line">~                                </span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>ip默认本机，端口根据实际代理端口填写。编辑好之后每次在当前会话窗口运行以下命令即可临时生效：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source proxy</span><br></pre></td></tr></table></figure>
+<p>永久生效需要将上述命令填入环境变量中 例如<code>.bashrc</code>中。</p>
+<h2 id="2-配置docker代理"><a class="markdownIt-Anchor" href="#2-配置docker代理"></a> 2. 配置docker代理</h2>
+<p>此设置适用于镜像上传与拉取。</p>
+<ol>
+<li>
+<p>编辑<code>/etc/docker/daemon.json</code>文件</p>
+<p>如果需要自定义代理 （推荐）则填入：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;proxies&quot;: &#123;</span><br><span class="line">  &quot;http-proxy&quot;: &quot;http://27.0.0.1:7890&quot;,</span><br><span class="line">  &quot;https-proxy&quot;: &quot;http://127.0.0.1:7890&quot;,</span><br><span class="line">  &quot;no-proxy&quot;: &quot;localhost,127.0.0.1&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  如果需要设置其他现成镜像源，例如飞牛OS的docker镜像源，则填入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;insecure-registries&quot;:[&quot;127.0.0.1:19827&quot;], &quot;live-restore&quot;:true, &quot;registry-mirrors&quot;:[&quot;https://docker.ketches.cn&quot;]&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>编辑好后重启docker和daemon服务：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<h2 id="3-容器代理配置"><a class="markdownIt-Anchor" href="#3-容器代理配置"></a> 3. 容器代理配置</h2>
+<p>适用于运行期内容器的代理。</p>
+<p>在对应docker-compose.yaml 文件下设置环境变量，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">      - HTTP_PROXY=http://host.docker.internal:7890</span><br><span class="line">      - HTTPS_PROXY=http://host.docker.internal:7890</span><br><span class="line">extra_hosts:</span><br><span class="line">      - &quot;host.docker.internal:host-gateway&quot;</span><br></pre></td></tr></table></figure>
+
+    </div>
+    <footer class="article-footer">
+        <blockquote class="article-copyright">
+    <p><strong><span class="icon-user icon"></span>Author: </strong>ShqWW</p>
+    <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="http://shqww.github.io/en/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/">http://shqww.github.io/en/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</a></p>
+    <p><strong><span class="icon-pencil icon"></span>Title: </strong>「Docker 系列之代理配置」</p>
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2024-11-28 00:00:00</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-04-27 14:55:16</p>
+    <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  </blockquote>
+        <div class="share-wrapper">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+      <div class="share-icon icon icon-facebook">
+      </div>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;text=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;via=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+      <div class="share-icon icon icon-twitter">
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;title=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;summary=%E6%9C%AC%E6%96%87%E4%BB%8E%E4%B8%8D%E5%90%8C%E8%A7%92%E5%BA%A6%E4%BB%8B%E7%BB%8Ddocker%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+      <div class="share-icon icon icon-linkedin">
+      </div>
+    </a>
+    <a href="https://www.reddit.com/submit?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;title=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+      <div class="share-icon icon icon-reddit">
+      </div>
+    </a>
+    <a href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;appkey=&amp;title=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+      <div class="share-icon icon icon-weibo">
+      </div>
+    </a>
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;title=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;desc=%E6%9C%AC%E6%96%87%E4%BB%8E%E4%B8%8D%E5%90%8C%E8%A7%92%E5%BA%A6%E4%BB%8B%E7%BB%8Ddocker%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E3%80%82&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+      <div class="share-icon icon icon-qq">
+      </div>
+    </a>
+    <a href="javascript:;"  title="Docker 系列之代理配置">
+      <div class="share-icon icon icon-weixin">
+          <div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hexo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div>
+      </div>
+    </a>
+</div>
+        <a data-aos="zoom-in" href="/en/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/#comments" class="article-comment-link">
+          <span class="post-comments-count waline-comment-count" data-path="/en/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/" itemprop="commentCount"></span>
+          Comments
+        </a>
+        <span data-aos="zoom-in" class="article-visitor-link">
+          <span class="waline-pageview-count" data-path="/en/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/">0</span>
+          <em class="post-meta-item-text">Readings</em>
+        </span>
+        <a class="article-category-link" href="/en/categories/Linux/" title="Linux" data-aos="zoom-in">Linux</a>
+
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/Docker/" rel="tag" title="Docker">Docker</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/Linux/" rel="tag" title="Linux">Linux</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/%E8%BF%90%E7%BB%B4/" rel="tag" title="运维">运维</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="/covers/rl1.jpg" data-sizes="auto" alt="LLM强化学习后训练系列(一）" class="lazyload">
+        <a href="/en/2026/04/22/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%80%EF%BC%89/" aria-label="Prev: LLM强化学习后训练系列(一）" title="Prev: LLM强化学习后训练系列(一）"></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">
+            LLM强化学习后训练系列(一）
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="/covers/secure.jpg" data-sizes="auto" alt="linux服务器使用ssh秘钥登录以及禁用ssh密码登录" class="lazyload">
+      <a href="/en/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/" aria-label="Next: linux服务器使用ssh秘钥登录以及禁用ssh密码登录"  title="Next: linux服务器使用ssh秘钥登录以及禁用ssh密码登录"></a>
+      <div class="article-nav-caption">Next</div>
+      <h3 class="article-nav-title">
+          linux服务器使用ssh秘钥登录以及禁用ssh密码登录
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+        
+      <h2 class="comment-title">Leave a comment</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            <div class="selector-item" data-selector="waline">
+              <span>waline</span>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+          <div class="comment waline-comment" data-aos="fade-up"
+            id="waline-comment">
+          </div>
+    </div>
+  </section>
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2024-2026
+        <span class="footer-info-sep rotate"></span>
+      ShqWW
+    </div>
+      <div>
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text"> 1. 系统代理配置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEdocker%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text"> 2. 配置docker代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%B9%E5%99%A8%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text"> 3. 容器代理配置</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="ShqWW" class="lazyload">
+  <div class="sidebar-author-name">ShqWW</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">9</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">10</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/shqww itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
+          <div class="sidebar-menu-icon icon ">
+                &#xf015;
+          </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
+          <div class="sidebar-menu-icon icon ">
+                &#xf187;
+          </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
+          <div class="sidebar-menu-icon icon ">
+                &#xf05a;
+          </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+  
+<script src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js" integrity="sha384-vLev0II0HKFaxkcm+&#x2F;7kX5IGwVFBASkGchU311wmU&#x2F;veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "ShqWW",
+          title: "Docker 系列之代理配置",
+          url: "http://shqww.github.io/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/",
+          excerpt: "本文从不同角度介绍docker使用过程中的代理配置。",
+          description: "",
+          stripContent: "本文从不同角度介绍docker使用过程中的代理配置。   1. 系统代理配置方法 此方法适用于容器环境配置以及镜像打包。  新建proxy文本文件（名字可以更换）：  1touch proxy  编辑proxy，填入以下信息：  1234567891011121314151617181920212223#!/bin/bash# 设置代理环境变量export HTTP_PROXY=&amp;quot;http://127.0.0.1:7890&amp;quot;export http_proxy=&amp;quot;ht",
+          date: "Thu Nov 28 2024 00:00:00 GMT+0800",
+          updated: "Mon Apr 27 2026 14:55:16 GMT+0800",
+          cover: "/covers/docker.png",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+        
+<script src="https://npm.webcache.cn/@zumer/snapdom@1.9.14/dist/snapdom.min.js" integrity="sha384-OEQ+fJp&#x2F;Mvi2uzBREXybtxryJvLytWapuHu4EE6LPwTKUwATYcc55tPPcZTzVcmx" crossorigin="anonymous" defer data-pjax></script>
+
+        
+<script src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js" integrity="sha384-VT1EeewTCEXgndcPMQ0PzV+uVFYjxFIjmAA7s5gcMX9t4Dt5TD+OVQIn7NJWIXn7" crossorigin="anonymous" defer data-pjax></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["waline"];
+  var commentConfig = {
+    waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.mjs';
+        const walineIntegrity = 'sha384-9sbqJjrfGjbkI6/PI4nU/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH/KinBEAZII/5';
+
+        const module = await safeImport(walineCdn, walineIntegrity);
+        walineInit = module.init;
+
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'github-blog-comment-two.vercel.app',
+          lang: document.documentElement.lang || 'en',
+          locale: {},
+          emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
+          meta: ["nick","mail","link"],
+          requiredMeta: ["nick","mail"],
+          wordLimit: JSON.parse('0'),
+          comment: true,
+          pageSize: JSON.parse('10'),
+          dark: 'html[data-theme="dark"]',
+          pageview: JSON.parse('true'),
+        });
+      }
+    },
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false,
+      utterances: false,
+      beaudar: false,
+      disqus: false,
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.12.3' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js" integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC+gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous" defer data-pjax></script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" defer onload="renderMathInElement(_$(&#39;article&#39;), {delimiters: [{left: &#39;$$&#39;, right: &#39;$$&#39;, display: true},{left: &#39;$&#39;, right: &#39;$&#39;, display: false}]});" data-pjax></script>
+
+  
+
+
+  </body>
+  </html>

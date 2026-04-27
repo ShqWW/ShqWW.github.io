@@ -1,0 +1,698 @@
+  <!DOCTYPE html>
+  <html lang="en"  
+      data-theme-mode="true"
+  >
+  <head>
+  <meta charset="utf-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+  <script data-pjax>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'true');
+  </script>
+
+    <script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "true");
+  </script>
+
+    <script async src="https://hm.baidu.com/hm.js?true"></script>
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    _hmt.push(["_trackPageview", location.pathname]);
+  </script>
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功","en":"Copy successfully"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.anchor_icon = 'f1b0';window.REIMU_CONFIG.code_block = {"expand":100};window.REIMU_CONFIG.base = 'http://shqww.github.io';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  <title>
+    hexo-theme-reimu 博客主题定制与修改 | MIMI的小窝
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preload" as="style" href="https://fontsapi.zeoseven.com/292/main/result.css" onload="this.rel='stylesheet'" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/regular.min.css" integrity="sha384-4qYppzjH8EiA+cGdaubu2vL7Rk8WGiqCSj7oRuP1uwtFWkfKNHD20lPfcrbQc8dU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/solid.min.css" integrity="sha384-wbMWab3UDSPm2kvIgVOn&#x2F;d9KPTecgPU1+Nb3zoQrm&#x2F;oVu0EkPL6IaKinjbwW0rum" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css" integrity="sha384-KTGeC2hIMzpeQakhsmzB9bZfhCD5xZZCgI1iZH6f/O457SxzlkzTQg/WXFNoi3ih" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v5-font-face.min.css" integrity="sha384-nJ1ThfldViXoLpJ6jlKcP2beas8BMbYq26SG9Hi8cH89bZi4RZ644v7helMCqJxd" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css" integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous">
+    <meta name="description" content="该文章介绍hexo-theme-reimu博客主题一些深度定制方法，随时更新。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo-theme-reimu 博客主题定制与修改">
+<meta property="og:url" content="http://shqww.github.io/en/2024/11/27/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/index.html">
+<meta property="og:site_name" content="MIMI的小窝">
+<meta property="og:description" content="该文章介绍hexo-theme-reimu博客主题一些深度定制方法，随时更新。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-18T16:00:00.000Z">
+<meta property="article:author" content="ShqWW">
+<meta property="article:tag" content="Web技术">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="MIMI的小窝" type="application/rss+xml">
+    <link rel="shortcut icon" href="/images/mimi.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+      <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+    <div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/en/">
+            <div class="main-nav-icon icon ">
+                  &#xf015;
+            </div>
+          <span class="main-nav-link">Home</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/en/archives">
+            <div class="main-nav-icon icon ">
+                  &#xf187;
+            </div>
+          <span class="main-nav-link">Archives</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/en/about">
+            <div class="main-nav-icon icon ">
+                  &#xf05a;
+            </div>
+          <span class="main-nav-link">About</span>
+        </a>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
+  </nav>
+    <nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">English</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
+            <li data-value="zh-CN" role="option" aria-selected="false">简体中文</li>
+            <li data-value="en" role="option" class="selected" aria-selected="true">English</li>
+        </ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};
+              langMap['zh-CN'] = '/2024/11/27/reimu博客修改/';
+              langMap['en'] = '/en/2024/11/27/reimu博客修改/';
+            selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/hexo.png" alt="hexo-theme-reimu 博客主题定制与修改">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">hexo-theme-reimu 博客主题定制与修改</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar" style="margin-bottom: 10px;"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E6%97%B6%E9%92%9F%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text"> 修改博客时钟样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B6%E9%83%A8%E5%92%8C%E4%BE%A7%E8%BE%B9%E5%AF%BC%E8%88%AA%E6%A0%8F%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text"> 顶部和侧边导航栏修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%AE%9E%E7%8E%B0%E5%8D%8A%E9%80%8F%E6%98%8E%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C"><span class="toc-number">2.1.</span> <span class="toc-text"> 菜单栏实现半透明毛玻璃效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown-%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E4%B8%8D%E6%94%AF%E6%8C%81%E7%BC%96%E5%8F%B7%E5%92%8C%E5%AF%B9%E9%BD%90%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> Markdown 公式渲染不支持编号和对齐和引用的问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%9C%86%E8%A7%92%E6%95%88%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text"> 颜色配置与圆角效果</span></a></li></ol>
+</div>
+</div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-reimu博客修改" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <div class="date-circle">
+    <div class="date-wrapper">
+      <time class="date-year" datetime="2024-11-26T16:00:00.000Z">2024</time>
+      <time class="date-day" datetime="2024-11-26T16:00:00.000Z">11-27</time>
+    </div>
+  </div>
+</div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>该文章介绍hexo-theme-reimu博客主题一些深度定制方法，随时更新。</p>
+<span id="more"></span>
+<p><a target="_blank" rel="noopener" href="https://github.com/D-Sketon/hexo-theme-reimu">原项目地址</a></p>
+<p>博客的语法介绍在 <a target="_blank" rel="noopener" href="https://d-sketon.github.io/20240114/hexo-theme-reimu-content/"><i class="fas fa-link"></i></a></p>
+<h2 id="修改博客时钟样式"><a class="markdownIt-Anchor" href="#修改博客时钟样式"></a> 修改博客时钟样式</h2>
+<p>新建<code>source\css\custom.styl</code>, 添加如下代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.article-meta</span></span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">margin-top</span>: -<span class="number">1.25em</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.article-date</span> </span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden; </span><br><span class="line"></span><br><span class="line"><span class="selector-class">.date-circle</span></span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--red-<span class="number">5</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>; </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">0em</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: -<span class="number">10%</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.date-wrapper</span> </span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.date-year</span>, <span class="selector-class">.date-day</span> </span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--red-<span class="number">1</span>);</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1</span>; <span class="comment">/* 垂直居中 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.date-year</span> </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.1em</span>; <span class="comment">/* 年份字体大小 */</span></span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">0.2em</span>; <span class="comment">/* 调整年份和日期之间的间距 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.date-day</span> </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.8em</span>; <span class="comment">/* 日期字体大小 */</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>source/css/style.styl</code> 结尾引入新建的css样式:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;custom&quot;</span></span><br></pre></td></tr></table></figure>
+<p>整体修改<code>layout\_partial\post\date.ejs</code>为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;article-date&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;date-circle&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;date-wrapper&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">time</span> <span class="attr">class</span>=<span class="string">&quot;date-year&quot;</span> <span class="attr">datetime</span>=<span class="string">&quot;&lt;%= date_xml(post.date) %&gt;&quot;</span>&gt;</span>&lt;%= date(post.date, &#x27;YYYY&#x27;) %&gt;<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">time</span> <span class="attr">class</span>=<span class="string">&quot;date-day&quot;</span> <span class="attr">datetime</span>=<span class="string">&quot;&lt;%= date_xml(post.date) %&gt;&quot;</span>&gt;</span>&lt;%= date(post.date, &#x27;MM-DD&#x27;) %&gt;<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="顶部和侧边导航栏修改"><a class="markdownIt-Anchor" href="#顶部和侧边导航栏修改"></a> 顶部和侧边导航栏修改</h2>
+<h3 id="菜单栏实现半透明毛玻璃效果"><a class="markdownIt-Anchor" href="#菜单栏实现半透明毛玻璃效果"></a> 菜单栏实现半透明毛玻璃效果</h3>
+<p>修改<code>source\css\custom.styl</code>, 结尾添加如下代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#header-nav</span></span><br><span class="line">  <span class="attribute">backdrop-filter</span>: <span class="built_in">blur</span>(<span class="number">10px</span>); <span class="comment">/* 毛玻璃效果 */</span></span><br><span class="line">  -webkit-<span class="attribute">backdrop-filter</span>: <span class="built_in">blur</span>(<span class="number">10px</span>); <span class="comment">/* 兼容 WebKit 浏览器 */</span></span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>; <span class="comment">/* 可选：添加内边距 */</span></span><br></pre></td></tr></table></figure>
+<p>同时要把header颜色改为半透明,在<code>source/css/_variables.styl</code>中修改两个变量（分别为light mode和dark mode）：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">--color-header-background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.7</span>);</span><br><span class="line"><span class="attr">--color-header-background</span>: <span class="built_in">rgba</span>(<span class="number">34</span>, <span class="number">34</span>, <span class="number">34</span>, <span class="number">0.6</span>); <span class="comment">/* DARK MODE*/</span></span><br></pre></td></tr></table></figure>
+<p>同时需要修改样式文件,在<code>source\css\custom.styl</code>结尾添加：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.sidebar-menu-link-wrap</span></span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">8px</span> <span class="number">50px</span></span><br><span class="line">  display: flex</span><br><span class="line">  position: relative</span><br><span class="line">  justify-content: center</span><br><span class="line">  border: <span class="number">10px</span> <span class="built_in">var</span>(--color-red-<span class="number">3</span>-shadow) </span><br><span class="line">  transition: border .<span class="number">5s</span></span><br><span class="line"></span><br><span class="line">  &amp;:hover</span><br><span class="line">    border: <span class="number">10px</span> <span class="built_in">var</span>(--color-h2-after) </span><br><span class="line"></span><br><span class="line">  &amp;:hover .sidebar-menu-icon:before</span><br><span class="line">    transform: <span class="built_in">scale</span>(<span class="number">1.1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.link-active</span><br><span class="line">  background: <span class="built_in">var</span>(--red-<span class="number">0</span>)</span><br><span class="line">  border: <span class="number">10px</span> <span class="built_in">var</span>(--color-wrap) </span><br><span class="line">  box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">3px</span> <span class="built_in">var</span>(--color-red-<span class="number">6</span>-shadow)</span><br><span class="line">  opacity: <span class="number">0.8</span></span><br><span class="line">  border-radius: <span class="number">10px</span>; <span class="comment">/* 添加圆角 */</span></span><br></pre></td></tr></table></figure>
+<h2 id="markdown-公式渲染不支持编号和对齐和引用的问题"><a class="markdownIt-Anchor" href="#markdown-公式渲染不支持编号和对齐和引用的问题"></a> <s>Markdown 公式渲染不支持编号和对齐和引用的问题：</s></h2>
+<p><s>在 <code>layout/_partial/head.ejs</code> 结尾&quot;&lt;\head&gt;&quot;标签前添加如下源代码:</s><br />
+(新版本已经修复)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">  &lt;!-- 引入<span class="title class_">Mathjax</span> <span class="variable constant_">CDN</span> --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">async</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml"><span class="attr">src</span>=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;!-- 可选：自定义<span class="title class_">Mathjax</span>配置 --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/x-mathjax-config&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title class_">MathJax</span>.<span class="property">Hub</span>.<span class="title class_">Config</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="title class_">TeX</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="attr">equationNumbers</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="attr">autoNumber</span>: <span class="string">&quot;AMS&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="attr">useLabelIds</span>: <span class="literal">true</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">tex2jax</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="attr">inlineMath</span>: [[<span class="string">&#x27;$&#x27;</span>,<span class="string">&#x27;$&#x27;</span>], [<span class="string">&#x27;\\(&#x27;</span>,<span class="string">&#x27;\\)&#x27;</span>]],</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="attr">displayMath</span>: [[<span class="string">&#x27;$$&#x27;</span>,<span class="string">&#x27;$$&#x27;</span>], [<span class="string">&#x27;\\[&#x27;</span>,<span class="string">&#x27;\\]&#x27;</span>]],</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="attr">processEscapes</span>: <span class="literal">true</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="attr">processEnvironments</span>: <span class="literal">true</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="attr">skipTags</span>: [<span class="string">&#x27;script&#x27;</span>, <span class="string">&#x27;noscript&#x27;</span>, <span class="string">&#x27;style&#x27;</span>, <span class="string">&#x27;textarea&#x27;</span>, <span class="string">&#x27;pre&#x27;</span>, <span class="string">&#x27;code&#x27;</span>]</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="title class_">CommonHTML</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="attr">linebreaks</span>: &#123; <span class="attr">automatic</span>: <span class="literal">true</span> &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">messageStyle</span>: <span class="string">&quot;none&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="title class_">MathMenu</span>: &#123; <span class="attr">showLocale</span>: <span class="literal">false</span>, <span class="attr">showRenderer</span>: <span class="literal">false</span> &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="颜色配置与圆角效果"><a class="markdownIt-Anchor" href="#颜色配置与圆角效果"></a> <s>颜色配置与圆角效果</s></h2>
+<p><s>在<code>source\css\_variables.styl</code>中添加颜色, 方便后续修改引用normal(light)模式添加:</s><br />
+(新版本已经修复)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--black-white: #000000</span><br><span class="line">--head-color: rgba(255, 255, 255, 0.8)</span><br></pre></td></tr></table></figure>
+<p>dark模式添加:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--black-white: #ffffff</span><br><span class="line">--head-color: rgba(0, 0, 0, 0.5)</span><br></pre></td></tr></table></figure>
+<p>若需要添加圆角效果, 则修改文件中的&quot;post-radius&quot;变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post-radius = 15px</span><br></pre></td></tr></table></figure>
+    </div>
+    <footer class="article-footer">
+        <blockquote class="article-copyright">
+    <p><strong><span class="icon-user icon"></span>Author: </strong>ShqWW</p>
+    <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="http://shqww.github.io/en/2024/11/27/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/">http://shqww.github.io/en/2024/11/27/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/</a></p>
+    <p><strong><span class="icon-pencil icon"></span>Title: </strong>「hexo-theme-reimu 博客主题定制与修改」</p>
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2024-11-27 00:00:00</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-04-19 00:00:00</p>
+    <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  </blockquote>
+        <div class="share-wrapper">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F27%2Freimu%25E5%258D%259A%25E5%25AE%25A2%25E4%25BF%25AE%25E6%2594%25B9%2F" target="_blank" rel="noopener noreferrer" title="hexo-theme-reimu 博客主题定制与修改">
+      <div class="share-icon icon icon-facebook">
+      </div>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F27%2Freimu%25E5%258D%259A%25E5%25AE%25A2%25E4%25BF%25AE%25E6%2594%25B9%2F&amp;text=hexo-theme-reimu%20%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E5%AE%9A%E5%88%B6%E4%B8%8E%E4%BF%AE%E6%94%B9&amp;via=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="hexo-theme-reimu 博客主题定制与修改">
+      <div class="share-icon icon icon-twitter">
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F27%2Freimu%25E5%258D%259A%25E5%25AE%25A2%25E4%25BF%25AE%25E6%2594%25B9%2F&amp;title=hexo-theme-reimu%20%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E5%AE%9A%E5%88%B6%E4%B8%8E%E4%BF%AE%E6%94%B9&amp;summary=%E8%AF%A5%E6%96%87%E7%AB%A0%E4%BB%8B%E7%BB%8Dhexo-theme-reimu%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E4%BA%9B%E6%B7%B1%E5%BA%A6%E5%AE%9A%E5%88%B6%E6%96%B9%E6%B3%95%EF%BC%8C%E9%9A%8F%E6%97%B6%E6%9B%B4%E6%96%B0%E3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="hexo-theme-reimu 博客主题定制与修改">
+      <div class="share-icon icon icon-linkedin">
+      </div>
+    </a>
+    <a href="https://www.reddit.com/submit?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F27%2Freimu%25E5%258D%259A%25E5%25AE%25A2%25E4%25BF%25AE%25E6%2594%25B9%2F&amp;title=hexo-theme-reimu%20%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E5%AE%9A%E5%88%B6%E4%B8%8E%E4%BF%AE%E6%94%B9" target="_blank" rel="noopener noreferrer" title="hexo-theme-reimu 博客主题定制与修改">
+      <div class="share-icon icon icon-reddit">
+      </div>
+    </a>
+    <a href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F27%2Freimu%25E5%258D%259A%25E5%25AE%25A2%25E4%25BF%25AE%25E6%2594%25B9%2F&amp;appkey=&amp;title=hexo-theme-reimu%20%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E5%AE%9A%E5%88%B6%E4%B8%8E%E4%BF%AE%E6%94%B9&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="hexo-theme-reimu 博客主题定制与修改">
+      <div class="share-icon icon icon-weibo">
+      </div>
+    </a>
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F27%2Freimu%25E5%258D%259A%25E5%25AE%25A2%25E4%25BF%25AE%25E6%2594%25B9%2F&amp;title=hexo-theme-reimu%20%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E5%AE%9A%E5%88%B6%E4%B8%8E%E4%BF%AE%E6%94%B9&amp;desc=%E8%AF%A5%E6%96%87%E7%AB%A0%E4%BB%8B%E7%BB%8Dhexo-theme-reimu%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E4%BA%9B%E6%B7%B1%E5%BA%A6%E5%AE%9A%E5%88%B6%E6%96%B9%E6%B3%95%EF%BC%8C%E9%9A%8F%E6%97%B6%E6%9B%B4%E6%96%B0%E3%80%82&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="hexo-theme-reimu 博客主题定制与修改">
+      <div class="share-icon icon icon-qq">
+      </div>
+    </a>
+    <a href="javascript:;"  title="hexo-theme-reimu 博客主题定制与修改">
+      <div class="share-icon icon icon-weixin">
+          <div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hexo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div>
+      </div>
+    </a>
+</div>
+        <a data-aos="zoom-in" href="/en/2024/11/27/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/#comments" class="article-comment-link">
+          <span class="post-comments-count waline-comment-count" data-path="/en/2024/11/27/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/" itemprop="commentCount"></span>
+          Comments
+        </a>
+        <span data-aos="zoom-in" class="article-visitor-link">
+          <span class="waline-pageview-count" data-path="/en/2024/11/27/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/">0</span>
+          <em class="post-meta-item-text">Readings</em>
+        </span>
+        <a class="article-category-link" href="/en/categories/Web/" title="Web" data-aos="zoom-in">Web</a>
+
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/Web%E6%8A%80%E6%9C%AF/" rel="tag" title="Web技术">Web技术</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/%E5%8D%9A%E5%AE%A2/" rel="tag" title="博客">博客</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="/covers/pca.png" data-sizes="auto" alt="主成分分析和线性回归对比" class="lazyload">
+        <a href="/en/2024/11/28/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94/" aria-label="Prev: 主成分分析和线性回归对比" title="Prev: 主成分分析和线性回归对比"></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">
+            主成分分析和线性回归对比
+        </h3>
+      </div>
+  </nav>
+
+</article>
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+        
+      <h2 class="comment-title">Leave a comment</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            <div class="selector-item" data-selector="waline">
+              <span>waline</span>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+          <div class="comment waline-comment" data-aos="fade-up"
+            id="waline-comment">
+          </div>
+    </div>
+  </section>
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2024-2026
+        <span class="footer-info-sep rotate"></span>
+      ShqWW
+    </div>
+      <div>
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E6%97%B6%E9%92%9F%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text"> 修改博客时钟样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B6%E9%83%A8%E5%92%8C%E4%BE%A7%E8%BE%B9%E5%AF%BC%E8%88%AA%E6%A0%8F%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text"> 顶部和侧边导航栏修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%AE%9E%E7%8E%B0%E5%8D%8A%E9%80%8F%E6%98%8E%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C"><span class="toc-number">2.1.</span> <span class="toc-text"> 菜单栏实现半透明毛玻璃效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown-%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E4%B8%8D%E6%94%AF%E6%8C%81%E7%BC%96%E5%8F%B7%E5%92%8C%E5%AF%B9%E9%BD%90%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> Markdown 公式渲染不支持编号和对齐和引用的问题：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%9C%86%E8%A7%92%E6%95%88%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text"> 颜色配置与圆角效果</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="ShqWW" class="lazyload">
+  <div class="sidebar-author-name">ShqWW</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">9</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">10</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/shqww itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
+          <div class="sidebar-menu-icon icon ">
+                &#xf015;
+          </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
+          <div class="sidebar-menu-icon icon ">
+                &#xf187;
+          </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
+          <div class="sidebar-menu-icon icon ">
+                &#xf05a;
+          </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+  
+<script src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js" integrity="sha384-vLev0II0HKFaxkcm+&#x2F;7kX5IGwVFBASkGchU311wmU&#x2F;veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "ShqWW",
+          title: "hexo-theme-reimu 博客主题定制与修改",
+          url: "http://shqww.github.io/2024/11/27/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/",
+          excerpt: "该文章介绍hexo-theme-reimu博客主题一些深度定制方法，随时更新。",
+          description: "",
+          stripContent: "该文章介绍hexo-theme-reimu博客主题一些深度定制方法，随时更新。  原项目地址 博客的语法介绍在   修改博客时钟样式 新建source\css\custom.styl, 添加如下代码: 12345678910111213141516171819202122232425262728293031323334353637.article-meta  display: inline-block;  margin-top: -1.25em;.article-date   display: ",
+          date: "Wed Nov 27 2024 00:00:00 GMT+0800",
+          updated: "Sun Apr 19 2026 00:00:00 GMT+0800",
+          cover: "/covers/hexo.png",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+        
+<script src="https://npm.webcache.cn/@zumer/snapdom@1.9.14/dist/snapdom.min.js" integrity="sha384-OEQ+fJp&#x2F;Mvi2uzBREXybtxryJvLytWapuHu4EE6LPwTKUwATYcc55tPPcZTzVcmx" crossorigin="anonymous" defer data-pjax></script>
+
+        
+<script src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js" integrity="sha384-VT1EeewTCEXgndcPMQ0PzV+uVFYjxFIjmAA7s5gcMX9t4Dt5TD+OVQIn7NJWIXn7" crossorigin="anonymous" defer data-pjax></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["waline"];
+  var commentConfig = {
+    waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.mjs';
+        const walineIntegrity = 'sha384-9sbqJjrfGjbkI6/PI4nU/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH/KinBEAZII/5';
+
+        const module = await safeImport(walineCdn, walineIntegrity);
+        walineInit = module.init;
+
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'github-blog-comment-two.vercel.app',
+          lang: document.documentElement.lang || 'en',
+          locale: {},
+          emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
+          meta: ["nick","mail","link"],
+          requiredMeta: ["nick","mail"],
+          wordLimit: JSON.parse('0'),
+          comment: true,
+          pageSize: JSON.parse('10'),
+          dark: 'html[data-theme="dark"]',
+          pageview: JSON.parse('true'),
+        });
+      }
+    },
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false,
+      utterances: false,
+      beaudar: false,
+      disqus: false,
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.12.3' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js" integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC+gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous" defer data-pjax></script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" defer onload="renderMathInElement(_$(&#39;article&#39;), {delimiters: [{left: &#39;$$&#39;, right: &#39;$$&#39;, display: true},{left: &#39;$&#39;, right: &#39;$&#39;, display: false}]});" data-pjax></script>
+
+  
+
+
+  </body>
+  </html>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MIMI的小窝</title>
+    <link>http://shqww.github.io/</link>
+    <language>zh-CN</language>
+    <copyright>All rights reserved 2026, ShqWW</copyright>
+    <lastBuildDate>Sat, 25 Apr 2026 16:00:00 GMT</lastBuildDate>
+    <generator>Hexo</generator>
+    <image>
+      <url>http://shqww.github.io/icon.png</url>
+      <title>MIMI的小窝</title>
+      <link>http://shqww.github.io/</link>
+    </image>
+    <atom:link href="http://shqww.github.io/atom.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>LLM强化学习后训练系列（三）</title>
+      <link>http://shqww.github.io/2026/04/26/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89%EF%BC%89/</link>
+      <description>
+        <![CDATA[<!-- 本文是LLM强化学习后训练系列的第三篇，主要介绍GPT所使用的RLHF（Reinforcement Learning with Human Feedback）方法。RLHF是一种结合了人类反馈的强化学习方法，旨在提升LLM在特定任务上的表现。]]>
+      </description>
+      <author>ShqWW</author>
+      <category domain="http://shqww.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+      <category domain="http://shqww.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</category>
+      <category domain="http://shqww.github.io/tags/LLM/">LLM</category>
+      <pubDate>Sat, 25 Apr 2026 16:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>LLM强化学习后训练系列(二）</title>
+      <link>http://shqww.github.io/2026/04/23/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%BA%8C%EF%BC%89/</link>
+      <description>
+        <![CDATA[<p>本文是LLM强化学习后训练系列的第二篇，主要介绍强化学习中的Advantage Actor-Critic模型(A2C)。</p>
+<h2 id="奖励信号的构造方式"><a class="markdownIt-Anchor" href="#奖励信号的构造方式"></a>]]>
+      </description>
+      <author>ShqWW</author>
+      <category domain="http://shqww.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+      <category domain="http://shqww.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</category>
+      <category domain="http://shqww.github.io/tags/LLM/">LLM</category>
+      <pubDate>Wed, 22 Apr 2026 16:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>LLM强化学习后训练系列(一）</title>
+      <link>http://shqww.github.io/2026/04/22/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%80%EF%BC%89/</link>
+      <description>
+        <![CDATA[<p>本系列为 LLM 强化学习后训练梳理与总结。其脉络沿着强化学习的基本概念、算法原理、改进策略、以及在大语言模型后训练中的应用展开。不会涵盖强化学习的所有内容，而是聚焦于与大语言模型后训练相关的部分。主要是理清大语言模型后训练中强化学习的核心逻辑和思路。</p>
+<h1]]>
+      </description>
+      <author>ShqWW</author>
+      <category domain="http://shqww.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+      <category domain="http://shqww.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</category>
+      <category domain="http://shqww.github.io/tags/LLM/">LLM</category>
+      <pubDate>Tue, 21 Apr 2026 16:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Docker 系列之代理配置</title>
+      <link>http://shqww.github.io/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</link>
+      <description>
+        <![CDATA[<p>本文从不同角度介绍docker使用过程中的代理配置。</p>]]>
+      </description>
+      <author>ShqWW</author>
+      <category domain="http://shqww.github.io/categories/Linux/">Linux</category>
+      <category domain="http://shqww.github.io/tags/Docker/">Docker</category>
+      <category domain="http://shqww.github.io/tags/Linux/">Linux</category>
+      <category domain="http://shqww.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      <pubDate>Wed, 27 Nov 2024 16:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>linux服务器使用ssh秘钥登录以及禁用ssh密码登录</title>
+      <link>http://shqww.github.io/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/</link>
+      <description>
+        <![CDATA[<p>linux服务器使用ssh秘钥登录以及禁用ssh密码登录。</p>]]>
+      </description>
+      <author>ShqWW</author>
+      <category domain="http://shqww.github.io/categories/Linux/">Linux</category>
+      <category domain="http://shqww.github.io/tags/Linux/">Linux</category>
+      <category domain="http://shqww.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      <pubDate>Wed, 27 Nov 2024 16:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>随机微分方程和扩散模型(待更)</title>
+      <link>http://shqww.github.io/2024/11/28/%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/</link>
+      <description>
+        <![CDATA[<p>本文从连续时间随机微分方程的角度介绍扩散模型。</p>]]>
+      </description>
+      <author>ShqWW</author>
+      <category domain="http://shqww.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+      <category domain="http://shqww.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+      <category domain="http://shqww.github.io/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">扩散模型</category>
+      <pubDate>Wed, 27 Nov 2024 16:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Linux下配置zsh和oh my zsh</title>
+      <link>http://shqww.github.io/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/</link>
+      <description>
+        <![CDATA[<p>Linux下配置zsh和oh my zsh方法。</p>]]>
+      </description>
+      <author>ShqWW</author>
+      <category domain="http://shqww.github.io/categories/Linux/">Linux</category>
+      <category domain="http://shqww.github.io/tags/Linux/">Linux</category>
+      <category domain="http://shqww.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      <pubDate>Wed, 27 Nov 2024 16:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>主成分分析和线性回归对比</title>
+      <link>http://shqww.github.io/2024/11/28/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94/</link>
+      <description>
+        <![CDATA[<p>给定一系列样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。</p>]]>
+      </description>
+      <author>ShqWW</author>
+      <category domain="http://shqww.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+      <category domain="http://shqww.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</category>
+      <category domain="http://shqww.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</category>
+      <pubDate>Wed, 27 Nov 2024 16:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>hexo-theme-reimu 博客主题定制与修改</title>
+      <link>http://shqww.github.io/2024/11/27/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/</link>
+      <description>
+        <![CDATA[<p>该文章介绍hexo-theme-reimu博客主题一些深度定制方法，随时更新。</p>]]>
+      </description>
+      <author>ShqWW</author>
+      <category domain="http://shqww.github.io/categories/Web/">Web</category>
+      <category domain="http://shqww.github.io/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      <category domain="http://shqww.github.io/tags/Web%E6%8A%80%E6%9C%AF/">Web技术</category>
+      <pubDate>Tue, 26 Nov 2024 16:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

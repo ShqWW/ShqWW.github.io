@@ -1,0 +1,695 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="true"
+  >
+  <head>
+  <meta charset="utf-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+  <script data-pjax>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'true');
+  </script>
+
+    <script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "true");
+  </script>
+
+    <script async src="https://hm.baidu.com/hm.js?true"></script>
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    _hmt.push(["_trackPageview", location.pathname]);
+  </script>
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功","en":"Copy successfully"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.anchor_icon = 'f1b0';window.REIMU_CONFIG.code_block = {"expand":100};window.REIMU_CONFIG.base = 'http://shqww.github.io';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  <title>
+    Linux下配置zsh和oh my zsh | MIMI的小窝
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preload" as="style" href="https://fontsapi.zeoseven.com/292/main/result.css" onload="this.rel='stylesheet'" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/regular.min.css" integrity="sha384-4qYppzjH8EiA+cGdaubu2vL7Rk8WGiqCSj7oRuP1uwtFWkfKNHD20lPfcrbQc8dU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/solid.min.css" integrity="sha384-wbMWab3UDSPm2kvIgVOn&#x2F;d9KPTecgPU1+Nb3zoQrm&#x2F;oVu0EkPL6IaKinjbwW0rum" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css" integrity="sha384-KTGeC2hIMzpeQakhsmzB9bZfhCD5xZZCgI1iZH6f/O457SxzlkzTQg/WXFNoi3ih" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v5-font-face.min.css" integrity="sha384-nJ1ThfldViXoLpJ6jlKcP2beas8BMbYq26SG9Hi8cH89bZi4RZ644v7helMCqJxd" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css" integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous">
+    <meta name="description" content="Linux下配置zsh和oh my zsh方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下配置zsh和oh my zsh">
+<meta property="og:url" content="http://shqww.github.io/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/index.html">
+<meta property="og:site_name" content="MIMI的小窝">
+<meta property="og:description" content="Linux下配置zsh和oh my zsh方法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-27T06:55:16.601Z">
+<meta property="article:author" content="ShqWW">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="MIMI的小窝" type="application/rss+xml">
+    <link rel="shortcut icon" href="/images/mimi.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+      <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+    <div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+            <div class="main-nav-icon icon ">
+                  &#xf015;
+            </div>
+          <span class="main-nav-link">首页</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/archives">
+            <div class="main-nav-icon icon ">
+                  &#xf187;
+            </div>
+          <span class="main-nav-link">归档</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/about">
+            <div class="main-nav-icon icon ">
+                  &#xf05a;
+            </div>
+          <span class="main-nav-link">关于</span>
+        </a>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+  </nav>
+    <nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
+            <li data-value="zh-CN" role="option" class="selected" aria-selected="true">简体中文</li>
+            <li data-value="en" role="option" aria-selected="false">English</li>
+        </ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};
+              langMap['zh-CN'] = '/2024/11/28/linux下配置zsh和oh my zsh/';
+              langMap['en'] = '/en/2024/11/28/linux下配置zsh和oh my zsh/';
+            selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/omz.png" alt="Linux下配置zsh和oh my zsh">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">Linux下配置zsh和oh my zsh</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar" style="margin-bottom: 10px;"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-bash%E5%92%8Czsh%E4%BA%92%E7%9B%B8%E5%88%87%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text"> 0. bash和zsh互相切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85oh-my-zsh"><span class="toc-number">2.</span> <span class="toc-text"> 1. 安装Oh My zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> 2. 设置主题</span></a></li></ol>
+</div>
+</div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-linux下配置zsh和oh my zsh" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <div class="date-circle">
+    <div class="date-wrapper">
+      <time class="date-year" datetime="2024-11-27T16:00:00.000Z">2024</time>
+      <time class="date-day" datetime="2024-11-27T16:00:00.000Z">11-28</time>
+    </div>
+  </div>
+</div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>Linux下配置zsh和oh my zsh方法。</p>
+<span id="more"></span>
+<h3 id="0-bash和zsh互相切换"><a class="markdownIt-Anchor" href="#0-bash和zsh互相切换"></a> 0. bash和zsh互相切换</h3>
+<p>bash切换zsh:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<p>zsh切换bash:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
+<h3 id="1-安装oh-my-zsh"><a class="markdownIt-Anchor" href="#1-安装oh-my-zsh"></a> 1. 安装Oh My zsh</h3>
+<p>使用如下命令克隆Oh My zsh项目:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh</span><br></pre></td></tr></table></figure>
+<p>复制到ZShell文件夹下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h3 id="2-设置主题"><a class="markdownIt-Anchor" href="#2-设置主题"></a> 2. 设置主题</h3>
+<p>可以在<code>~/.oh-my-zsh/themes</code>中寻找合适的主题，也可以自定义主题。<br />
+自定义主题的示例，新建<code>~/.oh-my-zsh/themes/mytheme.zsh-theme</code>，填入如下内容（以下内容仅为参考，可自己定义）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">CRUNCH_BRACKET_COLOR=&quot;%&#123;$fg[white]%&#125;&quot;</span><br><span class="line">CRUNCH_TIME_COLOR=&quot;%&#123;$fg[cyan]%&#125;&quot;</span><br><span class="line">CRUNCH_RVM_COLOR=&quot;%&#123;$fg[magenta]%&#125;&quot;</span><br><span class="line">CRUNCH_DIR_COLOR=&quot;%&#123;$fg[cyan]%&#125;&quot;</span><br><span class="line">CRUNCH_GIT_BRANCH_COLOR=&quot;%&#123;$fg[green]%&#125;&quot;</span><br><span class="line">CRUNCH_GIT_CLEAN_COLOR=&quot;%&#123;$fg[green]%&#125;&quot;</span><br><span class="line">CRUNCH_GIT_DIRTY_COLOR=&quot;%&#123;$fg[red]%&#125;&quot;</span><br><span class="line">CRUNCH_SYMBOL_COLOR=&quot;%&#123;$fg[yellow]%&#125;&quot;</span><br><span class="line"></span><br><span class="line"># These Git variables are used by the oh-my-zsh git_prompt_info helper:</span><br><span class="line">ZSH_THEME_GIT_PROMPT_PREFIX=&quot;$CRUNCH_BRACKET_COLOR:$CRUNCH_GIT_BRANCH_COLOR&quot;</span><br><span class="line">ZSH_THEME_GIT_PROMPT_SUFFIX=&quot;&quot;</span><br><span class="line">ZSH_THEME_GIT_PROMPT_CLEAN=&quot; $CRUNCH_GIT_CLEAN_COLOR✓&quot;</span><br><span class="line">ZSH_THEME_GIT_PROMPT_DIRTY=&quot; $CRUNCH_GIT_DIRTY_COLOR✗&quot;</span><br><span class="line"></span><br><span class="line"># Our elements:</span><br><span class="line">CRUNCH_TIME_=&quot;$CRUNCH_BRACKET_COLOR&#123;$CRUNCH_SYMBOL_COLOR&quot;zsh&quot;$CRUNCH_TIME_COLOR%T$CRUNCH_BRACKET_COLOR&#125;%&#123;$reset_color%&#125;&quot;</span><br><span class="line">ZSH_THEME_RUBY_PROMPT_PREFIX=&quot;$CRUNCH_BRACKET_COLOR&quot;[&quot;$CRUNCH_RVM_COLOR&quot;</span><br><span class="line">ZSH_THEME_RUBY_PROMPT_SUFFIX=&quot;$CRUNCH_BRACKET_COLOR&quot;]&quot;%&#123;$reset_color%&#125;&quot;</span><br><span class="line">CRUNCH_RVM_=&#x27;$(ruby_prompt_info)&#x27;</span><br><span class="line">CRUNCH_DIR_=&quot;$CRUNCH_DIR_COLOR%~\$(git_prompt_info) &quot;</span><br><span class="line">CRUNCH_PROMPT=&quot;$CRUNCH_BRACKET_COLOR➭ &quot;</span><br><span class="line"></span><br><span class="line"># Put it all together!</span><br><span class="line">PROMPT=&quot;$CRUNCH_TIME_$CRUNCH_RVM_$CRUNCH_DIR_$CRUNCH_PROMPT%&#123;$reset_color%&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>编辑<code>~/.zshrc</code>文件中主题的位置<code>ZSH_THEME=$theme_name</code>，修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo -e &quot;\e[33m φ(≧ω≦*)♪\e[0m \e[36m Welcome to\e[0m \e[36m zsh !!\e[0m&quot; #此处为欢迎语可以不填</span><br><span class="line">ZSH_THEME=&quot;mytheme&quot;</span><br></pre></td></tr></table></figure>
+<p>并将以下注释取消以禁用自动更新：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># zstyle &#x27;:omz:update&#x27; mode disabled  # disable automatic updates</span><br></pre></td></tr></table></figure>
+    </div>
+    <footer class="article-footer">
+        <blockquote class="article-copyright">
+    <p><strong><span class="icon-user icon"></span>本文作者：</strong>ShqWW</p>
+    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="http://shqww.github.io/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/">http://shqww.github.io/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/</a></p>
+    <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「Linux下配置zsh和oh my zsh」</p>
+    <p><strong><span class="icon-calendar icon"></span>本文发布时间：</strong>2024-11-28 00:00:00</p>
+    <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-04-27 14:55:16</p>
+    <p><strong><span class="icon-copyright icon"></span>本文版权：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！</p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  </blockquote>
+        <div class="share-wrapper">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E4%25B8%258B%25E9%2585%258D%25E7%25BD%25AEzsh%25E5%2592%258Coh%2520my%2520zsh%2F" target="_blank" rel="noopener noreferrer" title="Linux下配置zsh和oh my zsh">
+      <div class="share-icon icon icon-facebook">
+      </div>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E4%25B8%258B%25E9%2585%258D%25E7%25BD%25AEzsh%25E5%2592%258Coh%2520my%2520zsh%2F&amp;text=Linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh&amp;via=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="Linux下配置zsh和oh my zsh">
+      <div class="share-icon icon icon-twitter">
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E4%25B8%258B%25E9%2585%258D%25E7%25BD%25AEzsh%25E5%2592%258Coh%2520my%2520zsh%2F&amp;title=Linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh&amp;summary=Linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh%E6%96%B9%E6%B3%95%E3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="Linux下配置zsh和oh my zsh">
+      <div class="share-icon icon icon-linkedin">
+      </div>
+    </a>
+    <a href="https://www.reddit.com/submit?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E4%25B8%258B%25E9%2585%258D%25E7%25BD%25AEzsh%25E5%2592%258Coh%2520my%2520zsh%2F&amp;title=Linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh" target="_blank" rel="noopener noreferrer" title="Linux下配置zsh和oh my zsh">
+      <div class="share-icon icon icon-reddit">
+      </div>
+    </a>
+    <a href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E4%25B8%258B%25E9%2585%258D%25E7%25BD%25AEzsh%25E5%2592%258Coh%2520my%2520zsh%2F&amp;appkey=&amp;title=Linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="Linux下配置zsh和oh my zsh">
+      <div class="share-icon icon icon-weibo">
+      </div>
+    </a>
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E4%25B8%258B%25E9%2585%258D%25E7%25BD%25AEzsh%25E5%2592%258Coh%2520my%2520zsh%2F&amp;title=Linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh&amp;desc=Linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh%E6%96%B9%E6%B3%95%E3%80%82&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="Linux下配置zsh和oh my zsh">
+      <div class="share-icon icon icon-qq">
+      </div>
+    </a>
+    <a href="javascript:;"  title="Linux下配置zsh和oh my zsh">
+      <div class="share-icon icon icon-weixin">
+          <div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hexo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div>
+      </div>
+    </a>
+</div>
+        <a data-aos="zoom-in" href="/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/#comments" class="article-comment-link">
+          <span class="post-comments-count waline-comment-count" data-path="/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/" itemprop="commentCount"></span>
+          留言
+        </a>
+        <span data-aos="zoom-in" class="article-visitor-link">
+          <span class="waline-pageview-count" data-path="/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/">0</span>
+          <em class="post-meta-item-text">阅读量</em>
+        </span>
+        <a class="article-category-link" href="/categories/Linux/" title="Linux" data-aos="zoom-in">Linux</a>
+
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag" title="Linux">Linux</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag" title="运维">运维</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="/covers/diffusion.png" data-sizes="auto" alt="随机微分方程和扩散模型(待更)" class="lazyload">
+        <a href="/2024/11/28/%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/" aria-label="前一篇: 随机微分方程和扩散模型(待更)" title="前一篇: 随机微分方程和扩散模型(待更)"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            随机微分方程和扩散模型(待更)
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="/covers/pca.png" data-sizes="auto" alt="主成分分析和线性回归对比" class="lazyload">
+      <a href="/2024/11/28/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94/" aria-label="后一篇: 主成分分析和线性回归对比"  title="后一篇: 主成分分析和线性回归对比"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          主成分分析和线性回归对比
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+        
+      <h2 class="comment-title">说些什么吧！</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            <div class="selector-item" data-selector="waline">
+              <span>waline</span>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+          <div class="comment waline-comment" data-aos="fade-up"
+            id="waline-comment">
+          </div>
+    </div>
+  </section>
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2024-2026
+        <span class="footer-info-sep rotate"></span>
+      ShqWW
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-bash%E5%92%8Czsh%E4%BA%92%E7%9B%B8%E5%88%87%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text"> 0. bash和zsh互相切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85oh-my-zsh"><span class="toc-number">2.</span> <span class="toc-text"> 1. 安装Oh My zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> 2. 设置主题</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="ShqWW" class="lazyload">
+  <div class="sidebar-author-name">ShqWW</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">9</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">10</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/shqww itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+          <div class="sidebar-menu-icon icon ">
+                &#xf015;
+          </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+          <div class="sidebar-menu-icon icon ">
+                &#xf187;
+          </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+          <div class="sidebar-menu-icon icon ">
+                &#xf05a;
+          </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+  
+<script src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js" integrity="sha384-vLev0II0HKFaxkcm+&#x2F;7kX5IGwVFBASkGchU311wmU&#x2F;veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "ShqWW",
+          title: "Linux下配置zsh和oh my zsh",
+          url: "http://shqww.github.io/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/",
+          excerpt: "Linux下配置zsh和oh my zsh方法。",
+          description: "",
+          stripContent: "Linux下配置zsh和oh my zsh方法。   0. bash和zsh互相切换 bash切换zsh: 1chsh -s /bin/zsh zsh切换bash: 1chsh -s /bin/bash  1. 安装Oh My zsh 使用如下命令克隆Oh My zsh项目: 1git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh 复制到ZShell文件夹下： 1cp ~/.oh-my-zsh/templates/zshrc.",
+          date: "Thu Nov 28 2024 00:00:00 GMT+0800",
+          updated: "Mon Apr 27 2026 14:55:16 GMT+0800",
+          cover: "/covers/omz.png",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+        
+<script src="https://npm.webcache.cn/@zumer/snapdom@1.9.14/dist/snapdom.min.js" integrity="sha384-OEQ+fJp&#x2F;Mvi2uzBREXybtxryJvLytWapuHu4EE6LPwTKUwATYcc55tPPcZTzVcmx" crossorigin="anonymous" defer data-pjax></script>
+
+        
+<script src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js" integrity="sha384-VT1EeewTCEXgndcPMQ0PzV+uVFYjxFIjmAA7s5gcMX9t4Dt5TD+OVQIn7NJWIXn7" crossorigin="anonymous" defer data-pjax></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["waline"];
+  var commentConfig = {
+    waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.mjs';
+        const walineIntegrity = 'sha384-9sbqJjrfGjbkI6/PI4nU/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH/KinBEAZII/5';
+
+        const module = await safeImport(walineCdn, walineIntegrity);
+        walineInit = module.init;
+
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'github-blog-comment-two.vercel.app',
+          lang: document.documentElement.lang || 'en',
+          locale: {},
+          emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
+          meta: ["nick","mail","link"],
+          requiredMeta: ["nick","mail"],
+          wordLimit: JSON.parse('0'),
+          comment: true,
+          pageSize: JSON.parse('10'),
+          dark: 'html[data-theme="dark"]',
+          pageview: JSON.parse('true'),
+        });
+      }
+    },
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false,
+      utterances: false,
+      beaudar: false,
+      disqus: false,
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.12.3' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js" integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC+gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous" defer data-pjax></script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" defer onload="renderMathInElement(_$(&#39;article&#39;), {delimiters: [{left: &#39;$$&#39;, right: &#39;$$&#39;, display: true},{left: &#39;$&#39;, right: &#39;$&#39;, display: false}]});" data-pjax></script>
+
+  
+
+
+  </body>
+  </html>

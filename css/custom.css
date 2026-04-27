@@ -1,0 +1,64 @@
+.article-meta {
+  display: inline-block;
+  margin-top: -1.25em;
+}
+.article-date {
+  display: inline-block;
+  overflow: hidden;
+}
+.date-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: var(--red-5);
+  border-radius: 50%;
+  font-size: 2em;
+  margin-bottom: 0em;
+  margin-top: -10%;
+}
+.date-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.date-year,
+.date-day {
+  color: var(--red-1);
+  display: block;
+  line-height: 1; /* 垂直居中 */
+}
+.date-year {
+  font-size: 1.1em; /* 年份字体大小 */
+  margin-bottom: 0.2em; /* 调整年份和日期之间的间距 */
+}
+.date-day {
+  font-size: 0.8em; /* 日期字体大小 */
+}
+#header-nav {
+  backdrop-filter: blur(10px); /* 毛玻璃效果 */
+  -webkit-backdrop-filter: blur(10px); /* 兼容 WebKit 浏览器 */
+  padding: 10px; /* 可选：添加内边距 */
+}
+.sidebar-menu-link-wrap {
+  margin: 8px 50px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  border: 10px var(--color-red-3-shadow);
+  transition: border 0.5s;
+}
+.sidebar-menu-link-wrap:hover {
+  border: 10px var(--color-h2-after);
+}
+.sidebar-menu-link-wrap:hover .sidebar-menu-icon:before {
+  transform: scale(1.1);
+}
+.link-active {
+  background: var(--red-0);
+  border: 10px var(--color-wrap);
+  box-shadow: 0 0 10px 3px var(--color-red-6-shadow);
+  opacity: 0.8;
+  border-radius: 10px; /* 添加圆角 */
+}

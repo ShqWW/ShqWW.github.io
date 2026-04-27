@@ -32,7 +32,7 @@
 
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功","en":"Copy successfully"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.anchor_icon = 'f1b0';window.REIMU_CONFIG.code_block = {"expand":100};window.REIMU_CONFIG.base = 'http://shqww.github.io';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   <title>
-    LLM强化学习后训练系列（三） | MIMI的小窝
+    LLM强化学习后训练系列(三) | MIMI的博客
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preload" as="style" href="https://fontsapi.zeoseven.com/292/main/result.css" onload="this.rel='stylesheet'" crossorigin>
@@ -46,9 +46,9 @@
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css" integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous">
     <meta name="description" content="本文是LLM强化学习后训练系列的第三篇，主要介绍近端策略优化（Proximal Policy Optimization，简称PPO）算法。PPO算法在LLM后训练中起到举足轻重的作用。PPO算法更像是一个强化学习技巧的集合体，其设计重点在于保证训练的稳定性。因此在介绍PPO算法之前，需要先了解其背后的一些基础背景。  广义优势估计 (GAE) 广义优势估计（Generalized Advanta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LLM强化学习后训练系列（三）">
+<meta property="og:title" content="LLM强化学习后训练系列(三)">
 <meta property="og:url" content="http://shqww.github.io/2026/04/26/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89%EF%BC%89/index.html">
-<meta property="og:site_name" content="MIMI的小窝">
+<meta property="og:site_name" content="MIMI的博客">
 <meta property="og:description" content="本文是LLM强化学习后训练系列的第三篇，主要介绍近端策略优化（Proximal Policy Optimization，简称PPO）算法。PPO算法在LLM后训练中起到举足轻重的作用。PPO算法更像是一个强化学习技巧的集合体，其设计重点在于保证训练的稳定性。因此在介绍PPO算法之前，需要先了解其背后的一些基础背景。  广义优势估计 (GAE) 广义优势估计（Generalized Advanta">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-25T16:00:00.000Z">
@@ -57,7 +57,7 @@
 <meta property="article:tag" content="LLM">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
-    <link rel="alternate" href="/atom.xml" title="MIMI的小窝" type="application/rss+xml">
+    <link rel="alternate" href="/atom.xml" title="MIMI的博客" type="application/rss+xml">
     <link rel="shortcut icon" href="/images/mimi.ico">
   
 <link rel="stylesheet" href="/css/style.css">
@@ -150,11 +150,11 @@
 </div>
 <header id="header" aria-label="Site header">
     <picture></picture>
-    <img crossorigin="anonymous" fetchpriority="high" src="/covers/rl1.jpg" alt="LLM强化学习后训练系列（三）">
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/rl1.jpg" alt="LLM强化学习后训练系列(三)">
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">LLM强化学习后训练系列（三）</h1>
+            <h1 data-aos="slide-up">LLM强化学习后训练系列(三)</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
         </h2>
@@ -328,38 +328,38 @@ V_{clip} &amp;= clip(V_{\phi}(s_t), V_{\phi_{old}}(s_t) - \epsilon, V_{\phi_{old
         <blockquote class="article-copyright">
     <p><strong><span class="icon-user icon"></span>本文作者：</strong>ShqWW</p>
     <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="http://shqww.github.io/2026/04/26/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89%EF%BC%89/">http://shqww.github.io/2026/04/26/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89%EF%BC%89/</a></p>
-    <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「LLM强化学习后训练系列（三）」</p>
+    <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「LLM强化学习后训练系列(三)」</p>
     <p><strong><span class="icon-calendar icon"></span>本文发布时间：</strong>2026-04-26 00:00:00</p>
     <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-04-26 00:00:00</p>
     <p><strong><span class="icon-copyright icon"></span>本文版权：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！</p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   </blockquote>
         <div class="share-wrapper">
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列（三）">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列(三)">
       <div class="share-icon icon icon-facebook">
       </div>
     </a>
-    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;text=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89&amp;via=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列（三）">
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;text=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89)&amp;via=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列(三)">
       <div class="share-icon icon icon-twitter">
       </div>
     </a>
-    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;title=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89&amp;summary=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列（三）">
+    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;title=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89)&amp;summary=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89)&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列(三)">
       <div class="share-icon icon icon-linkedin">
       </div>
     </a>
-    <a href="https://www.reddit.com/submit?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;title=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列（三）">
+    <a href="https://www.reddit.com/submit?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;title=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89)" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列(三)">
       <div class="share-icon icon icon-reddit">
       </div>
     </a>
-    <a href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;appkey=&amp;title=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列（三）">
+    <a href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;appkey=&amp;title=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89)&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列(三)">
       <div class="share-icon icon icon-weibo">
       </div>
     </a>
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;title=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89&amp;desc=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列（三）">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F26%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E4%25B8%2589%25EF%25BC%2589%2F&amp;title=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89)&amp;desc=LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89)&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="LLM强化学习后训练系列(三)">
       <div class="share-icon icon icon-qq">
       </div>
     </a>
-    <a href="javascript:;"  title="LLM强化学习后训练系列（三）">
+    <a href="javascript:;"  title="LLM强化学习后训练系列(三)">
       <div class="share-icon icon icon-weixin">
           <div id="share-weixin">
             <div class="share-weixin-dom">
@@ -556,7 +556,7 @@ V_{clip} &amp;= clip(V_{\phi}(s_t), V_{\phi_{old}}(s_t) - \epsilon, V_{\phi_{old
       <script data-pjax>
         window.REIMU_POST = {
           author: "ShqWW",
-          title: "LLM强化学习后训练系列（三）",
+          title: "LLM强化学习后训练系列(三)",
           url: "http://shqww.github.io/2026/04/26/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89%EF%BC%89/",
           excerpt: "",
           description: "",

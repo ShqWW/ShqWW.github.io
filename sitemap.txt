@@ -24,5 +24,5 @@ http://shqww.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/
 http://shqww.github.io/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/
 http://shqww.github.io/categories/Linux/
 http://shqww.github.io/categories/LLM%E5%90%8E%E8%AE%AD%E7%BB%83/
-http://shqww.github.io/categories/Web/
+http://shqww.github.io/categories/%E5%8D%9A%E5%AE%A2/
 http://shqww.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/

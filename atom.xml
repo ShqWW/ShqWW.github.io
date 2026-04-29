@@ -144,7 +144,7 @@
         <![CDATA[<p>该文章介绍hexo-theme-reimu博客主题一些深度定制方法，随时更新。</p>]]>
       </description>
       <author>ShqWW</author>
-      <category domain="http://shqww.github.io/categories/Web/">Web</category>
+      <category domain="http://shqww.github.io/categories/%E5%8D%9A%E5%AE%A2/">博客</category>
       <category domain="http://shqww.github.io/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
       <category domain="http://shqww.github.io/tags/Web%E6%8A%80%E6%9C%AF/">Web技术</category>
       <pubDate>Tue, 26 Nov 2024 16:00:00 GMT</pubDate>

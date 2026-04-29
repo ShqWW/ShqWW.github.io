@@ -44,15 +44,15 @@
     <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css" integrity="sha384-KTGeC2hIMzpeQakhsmzB9bZfhCD5xZZCgI1iZH6f/O457SxzlkzTQg/WXFNoi3ih" crossorigin="anonymous">
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v5-font-face.min.css" integrity="sha384-nJ1ThfldViXoLpJ6jlKcP2beas8BMbYq26SG9Hi8cH89bZi4RZ644v7helMCqJxd" crossorigin="anonymous">
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css" integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous">
-    <meta name="description" content="给定一系列样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。">
+    <meta name="description" content="给定一样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="主成分分析和线性回归对比">
 <meta property="og:url" content="http://shqww.github.io/2024/11/28/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94/index.html">
 <meta property="og:site_name" content="MIMI的博客">
-<meta property="og:description" content="给定一系列样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。">
+<meta property="og:description" content="给定一样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-27T06:55:16.601Z">
+<meta property="article:modified_time" content="2026-04-29T09:06:00.508Z">
 <meta property="article:author" content="ShqWW">
 <meta property="article:tag" content="图形学">
 <meta property="article:tag" content="机器学习">
@@ -196,7 +196,7 @@
     <div class="hr-line"></div>
     
     <div class="e-content article-entry" itemprop="articleBody">
-        <p>给定一系列样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。</p>
+        <p>给定一样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。</p>
 <span id="more"></span>
 <p>由于两类方法比较经典，教程也较多，本文不再详细介绍二类方法。</p>
 <p>假定样本点为：</p>
@@ -286,7 +286,7 @@ d_i=\frac{\boldsymbol{p}_i\boldsymbol{w}}{\left\| \boldsymbol{w}\right\|_2}
     <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="http://shqww.github.io/2024/11/28/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94/">http://shqww.github.io/2024/11/28/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94/</a></p>
     <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「主成分分析和线性回归对比」</p>
     <p><strong><span class="icon-calendar icon"></span>本文发布时间：</strong>2024-11-28 00:00:00</p>
-    <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-04-27 14:55:16</p>
+    <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-04-29 17:06:00</p>
     <p><strong><span class="icon-copyright icon"></span>本文版权：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！</p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   </blockquote>
@@ -299,7 +299,7 @@ d_i=\frac{\boldsymbol{p}_i\boldsymbol{w}}{\left\| \boldsymbol{w}\right\|_2}
       <div class="share-icon icon icon-twitter">
       </div>
     </a>
-    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2F%25E4%25B8%25BB%25E6%2588%2590%25E5%2588%2586%25E5%2588%2586%25E6%259E%2590%25E5%2592%258C%25E7%25BA%25BF%25E6%2580%25A7%25E5%259B%259E%25E5%25BD%2592%25E5%25AF%25B9%25E6%25AF%2594%2F&amp;title=%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94&amp;summary=%E7%BB%99%E5%AE%9A%E4%B8%80%E7%B3%BB%E5%88%97%E6%A0%B7%E6%9C%AC%E7%82%B9%EF%BC%8C%E6%89%BE%E5%88%B0%E8%B4%AF%E7%A9%BF%E6%A0%B7%E6%9C%AC%E7%82%B9%E7%9A%84%E7%9B%B4%E7%BA%BF%3B%20%E5%A4%84%E7%90%86%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%9C%89%E4%B8%A4%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%8C%E4%B8%80%E7%A7%8D%E6%98%AF%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%EF%BC%8C%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%98%AF%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%80%82%E6%9C%AC%E6%96%87%E4%BB%8E%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87%E6%9D%A5%E6%AF%94%E8%BE%83%E4%B8%A4%E8%80%85%E5%8C%BA%E5%88%AB%E3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
+    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2F%25E4%25B8%25BB%25E6%2588%2590%25E5%2588%2586%25E5%2588%2586%25E6%259E%2590%25E5%2592%258C%25E7%25BA%25BF%25E6%2580%25A7%25E5%259B%259E%25E5%25BD%2592%25E5%25AF%25B9%25E6%25AF%2594%2F&amp;title=%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94&amp;summary=%E7%BB%99%E5%AE%9A%E4%B8%80%E6%A0%B7%E6%9C%AC%E7%82%B9%EF%BC%8C%E6%89%BE%E5%88%B0%E8%B4%AF%E7%A9%BF%E6%A0%B7%E6%9C%AC%E7%82%B9%E7%9A%84%E7%9B%B4%E7%BA%BF%3B%20%E5%A4%84%E7%90%86%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%9C%89%E4%B8%A4%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%8C%E4%B8%80%E7%A7%8D%E6%98%AF%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%EF%BC%8C%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%98%AF%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%80%82%E6%9C%AC%E6%96%87%E4%BB%8E%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87%E6%9D%A5%E6%AF%94%E8%BE%83%E4%B8%A4%E8%80%85%E5%8C%BA%E5%88%AB%E3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
       <div class="share-icon icon icon-linkedin">
       </div>
     </a>
@@ -311,7 +311,7 @@ d_i=\frac{\boldsymbol{p}_i\boldsymbol{w}}{\left\| \boldsymbol{w}\right\|_2}
       <div class="share-icon icon icon-weibo">
       </div>
     </a>
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2F%25E4%25B8%25BB%25E6%2588%2590%25E5%2588%2586%25E5%2588%2586%25E6%259E%2590%25E5%2592%258C%25E7%25BA%25BF%25E6%2580%25A7%25E5%259B%259E%25E5%25BD%2592%25E5%25AF%25B9%25E6%25AF%2594%2F&amp;title=%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94&amp;desc=%E7%BB%99%E5%AE%9A%E4%B8%80%E7%B3%BB%E5%88%97%E6%A0%B7%E6%9C%AC%E7%82%B9%EF%BC%8C%E6%89%BE%E5%88%B0%E8%B4%AF%E7%A9%BF%E6%A0%B7%E6%9C%AC%E7%82%B9%E7%9A%84%E7%9B%B4%E7%BA%BF%3B%20%E5%A4%84%E7%90%86%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%9C%89%E4%B8%A4%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%8C%E4%B8%80%E7%A7%8D%E6%98%AF%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%EF%BC%8C%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%98%AF%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%80%82%E6%9C%AC%E6%96%87%E4%BB%8E%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87%E6%9D%A5%E6%AF%94%E8%BE%83%E4%B8%A4%E8%80%85%E5%8C%BA%E5%88%AB%E3%80%82&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2F%25E4%25B8%25BB%25E6%2588%2590%25E5%2588%2586%25E5%2588%2586%25E6%259E%2590%25E5%2592%258C%25E7%25BA%25BF%25E6%2580%25A7%25E5%259B%259E%25E5%25BD%2592%25E5%25AF%25B9%25E6%25AF%2594%2F&amp;title=%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94&amp;desc=%E7%BB%99%E5%AE%9A%E4%B8%80%E6%A0%B7%E6%9C%AC%E7%82%B9%EF%BC%8C%E6%89%BE%E5%88%B0%E8%B4%AF%E7%A9%BF%E6%A0%B7%E6%9C%AC%E7%82%B9%E7%9A%84%E7%9B%B4%E7%BA%BF%3B%20%E5%A4%84%E7%90%86%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E6%9C%89%E4%B8%A4%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%8C%E4%B8%80%E7%A7%8D%E6%98%AF%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%EF%BC%8C%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%98%AF%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E3%80%82%E6%9C%AC%E6%96%87%E4%BB%8E%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87%E6%9D%A5%E6%AF%94%E8%BE%83%E4%B8%A4%E8%80%85%E5%8C%BA%E5%88%AB%E3%80%82&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
       <div class="share-icon icon icon-qq">
       </div>
     </a>
@@ -353,19 +353,19 @@ d_i=\frac{\boldsymbol{p}_i\boldsymbol{w}}{\left\| \boldsymbol{w}\right\|_2}
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
       <div class="article-nav-link-wrap left">
-          <img data-src="/covers/secure.jpg" data-sizes="auto" alt="linux服务器使用ssh秘钥登录以及禁用ssh密码登录" class="lazyload">
-        <a href="/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/" aria-label="前一篇: linux服务器使用ssh秘钥登录以及禁用ssh密码登录" title="前一篇: linux服务器使用ssh秘钥登录以及禁用ssh密码登录"></a>
+          <img data-src="/covers/diffusion.png" data-sizes="auto" alt="随机微分方程和扩散模型(待更)" class="lazyload">
+        <a href="/2024/11/28/%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/" aria-label="前一篇: 随机微分方程和扩散模型(待更)" title="前一篇: 随机微分方程和扩散模型(待更)"></a>
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">
-            linux服务器使用ssh秘钥登录以及禁用ssh密码登录
+            随机微分方程和扩散模型(待更)
         </h3>
       </div>
     <div class="article-nav-link-wrap right">
-        <img data-src="/covers/diffusion.png" data-sizes="auto" alt="随机微分方程和扩散模型(待更)" class="lazyload">
-      <a href="/2024/11/28/%E9%9A%8F%E6%9C%BA%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/" aria-label="后一篇: 随机微分方程和扩散模型(待更)"  title="后一篇: 随机微分方程和扩散模型(待更)"></a>
+        <img data-src="/covers/hexo.png" data-sizes="auto" alt="hexo-theme-reimu 博客主题定制与修改" class="lazyload">
+      <a href="/2024/11/27/reimu%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9/" aria-label="后一篇: hexo-theme-reimu 博客主题定制与修改"  title="后一篇: hexo-theme-reimu 博客主题定制与修改"></a>
       <div class="article-nav-caption">后一篇</div>
       <h3 class="article-nav-title">
-          随机微分方程和扩散模型(待更)
+          hexo-theme-reimu 博客主题定制与修改
       </h3>
     </div>
   </nav>
@@ -432,11 +432,11 @@ d_i=\frac{\boldsymbol{p}_i\boldsymbol{w}}{\left\| \boldsymbol{w}\right\|_2}
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">10</div>
+    <div class="sidebar-state-number">11</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">3</div>
+    <div class="sidebar-state-number">4</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
@@ -522,11 +522,11 @@ d_i=\frac{\boldsymbol{p}_i\boldsymbol{w}}{\left\| \boldsymbol{w}\right\|_2}
           author: "ShqWW",
           title: "主成分分析和线性回归对比",
           url: "http://shqww.github.io/2024/11/28/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94/",
-          excerpt: "给定一系列样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。",
+          excerpt: "给定一样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。",
           description: "",
-          stripContent: "给定一系列样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。  由于两类方法比较经典，教程也较多，本文不再详细介绍二类方法。 假定样本点为： (x^1,y^1),(x^2,y^2),…,(x^N,y^N)\begin{align} \left( \hat{x}_1,\hat{y}_1 \right) ,\left( \hat{x}_2,\hat{y}_2 \right) ,\dots ,\left( \hat{x}_N,\h",
+          stripContent: "给定一样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。  由于两类方法比较经典，教程也较多，本文不再详细介绍二类方法。 假定样本点为： (x^1,y^1),(x^2,y^2),…,(x^N,y^N)\begin{align} \left( \hat{x}_1,\hat{y}_1 \right) ,\left( \hat{x}_2,\hat{y}_2 \right) ,\dots ,\left( \hat{x}_N,\hat",
           date: "Thu Nov 28 2024 00:00:00 GMT+0800",
-          updated: "Mon Apr 27 2026 14:55:16 GMT+0800",
+          updated: "Wed Apr 29 2026 17:06:00 GMT+0800",
           cover: "/covers/pca.png",
         };
       </script>

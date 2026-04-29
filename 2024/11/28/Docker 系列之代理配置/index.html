@@ -32,7 +32,7 @@
 
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功","en":"Copy successfully"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.anchor_icon = 'f1b0';window.REIMU_CONFIG.code_block = {"expand":100};window.REIMU_CONFIG.base = 'http://shqww.github.io';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   <title>
-    Docker 系列之代理配置 | MIMI的博客
+    Docker 之代理配置 | MIMI的博客
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preload" as="style" href="https://fontsapi.zeoseven.com/292/main/result.css" onload="this.rel='stylesheet'" crossorigin>
@@ -46,13 +46,13 @@
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css" integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous">
     <meta name="description" content="本文从不同角度介绍docker使用过程中的代理配置。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker 系列之代理配置">
+<meta property="og:title" content="Docker 之代理配置">
 <meta property="og:url" content="http://shqww.github.io/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="MIMI的博客">
 <meta property="og:description" content="本文从不同角度介绍docker使用过程中的代理配置。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-27T06:55:16.585Z">
+<meta property="article:modified_time" content="2026-04-29T09:06:00.508Z">
 <meta property="article:author" content="ShqWW">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="Linux">
@@ -151,11 +151,11 @@
 </div>
 <header id="header" aria-label="Site header">
     <picture></picture>
-    <img crossorigin="anonymous" fetchpriority="high" src="/covers/docker.png" alt="Docker 系列之代理配置">
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/docker.png" alt="Docker 之代理配置">
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">Docker 系列之代理配置</h1>
+            <h1 data-aos="slide-up">Docker 之代理配置</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
         </h2>
@@ -239,38 +239,38 @@
         <blockquote class="article-copyright">
     <p><strong><span class="icon-user icon"></span>本文作者：</strong>ShqWW</p>
     <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="http://shqww.github.io/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/">http://shqww.github.io/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</a></p>
-    <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「Docker 系列之代理配置」</p>
+    <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「Docker 之代理配置」</p>
     <p><strong><span class="icon-calendar icon"></span>本文发布时间：</strong>2024-11-28 00:00:00</p>
-    <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-04-27 14:55:16</p>
+    <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-04-29 17:06:00</p>
     <p><strong><span class="icon-copyright icon"></span>本文版权：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！</p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   </blockquote>
         <div class="share-wrapper">
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F" target="_blank" rel="noopener noreferrer" title="Docker 之代理配置">
       <div class="share-icon icon icon-facebook">
       </div>
     </a>
-    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;text=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;via=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;text=Docker%20%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;via=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="Docker 之代理配置">
       <div class="share-icon icon icon-twitter">
       </div>
     </a>
-    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;title=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;summary=%E6%9C%AC%E6%96%87%E4%BB%8E%E4%B8%8D%E5%90%8C%E8%A7%92%E5%BA%A6%E4%BB%8B%E7%BB%8Ddocker%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;title=Docker%20%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;summary=%E6%9C%AC%E6%96%87%E4%BB%8E%E4%B8%8D%E5%90%8C%E8%A7%92%E5%BA%A6%E4%BB%8B%E7%BB%8Ddocker%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="Docker 之代理配置">
       <div class="share-icon icon icon-linkedin">
       </div>
     </a>
-    <a href="https://www.reddit.com/submit?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;title=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+    <a href="https://www.reddit.com/submit?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;title=Docker%20%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener noreferrer" title="Docker 之代理配置">
       <div class="share-icon icon icon-reddit">
       </div>
     </a>
-    <a href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;appkey=&amp;title=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+    <a href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;appkey=&amp;title=Docker%20%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="Docker 之代理配置">
       <div class="share-icon icon icon-weibo">
       </div>
     </a>
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;title=Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;desc=%E6%9C%AC%E6%96%87%E4%BB%8E%E4%B8%8D%E5%90%8C%E8%A7%92%E5%BA%A6%E4%BB%8B%E7%BB%8Ddocker%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E3%80%82&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="Docker 系列之代理配置">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2FDocker%2520%25E7%25B3%25BB%25E5%2588%2597%25E4%25B9%258B%25E4%25BB%25A3%25E7%2590%2586%25E9%2585%258D%25E7%25BD%25AE%2F&amp;title=Docker%20%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE&amp;desc=%E6%9C%AC%E6%96%87%E4%BB%8E%E4%B8%8D%E5%90%8C%E8%A7%92%E5%BA%A6%E4%BB%8B%E7%BB%8Ddocker%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE%E3%80%82&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="Docker 之代理配置">
       <div class="share-icon icon icon-qq">
       </div>
     </a>
-    <a href="javascript:;"  title="Docker 系列之代理配置">
+    <a href="javascript:;"  title="Docker 之代理配置">
       <div class="share-icon icon icon-weixin">
           <div id="share-weixin">
             <div class="share-weixin-dom">
@@ -308,19 +308,19 @@
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
       <div class="article-nav-link-wrap left">
-          <img data-src="/covers/rl1.jpg" data-sizes="auto" alt="LLM强化学习后训练系列(一）" class="lazyload">
-        <a href="/2026/04/22/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%80%EF%BC%89/" aria-label="前一篇: LLM强化学习后训练系列(一）" title="前一篇: LLM强化学习后训练系列(一）"></a>
+          <img data-src="/covers/rl1.jpg" data-sizes="auto" alt="LLM后训练(一)--强化学习" class="lazyload">
+        <a href="/2026/04/22/LLM%E5%90%8E%E8%AE%AD%E7%BB%83(%E4%B8%80%EF%BC%89/" aria-label="前一篇: LLM后训练(一)--强化学习" title="前一篇: LLM后训练(一)--强化学习"></a>
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">
-            LLM强化学习后训练系列(一）
+            LLM后训练(一)--强化学习
         </h3>
       </div>
     <div class="article-nav-link-wrap right">
-        <img data-src="/covers/omz.png" data-sizes="auto" alt="Linux下配置zsh和oh my zsh" class="lazyload">
-      <a href="/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/" aria-label="后一篇: Linux下配置zsh和oh my zsh"  title="后一篇: Linux下配置zsh和oh my zsh"></a>
+        <img data-src="/covers/secure.jpg" data-sizes="auto" alt="linux服务器使用ssh秘钥登录以及禁用ssh密码登录" class="lazyload">
+      <a href="/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/" aria-label="后一篇: linux服务器使用ssh秘钥登录以及禁用ssh密码登录"  title="后一篇: linux服务器使用ssh秘钥登录以及禁用ssh密码登录"></a>
       <div class="article-nav-caption">后一篇</div>
       <h3 class="article-nav-title">
-          Linux下配置zsh和oh my zsh
+          linux服务器使用ssh秘钥登录以及禁用ssh密码登录
       </h3>
     </div>
   </nav>
@@ -387,11 +387,11 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">10</div>
+    <div class="sidebar-state-number">11</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">3</div>
+    <div class="sidebar-state-number">4</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
@@ -475,13 +475,13 @@
       <script data-pjax>
         window.REIMU_POST = {
           author: "ShqWW",
-          title: "Docker 系列之代理配置",
+          title: "Docker 之代理配置",
           url: "http://shqww.github.io/2024/11/28/Docker%20%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/",
           excerpt: "本文从不同角度介绍docker使用过程中的代理配置。",
           description: "",
           stripContent: "本文从不同角度介绍docker使用过程中的代理配置。   1. 系统代理配置方法 此方法适用于容器环境配置以及镜像打包。  新建proxy文本文件（名字可以更换）：  1touch proxy  编辑proxy，填入以下信息：  1234567891011121314151617181920212223#!/bin/bash# 设置代理环境变量export HTTP_PROXY=&amp;quot;http://127.0.0.1:7890&amp;quot;export http_proxy=&amp;quot;ht",
           date: "Thu Nov 28 2024 00:00:00 GMT+0800",
-          updated: "Mon Apr 27 2026 14:55:16 GMT+0800",
+          updated: "Wed Apr 29 2026 17:06:00 GMT+0800",
           cover: "/covers/docker.png",
         };
       </script>

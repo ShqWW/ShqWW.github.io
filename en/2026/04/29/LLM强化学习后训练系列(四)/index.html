@@ -1,5 +1,5 @@
   <!DOCTYPE html>
-  <html lang="zh-CN"  
+  <html lang="en"  
       data-theme-mode="true"
   >
   <head>
@@ -32,7 +32,7 @@
 
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功","en":"Copy successfully"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.anchor_icon = 'f1b0';window.REIMU_CONFIG.code_block = {"expand":100};window.REIMU_CONFIG.base = 'http://shqww.github.io';window.REIMU_CONFIG.relative = '/';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   <title>
-    linux服务器使用ssh秘钥登录以及禁用ssh密码登录 | MIMI的博客
+    MIMI的博客
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preload" as="style" href="https://fontsapi.zeoseven.com/292/main/result.css" onload="this.rel='stylesheet'" crossorigin>
@@ -44,18 +44,14 @@
     <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css" integrity="sha384-KTGeC2hIMzpeQakhsmzB9bZfhCD5xZZCgI1iZH6f/O457SxzlkzTQg/WXFNoi3ih" crossorigin="anonymous">
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v5-font-face.min.css" integrity="sha384-nJ1ThfldViXoLpJ6jlKcP2beas8BMbYq26SG9Hi8cH89bZi4RZ644v7helMCqJxd" crossorigin="anonymous">
 <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css" integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous">
-    <meta name="description" content="linux服务器使用ssh秘钥登录以及禁用ssh密码登录。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="linux服务器使用ssh秘钥登录以及禁用ssh密码登录">
-<meta property="og:url" content="http://shqww.github.io/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="MIMI的博客">
+<meta property="og:url" content="http://shqww.github.io/en/2026/04/29/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E5%9B%9B)/index.html">
 <meta property="og:site_name" content="MIMI的博客">
-<meta property="og:description" content="linux服务器使用ssh秘钥登录以及禁用ssh密码登录。">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-27T06:55:16.601Z">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-04-29T05:43:50.618Z">
+<meta property="article:modified_time" content="2026-04-29T05:43:50.618Z">
 <meta property="article:author" content="ShqWW">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="运维">
 <meta name="twitter:card" content="summary">
     <link rel="alternate" href="/atom.xml" title="MIMI的博客" type="application/rss+xml">
     <link rel="shortcut icon" href="/images/mimi.ico">
@@ -78,38 +74,38 @@
       <div id="wrap">
         <div id="header-nav">
   <nav id="main-nav" aria-label="Primary navigation">
-        <a class="main-nav-link-wrap" href="/">
+        <a class="main-nav-link-wrap" href="/en/">
             <div class="main-nav-icon icon ">
                   &#xf015;
             </div>
-          <span class="main-nav-link">首页</span>
+          <span class="main-nav-link">Home</span>
         </a>
-        <a class="main-nav-link-wrap" href="/archives">
+        <a class="main-nav-link-wrap" href="/en/archives">
             <div class="main-nav-icon icon ">
                   &#xf187;
             </div>
-          <span class="main-nav-link">归档</span>
+          <span class="main-nav-link">Archives</span>
         </a>
-        <a class="main-nav-link-wrap" href="/about">
+        <a class="main-nav-link-wrap" href="/en/about">
             <div class="main-nav-icon icon ">
                   &#xf05a;
             </div>
-          <span class="main-nav-link">关于</span>
+          <span class="main-nav-link">About</span>
         </a>
     <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
   </nav>
   <nav id="sub-nav" aria-label="Secondary navigation">
-      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
   </nav>
     <nav id="i18n-nav" aria-label="Language selection">
       <div class="custom-dropdown">
         <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
           <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
-          <span id="selected-lang">简体中文</span>
+          <span id="selected-lang">English</span>
         </div>
         <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
-            <li data-value="zh-CN" role="option" class="selected" aria-selected="true">简体中文</li>
-            <li data-value="en" role="option" aria-selected="false">English</li>
+            <li data-value="zh-CN" role="option" aria-selected="false">简体中文</li>
+            <li data-value="en" role="option" class="selected" aria-selected="true">English</li>
         </ul>
       </div>
       <script>
@@ -127,8 +123,8 @@
         selectOptions.forEach((item) => {
           item.addEventListener("click", () => {
             const langMap = {};
-              langMap['zh-CN'] = '/2024/11/28/linux服务器使用ssh秘钥登录以及禁用ssh密码登录/';
-              langMap['en'] = '/en/2024/11/28/linux服务器使用ssh秘钥登录以及禁用ssh密码登录/';
+              langMap['zh-CN'] = '/2026/04/29/LLM强化学习后训练系列(四)/';
+              langMap['en'] = '/en/2026/04/29/LLM强化学习后训练系列(四)/';
             selectedLang.textContent = item.textContent;
             selectItems.classList.remove("show");
             selectOptions.forEach((option) => {
@@ -149,12 +145,13 @@
     </nav>
 </div>
 <header id="header" aria-label="Site header">
-    <picture></picture>
-    <img crossorigin="anonymous" fetchpriority="high" src="/covers/secure.jpg" alt="linux服务器使用ssh秘钥登录以及禁用ssh密码登录">
+        <picture>
+        </picture>
+          <img crossorigin="anonymous" fetchpriority="high" src="/images/banner3.png" alt="">
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">linux服务器使用ssh秘钥登录以及禁用ssh密码登录</h1>
+            <h1 data-aos="slide-up">MIMI的博客</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
         </h2>
@@ -167,9 +164,9 @@
   <div class="sidebar-wrapper-container sticky">
   <div class="sidebar-wrapper">
     <div class="sidebar-wrap" data-aos="fade-up">
-          <div class="sidebar-toc-sidebar" style="margin-bottom: 10px;"><h3 class="toc-title">文章目录</h3>
+          <div class="sidebar-toc-sidebar" style="margin-bottom: 10px;"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text"> 0. 使用密钥登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text"> 1. 基本修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%A2%9D%E5%A4%96%E4%BF%AE%E6%94%B9"><span class="toc-number">3.</span> <span class="toc-text"> 2. 额外修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text"> 3. 权限设置</span></a></li></ol>
+    
 </div>
 </div>
     </div>
@@ -179,14 +176,14 @@
   </div>
 </aside>
 
-          <section id="main" aria-label="Main content"><article id="post-linux服务器使用ssh秘钥登录以及禁用ssh密码登录" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+          <section id="main" aria-label="Main content"><article id="post-LLM强化学习后训练系列(四)" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner" data-aos="fade-up">
     <div class="article-meta">
       <div class="article-date">
   <div class="date-circle">
     <div class="date-wrapper">
-      <time class="date-year" datetime="2024-11-27T16:00:00.000Z">2024</time>
-      <time class="date-day" datetime="2024-11-27T16:00:00.000Z">11-28</time>
+      <time class="date-year" datetime="2026-04-29T05:43:50.618Z">2026</time>
+      <time class="date-day" datetime="2026-04-29T05:43:50.618Z">04-29</time>
     </div>
   </div>
 </div>
@@ -196,65 +193,44 @@
     <div class="hr-line"></div>
     
     <div class="e-content article-entry" itemprop="articleBody">
-        <p>linux服务器使用ssh秘钥登录以及禁用ssh密码登录。</p>
-<span id="more"></span>
-<h3 id="0-使用密钥登录"><a class="markdownIt-Anchor" href="#0-使用密钥登录"></a> 0. 使用密钥登录</h3>
-<p>任意电脑（服务端 客户端都可以）执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-<p>将产生密码电脑的~/.ssh/id_rsa.pub (活着现成的公钥) 中的内容复制到 服务器对应账户下的 <code>~/.ssh/authorized_keys</code>，私钥存在主机上的<code>~/.ssh/id_rsa</code><br />
-也可以对每个服务器账户单独配置私钥， 编辑<code>~/..ssh/config</code>, 结尾加入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host $configname</span><br><span class="line">	HostName $IP</span><br><span class="line">	User $USERNAME</span><br><span class="line">	Port $PORT</span><br><span class="line">	PreferredAuthentications publickey</span><br><span class="line">	IdentityFile $PATH_OF_RSA</span><br></pre></td></tr></table></figure>
-<h3 id="1-基本修改"><a class="markdownIt-Anchor" href="#1-基本修改"></a> 1. 基本修改</h3>
-<p>编辑<code>sshd</code>文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-<p>找到 PermitRootLogin 改为禁用密码登录（取消注释 ）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication no </span><br><span class="line">ChallengeResponseAuthentication no</span><br></pre></td></tr></table></figure>
-<h3 id="2-额外修改"><a class="markdownIt-Anchor" href="#2-额外修改"></a> 2. 额外修改</h3>
-<p>如果是Ubuntu，则还需要额外修改：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config.d/50-cloud-init.conf</span><br></pre></td></tr></table></figure>
-<p>修改为以下设置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication no</span><br></pre></td></tr></table></figure>
-<h3 id="3-权限设置"><a class="markdownIt-Anchor" href="#3-权限设置"></a> 3. 权限设置</h3>
-<p>一般默认权限不需要修改，但如果用户手欠修改了权限导致登录不上，则在该用户目录下进行以下权限操作：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chown -R $username:$username .ssh #修改所属组和用户</span><br><span class="line">chmod 755 .ssh  #修改权限</span><br><span class="line">chmod 755  ~/.ssh/authorized_keys  #修改权限</span><br><span class="line">chmod 750 ./   #修改用户目录权限 （大坑 网上查不到）</span><br></pre></td></tr></table></figure>
-
+        
     </div>
     <footer class="article-footer">
         <blockquote class="article-copyright">
-    <p><strong><span class="icon-user icon"></span>本文作者：</strong>ShqWW</p>
-    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="http://shqww.github.io/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/">http://shqww.github.io/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/</a></p>
-    <p><strong><span class="icon-pencil icon"></span>本文标题：</strong>「linux服务器使用ssh秘钥登录以及禁用ssh密码登录」</p>
-    <p><strong><span class="icon-calendar icon"></span>本文发布时间：</strong>2024-11-28 00:00:00</p>
-    <p><strong><span class="icon-calendar icon"></span>本文更新时间：</strong>2026-04-27 14:55:16</p>
-    <p><strong><span class="icon-copyright icon"></span>本文版权：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！</p>
+    <p><strong><span class="icon-user icon"></span>Author: </strong>ShqWW</p>
+    <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="http://shqww.github.io/en/2026/04/29/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E5%9B%9B)/">http://shqww.github.io/en/2026/04/29/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E5%9B%9B)/</a></p>
+    <p><strong><span class="icon-pencil icon"></span>Title: </strong>「」</p>
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2026-04-29 13:43:50</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-04-29 13:43:50</p>
+    <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   </blockquote>
         <div class="share-wrapper">
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E4%25BD%25BF%25E7%2594%25A8ssh%25E7%25A7%2598%25E9%2592%25A5%25E7%2599%25BB%25E5%25BD%2595%25E4%25BB%25A5%25E5%258F%258A%25E7%25A6%2581%25E7%2594%25A8ssh%25E5%25AF%2586%25E7%25A0%2581%25E7%2599%25BB%25E5%25BD%2595%2F" target="_blank" rel="noopener noreferrer" title="linux服务器使用ssh秘钥登录以及禁用ssh密码登录">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F29%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E5%259B%259B)%2F" target="_blank" rel="noopener noreferrer" title="">
       <div class="share-icon icon icon-facebook">
       </div>
     </a>
-    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E4%25BD%25BF%25E7%2594%25A8ssh%25E7%25A7%2598%25E9%2592%25A5%25E7%2599%25BB%25E5%25BD%2595%25E4%25BB%25A5%25E5%258F%258A%25E7%25A6%2581%25E7%2594%25A8ssh%25E5%25AF%2586%25E7%25A0%2581%25E7%2599%25BB%25E5%25BD%2595%2F&amp;text=linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95&amp;via=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="linux服务器使用ssh秘钥登录以及禁用ssh密码登录">
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F29%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E5%259B%259B)%2F&amp;text=&amp;via=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="">
       <div class="share-icon icon icon-twitter">
       </div>
     </a>
-    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E4%25BD%25BF%25E7%2594%25A8ssh%25E7%25A7%2598%25E9%2592%25A5%25E7%2599%25BB%25E5%25BD%2595%25E4%25BB%25A5%25E5%258F%258A%25E7%25A6%2581%25E7%2594%25A8ssh%25E5%25AF%2586%25E7%25A0%2581%25E7%2599%25BB%25E5%25BD%2595%2F&amp;title=linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95&amp;summary=linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="linux服务器使用ssh秘钥登录以及禁用ssh密码登录">
+    <a href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F29%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E5%259B%259B)%2F&amp;title=&amp;summary=&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="">
       <div class="share-icon icon icon-linkedin">
       </div>
     </a>
-    <a href="https://www.reddit.com/submit?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E4%25BD%25BF%25E7%2594%25A8ssh%25E7%25A7%2598%25E9%2592%25A5%25E7%2599%25BB%25E5%25BD%2595%25E4%25BB%25A5%25E5%258F%258A%25E7%25A6%2581%25E7%2594%25A8ssh%25E5%25AF%2586%25E7%25A0%2581%25E7%2599%25BB%25E5%25BD%2595%2F&amp;title=linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95" target="_blank" rel="noopener noreferrer" title="linux服务器使用ssh秘钥登录以及禁用ssh密码登录">
+    <a href="https://www.reddit.com/submit?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F29%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E5%259B%259B)%2F&amp;title=" target="_blank" rel="noopener noreferrer" title="">
       <div class="share-icon icon icon-reddit">
       </div>
     </a>
-    <a href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E4%25BD%25BF%25E7%2594%25A8ssh%25E7%25A7%2598%25E9%2592%25A5%25E7%2599%25BB%25E5%25BD%2595%25E4%25BB%25A5%25E5%258F%258A%25E7%25A6%2581%25E7%2594%25A8ssh%25E5%25AF%2586%25E7%25A0%2581%25E7%2599%25BB%25E5%25BD%2595%2F&amp;appkey=&amp;title=linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="linux服务器使用ssh秘钥登录以及禁用ssh密码登录">
+    <a href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F29%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E5%259B%259B)%2F&amp;appkey=&amp;title=&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="">
       <div class="share-icon icon icon-weibo">
       </div>
     </a>
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2024%2F11%2F28%2Flinux%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E4%25BD%25BF%25E7%2594%25A8ssh%25E7%25A7%2598%25E9%2592%25A5%25E7%2599%25BB%25E5%25BD%2595%25E4%25BB%25A5%25E5%258F%258A%25E7%25A6%2581%25E7%2594%25A8ssh%25E5%25AF%2586%25E7%25A0%2581%25E7%2599%25BB%25E5%25BD%2595%2F&amp;title=linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95&amp;desc=linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E3%80%82&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="linux服务器使用ssh秘钥登录以及禁用ssh密码登录">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fshqww.github.io%2F2026%2F04%2F29%2FLLM%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0%25E5%2590%258E%25E8%25AE%25AD%25E7%25BB%2583%25E7%25B3%25BB%25E5%2588%2597(%25E5%259B%259B)%2F&amp;title=&amp;desc=&amp;source=http%3A%2F%2Fshqww.github.io" target="_blank" rel="noopener noreferrer" title="">
       <div class="share-icon icon icon-qq">
       </div>
     </a>
-    <a href="javascript:;"  title="linux服务器使用ssh秘钥登录以及禁用ssh密码登录">
+    <a href="javascript:;"  title="">
       <div class="share-icon icon icon-weixin">
           <div id="share-weixin">
             <div class="share-weixin-dom">
@@ -276,35 +252,25 @@
       </div>
     </a>
 </div>
-        <a data-aos="zoom-in" href="/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/#comments" class="article-comment-link">
-          <span class="post-comments-count waline-comment-count" data-path="/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/" itemprop="commentCount"></span>
-          留言
+        <a data-aos="zoom-in" href="/en/2026/04/29/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E5%9B%9B)/#comments" class="article-comment-link">
+          <span class="post-comments-count waline-comment-count" data-path="/en/2026/04/29/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E5%9B%9B)/" itemprop="commentCount"></span>
+          Comments
         </a>
         <span data-aos="zoom-in" class="article-visitor-link">
-          <span class="waline-pageview-count" data-path="/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/">0</span>
-          <em class="post-meta-item-text">阅读量</em>
+          <span class="waline-pageview-count" data-path="/en/2026/04/29/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E5%9B%9B)/">0</span>
+          <em class="post-meta-item-text">Readings</em>
         </span>
-        <a class="article-category-link" href="/categories/Linux/" title="Linux" data-aos="zoom-in">Linux</a>
-
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag" title="Linux">Linux</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag" title="运维">运维</a></li></ul>
-
+      
+      
     </footer>
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
-      <div class="article-nav-link-wrap left">
-          <img data-src="/covers/omz.png" data-sizes="auto" alt="Linux下配置zsh和oh my zsh" class="lazyload">
-        <a href="/2024/11/28/linux%E4%B8%8B%E9%85%8D%E7%BD%AEzsh%E5%92%8Coh%20my%20zsh/" aria-label="前一篇: Linux下配置zsh和oh my zsh" title="前一篇: Linux下配置zsh和oh my zsh"></a>
-        <div class="article-nav-caption">前一篇</div>
-        <h3 class="article-nav-title">
-            Linux下配置zsh和oh my zsh
-        </h3>
-      </div>
     <div class="article-nav-link-wrap right">
-        <img data-src="/covers/pca.png" data-sizes="auto" alt="主成分分析和线性回归对比" class="lazyload">
-      <a href="/2024/11/28/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E5%92%8C%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%AF%B9%E6%AF%94/" aria-label="后一篇: 主成分分析和线性回归对比"  title="后一篇: 主成分分析和线性回归对比"></a>
-      <div class="article-nav-caption">后一篇</div>
+        <img data-src="/covers/rl1.jpg" data-sizes="auto" alt="LLM强化学习后训练系列(三)" class="lazyload">
+      <a href="/en/2026/04/26/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E4%B8%89%EF%BC%89/" aria-label="Next: LLM强化学习后训练系列(三)"  title="Next: LLM强化学习后训练系列(三)"></a>
+      <div class="article-nav-caption">Next</div>
       <h3 class="article-nav-title">
-          主成分分析和线性回归对比
+          LLM强化学习后训练系列(三)
       </h3>
     </div>
   </nav>
@@ -314,7 +280,7 @@
   <section id="comments" data-aos="fade-up">
     <div class="comment-header">
         
-      <h2 class="comment-title">说些什么吧！</h2>
+      <h2 class="comment-title">Leave a comment</h2>
       <div class="comment-selector">
         <div class="comment-selector-wrap">
             <div class="selector-item" data-selector="waline">
@@ -344,7 +310,7 @@
       ShqWW
     </div>
       <div>
-        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
         Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
       </div>
   </div>
@@ -358,9 +324,9 @@
       </div>
       <nav id="mobile-nav" aria-label="Mobile navigation">
   <div class="sidebar-wrap">
-        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text"> 0. 使用密钥登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BF%AE%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text"> 1. 基本修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%A2%9D%E5%A4%96%E4%BF%AE%E6%94%B9"><span class="toc-number">3.</span> <span class="toc-text"> 2. 额外修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text"> 3. 权限设置</span></a></li></ol>
+    
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -370,15 +336,15 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div>
+    <div>Post</div>
     <div class="sidebar-state-number">10</div>
   </div>
   <div class="sidebar-state-category">
-    <div>分类</div>
+    <div>Category</div>
     <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-tag">
-    <div>标签</div>
+    <div>Tag</div>
     <div class="sidebar-state-number">10</div>
   </div>
 </div>
@@ -389,25 +355,25 @@
 </div>
 <div class="sidebar-menu">
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
           <div class="sidebar-menu-icon icon ">
                 &#xf015;
           </div>
-        <div class="sidebar-menu-link">首页</div>
+        <div class="sidebar-menu-link">Home</div>
       </div>
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
           <div class="sidebar-menu-icon icon ">
                 &#xf187;
           </div>
-        <div class="sidebar-menu-link">归档</div>
+        <div class="sidebar-menu-link">Archives</div>
       </div>
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
           <div class="sidebar-menu-icon icon ">
                 &#xf05a;
           </div>
-        <div class="sidebar-menu-link">关于</div>
+        <div class="sidebar-menu-link">About</div>
       </div>
 </div>
 </div>
@@ -459,14 +425,14 @@
       <script data-pjax>
         window.REIMU_POST = {
           author: "ShqWW",
-          title: "linux服务器使用ssh秘钥登录以及禁用ssh密码登录",
-          url: "http://shqww.github.io/2024/11/28/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/",
-          excerpt: "linux服务器使用ssh秘钥登录以及禁用ssh密码登录。",
+          title: "",
+          url: "http://shqww.github.io/2026/04/29/LLM%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%90%8E%E8%AE%AD%E7%BB%83%E7%B3%BB%E5%88%97(%E5%9B%9B)/",
+          excerpt: "",
           description: "",
-          stripContent: "linux服务器使用ssh秘钥登录以及禁用ssh密码登录。   0. 使用密钥登录 任意电脑（服务端 客户端都可以）执行： 1ssh-keygen 将产生密码电脑的~/.ssh/id_rsa.pub (活着现成的公钥) 中的内容复制到 服务器对应账户下的 ~/.ssh/authorized_keys，私钥存在主机上的~/.ssh/id_rsa 也可以对每个服务器账户单独配置私钥， 编辑~/..ssh/config, 结尾加入： 123456Host $configname HostName $I",
-          date: "Thu Nov 28 2024 00:00:00 GMT+0800",
-          updated: "Mon Apr 27 2026 14:55:16 GMT+0800",
-          cover: "/covers/secure.jpg",
+          stripContent: "",
+          date: "Wed Apr 29 2026 13:43:50 GMT+0800",
+          updated: "Wed Apr 29 2026 13:43:50 GMT+0800",
+          cover: "/images/banner3.png",
         };
       </script>
         

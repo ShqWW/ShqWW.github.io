@@ -1,0 +1,902 @@
+<!doctype html>
+<html
+  lang="zh-CN" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  LLM后训练(一)--强化学习 | MIMI
+</title>
+<meta name="description" content=""/><script>
+  window.siteConfig = JSON.parse("{\"anchor\":null,\"anchor_icon\":\"f1b0\",\"base\":\"https://shqww.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"label\":\"简体中文\",\"lang\":\"zh-cn\"},{\"label\":\"English\",\"lang\":\"en\"}],\"icon_font\":false,\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link
+    rel="preload"
+    as="style"
+    crossorigin
+    href="https://fontsapi.zeoseven.com/292/main/result.css"
+    onload="this.rel='stylesheet'"
+  /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/regular.min.css"
+    integrity="sha384-4qYppzjH8EiA&#43;cGdaubu2vL7Rk8WGiqCSj7oRuP1uwtFWkfKNHD20lPfcrbQc8dU" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/solid.min.css"
+    integrity="sha384-wbMWab3UDSPm2kvIgVOn/d9KPTecgPU1&#43;Nb3zoQrm/oVu0EkPL6IaKinjbwW0rum" crossorigin="anonymous"/><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css"
+    integrity="sha384-KTGeC2hIMzpeQakhsmzB9bZfhCD5xZZCgI1iZH6f/O457SxzlkzTQg/WXFNoi3ih" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v5-font-face.min.css"
+    integrity="sha384-nJ1ThfldViXoLpJ6jlKcP2beas8BMbYq26SG9Hi8cH89bZi4RZ644v7helMCqJxd" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css"
+    integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><meta property="og:type" content="website" />
+  <meta property="og:title" content="LLM后训练(一)--强化学习 | MIMI" />
+  <meta
+    property="og:description"
+    content=""
+  />
+  <meta property="og:url" content="https://shqww.github.io/post/llmpost%E4%B8%80/" />
+  <meta
+    property="og:site_name"
+    content="MIMI的博客"
+  />
+  <meta property="og:image" content="https://shqww.github.io/covers/rl1.jpg" />
+  <meta property="article:author" content="MIMI" />
+  <meta property="article:published_time" content="2026-04-22T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-04-22T00:00:00&#43;00:00" /><meta property="article:tag" content="Reinforcement Learning, LLM" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://shqww.github.io/covers/rl1.jpg" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.42636b11f055d175901c8d1ffb6c9cd1c7b209cbf99c6fc058b3afc9f9247414.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css"
+    integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy&#43;Ub9QgnxUYJmwOhYCK" crossorigin="anonymous"/><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css"
+    integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj&#43;vDDLIL&#43;xBGQU/voDBY5XE2lVh" crossorigin="anonymous"/></head>
+  <body><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon '>&#xf015;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon '>&#xf187;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon '>&#xf05a;</div><span class="main-nav-link">关于</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="en" role="option" aria-selected="false" >English</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};langMap['en'] = '\/en\/post\/llmpost%E4%B8%80\/';selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture>
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/rl1.jpg" alt="LLM后训练(一)--强化学习"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">LLM后训练(一)--强化学习</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"><span id="subtitle">本为 LLM 强化学习后训练梳理与总结。其脉络沿着强化学习的基本概念、算法原理、改进策略、以及在大语言模型后训练中的应用展开。不会涵盖强化学习的所有内容，而是聚焦于与大语言模型后训练相关的部分。主要是理清大语言模型后训练中强化学习的核心逻辑和思路。
+</span></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          class="sidebar-left"
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-背景">1. 背景</a></li>
+    <li><a href="#2-环境状态">2. 环境状态</a></li>
+    <li><a href="#3-奖励函数">3. 奖励函数</a></li>
+    <li><a href="#4-基于值的模型">4. 基于值的模型</a></li>
+    <li><a href="#5-基于策略的模型">5. 基于策略的模型</a>
+      <ul>
+        <li><a href="#51-策略梯度">5.1 策略梯度</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">12</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">9</div>
+  </a>
+</div>
+<div class="sidebar-social" style="margin-bottom: 20px;"><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><meting-js
+        theme="var(--color-link)"
+        id="12622038301"server="netease"type="playlist"fixed="false"list-folded="true"class="aplayer-after-sidebar"
+        >
+      </meting-js><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+
+
+<div class="article-date">
+  
+    <div class="date-circle">
+      <div class="date-wrapper">
+        <time class="date-year" datetime="2026-04-22T00:00:00Z">2026</time>
+        <time class="date-day" datetime="2026-04-22T00:00:00Z">04-22</time>
+      </div>
+    </div>
+  </span>
+</div></div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><p>本为 LLM 强化学习后训练梳理与总结。其脉络沿着强化学习的基本概念、算法原理、改进策略、以及在大语言模型后训练中的应用展开。不会涵盖强化学习的所有内容，而是聚焦于与大语言模型后训练相关的部分。主要是理清大语言模型后训练中强化学习的核心逻辑和思路。</p>
+<h1 id="强化学习">
+<a class="header-anchor" href="#%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0"></a>
+强化学习
+</h1><h2 id="1-背景">
+<a class="header-anchor" href="#1-%e8%83%8c%e6%99%af"></a>
+1. 背景
+</h2><p>强化学习（Reinforcement Learning）是机器学习的一个重要分支，它关注智能体如何在环境中采取行动以最大化某种累积奖励。与监督学习不同，强化学习通常没有标记好的“正确答案”，而是通过试错和延迟奖励来学习最优策略。</p>
+<p>强化学习的灵感来源于心理学中的行为主义理论，即生物体通过与环境交互，根据行动产生的后果（奖励或惩罚）来调整自身的行为。这种学习范式使得智能体能够在未知且动态的环境中进行决策，被广泛应用于机器人控制、游戏博弈、自动驾驶和推荐系统等领域。</p>
+<p>强化学习的分类如下图所示：
+<img src="/images/llmrl/guide.png" alt="图片描述">
+(注：上图来源于<a href="https://arxiv.org/abs/2401.13662"><i class="fas fa-link"></i></a>，分类不一定准确，比如Q-Learning也可以算是基于策略的模型)
+本主要对大模型后训练中用到的 on-policy 算法进行总结和分析。在此之前，先介绍强化学习的一些基本概念。</p>
+<p>一个标准的强化学习系统由以下核心要素组成：</p>
+<ul>
+<li>智能体：进行学习和决策的主体。</li>
+<li>环境：智能体所处的外部世界。</li>
+<li>动作：智能体可以执行的操作。</li>
+<li>状态：对环境情况的描述。</li>
+<li>奖励：环境反馈给智能体的标量信号，用于评价动作的好坏。</li>
+</ul>
+<h2 id="2-环境状态">
+<a class="header-anchor" href="#2-%e7%8e%af%e5%a2%83%e7%8a%b6%e6%80%81"></a>
+2. 环境状态
+</h2><p>环境状态是强化学习中最基础的概念之一。它是对环境在某一时刻的完整描述，包含了决定未来发展所需的所有信息。</p>
+<p>通常用符号 $s_t$ 表示时刻 $t$ 的状态。智能体的目标通常是根据观测到的状态序列，选择最优的动作序列。状态的获取方式通常有两种：</p>
+<ul>
+<li>完全可观测：智能体能直接感知到环境的真实状态 $s_t$。</li>
+<li>部分可观测：智能体只能接收到观测值 $o_t$，观测值可能不包含环境的所有信息（例如，由于视野受限或噪声干扰）。在这种情况下，智能体通常需要维护内部的“信念状态”或历史记录来做决策。</li>
+</ul>
+<p>在数学上，强化学习过程通常被建模为马尔可夫决策过程 (MDP)。如果状态满足马尔可夫性质，即“未来状态仅依赖于当前状态和当前动作，而与过去的历史无关”，那么该状态是最理想的。</p>
+<h2 id="3-奖励函数">
+<a class="header-anchor" href="#3-%e5%a5%96%e5%8a%b1%e5%87%bd%e6%95%b0"></a>
+3. 奖励函数
+</h2><p>奖励函数是强化学习的核心，它定义了强化学习问题追求的量化目标。</p>
+<p>在每一个时间步 $t$，环境会根据智能体的动作 $a_t$ 和当前状态 $s_t$，反馈一个标量数值 $r_t$。智能体的终极目标是最大化长期累积奖励。</p>
+<p>累积奖励通常通过回报 (Return) 来计算，最常见的计算方式是折扣累积回报，定义如下：</p>
+$$ R = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \dots + \gamma^Tr_T = \sum_{k=0}^{T} \gamma^k r_{t+k} $$<p>其中，$\gamma \in [0, 1]$ 是折扣因子。</p>
+<ul>
+<li>$\gamma$ 接近 0 时，智能体主要关注即时奖励（短视）。</li>
+<li>$\gamma$ 接近 1 时，智能体更关注长远的未来奖励（远视）。</li>
+</ul>
+<p>以上为理想情况。在实际任务中，我们并不能直接获得每一时刻的奖励，比如在棋牌游戏和大语言模型等任务中，可能仅在个别时刻或最后时刻才能获得一个奖励信号。例如，围棋需要下到最后才能知道输赢，语言模型需要输出完整答案才能获得评分，无法针对每个 token 进行直接打分。</p>
+<h2 id="4-基于值的模型">
+<a class="header-anchor" href="#4-%e5%9f%ba%e4%ba%8e%e5%80%bc%e7%9a%84%e6%a8%a1%e5%9e%8b"></a>
+4. 基于值的模型
+</h2><p>基于值的方法的核心思想是不直接学习策略，而是学习一个价值函数，用来估算处于某个状态或在某个状态下执行某个动作的“价值”。</p>
+<p>主要有两种价值函数：</p>
+<ol>
+<li>
+<p>状态价值函数 ($V(s)$)：表示智能体遵循某个策略 $\pi$ 时，从状态 $s$ 开始预期的累积回报。
+</p>
+$$ V_\pi(s) = \mathbb{E}[R | S_t = s] $$</li>
+<li>
+<p>动作价值函数 ($Q(s, a)$)：也称为 Q 值，表示在状态 $s$ 下执行动作 $a$，之后遵循策略 $\pi$ 的预期累积回报。
+</p>
+$$ Q_\pi(s, a) = \mathbb{E}[R | S_t = s, A_t = a] $$</li>
+</ol>
+<p>贝尔曼方程是基于值方法的基础，它表达了当前状态的价值与下一状态价值之间的递推关系：</p>
+$$ Q(s, a) = \mathbb{E}[r + \gamma \max_{a'} Q(s', a')] $$<p>典型算法：</p>
+<ul>
+<li>Q-Learning：经典的异策略算法，通过维护一张 Q 表来记录价值。</li>
+<li>DQN (Deep Q-Network)：利用深度神经网络来拟合 Q 函数，解决高维状态空间问题。</li>
+</ul>
+<p>基于值的方法通常通过贪婪策略来生成决策：选择价值函数估计最高的动作 $a = \arg\max_a Q(s, a)$。基于值的模型本不再详细展开，重点分析基于策略的模型。</p>
+<h2 id="5-基于策略的模型">
+<a class="header-anchor" href="#5-%e5%9f%ba%e4%ba%8e%e7%ad%96%e7%95%a5%e7%9a%84%e6%a8%a1%e5%9e%8b"></a>
+5. 基于策略的模型
+</h2><p>基于策略的方法直接对策略 $\pi$ 进行建模。策略通常被参数化表示为 $\pi_\theta(a|s)$，其中 $\theta$ 是策略网络的参数。这种方法输出的是在给定状态下采取各个动作的概率分布。</p>
+<h3 id="51-策略梯度">
+<a class="header-anchor" href="#51-%e7%ad%96%e7%95%a5%e6%a2%af%e5%ba%a6"></a>
+5.1 策略梯度
+</h3><p>策略梯度是一类直接优化策略参数 $\theta$ 的方法。其核心思想是：如果某个动作导致了正向的回报，那么就增加该动作在当前状态下被选中的概率；反之则降低概率。</p>
+<p>我们假设已经给定了一个策略分布 $\pi(a|s)$，这个策略可以是当前被训练的智能体产生的策略 $\pi_\theta(a|s)$（on policy），或者另外定义的一个策略分布（off policy）。本默认这个策略分布就是当前被训练智能体的策略 $\pi_\theta(a|s)$。</p>
+<p>首先，从 $\pi_\theta(a|s)$ 逐步生成动作并在生成过程中不断与环境交互，最终得到一采样轨迹（或称为 Episode，回合）。</p>
+<p>通常表示为 $\tau = (s_0, a_0, r_0, s_1, a_1, r_1, \dots, s_T, a_T, r_T)$，其中 $s_t$ 表示状态，$a_t$ 表示动作，$r_t$ 表示奖励，$T$ 表示终止时刻。采样过程实际上是一个马尔可夫过程，其概率表示为：
+</p>
+$$
+p(\tau) = p(s_0) \prod_{t=0}^{T-1} \pi_\theta(a_t | s_t) p(s_{t+1} | s_t, a_t)
+$$<p>累计奖励为：
+</p>
+$$
+R(\tau) = \sum_{t=0}^{T} \gamma^t r_t
+$$<p>因此其获得回报的数学期望为：
+</p>
+$$
+\mathbb{E}_{\tau \sim p(\tau)} [R(\tau)] = \int p(\tau) R(\tau) d\tau
+$$<p>将该期望作为目标函数 $J(\theta)$，我们希望通过调整 $\theta$ 来最大化 $J(\theta)$。</p>
+<p>我们的目标是最大化目标函数 $J(\theta)$（即期望回报）。根据策略梯度定理，梯度的计算公式如下：
+</p>
+$$
+\begin{align*}
+ \nabla_\theta J(\theta) &= \int \nabla_\theta p(\tau) R(\tau) d\tau \\
+  &= \int p(\tau) \nabla_\theta \log p(\tau) R(\tau) d\tau \\
+  &= \mathbb{E}_{\tau \sim p(\tau)} [\nabla_\theta \log p(\tau) R(\tau)] \\
+  &= \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t|s_t) \cdot R(\tau) \right]
+\end{align*}
+$$<p>实际训练过程需要通过经验采样来代替期望计算，即通过多次采样轨迹 $\tau$ 来估计梯度：
+</p>
+$$
+\nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^{N} \left( R(\tau^i) \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t^i|s_t^i) \right)
+$$<p>可以看出上述求解梯度的公式实际上等价于一个交叉熵损失函数的优化过程：</p>
+<ul>
+<li>$\nabla_\theta \log \pi_\theta(a_t|s_t)$：表示增加该动作概率的梯度方向。</li>
+<li>$R(\tau)$：表示回报，用作权重。</li>
+</ul>
+<p>直观理解：</p>
+<ul>
+<li>如果某一步的回报 $R$ 很高，就在梯度方向上增大该动作的概率。</li>
+<li>如果回报 $R$ 很低，就减小该动作的概率。</li>
+</ul>
+<!-- 典型算法：
+
+*   REINFORCE：基于蒙特卡洛采样的策略梯度方法。
+*   PPO (Proximal Policy Optimization)：近端策略优化，通过限制新旧策略的差异来保证训练的稳定性。 -->
+<p>在实际问题中，直接使用 $R(\tau)$ 作为整条轨迹的回报可能存在一些问题：</p>
+<ul>
+<li>由于采样的随机性，回报 $R$ 可能具有较大的方差，导致训练过程不稳定。</li>
+<li>有些回报虽然大于零，但并不一定比其他动作更好，从统计决策角度讲应当视为交叉熵中的负样本。</li>
+<li>奖励信号稀疏，没有对轨迹中每一步的动作提供足够的监督，使得智能体难以学习到哪些具体动作导致了高回报。比如修改LLM回答中的几个token对模型的最终评分可能没有很大影响，但是训练目标却是让模型“平均地”优化每个token的输出概率。</li>
+</ul>
+<p>因此下一篇博客将围绕上述问题介绍一些改进策略。</p>
+</div>
+    <footer class="article-footer"><blockquote class="article-copyright"><p><strong><span class="icon-user icon"></span>本文作者：</strong>MIMI</p><p>
+      <strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://shqww.github.io/post/llmpost%E4%B8%80/">https://shqww.github.io/post/llmpost%E4%B8%80/</a>
+    </p><p>
+      
+      <strong><span class="icon-copyright icon"></span>本文版权：</strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </p>
+    <span class="icon-creative-commons article-copyright-bg"></span></blockquote>
+<div class="share-wrapper"><a href="https://www.facebook.com/sharer/sharer.php?u=https://shqww.github.io/post/llmpost%E4%B8%80/" target="_blank" rel="noopener noreferrer" title="LLM后训练(一)--强化学习">
+      <div class="share-icon icon icon-facebook"></div>
+    </a><a href="https://twitter.com/intent/tweet?url=https://shqww.github.io/post/llmpost%E4%B8%80/&amp;text=LLM%e5%90%8e%e8%ae%ad%e7%bb%83%28%e4%b8%80%29--%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0&amp;via=https://shqww.github.io/" target="_blank" rel="noopener noreferrer" title="LLM后训练(一)--强化学习">
+      <div class="share-icon icon icon-twitter"></div>
+    </a><a href="https://bsky.app/intent/compose?text=LLM%e5%90%8e%e8%ae%ad%e7%bb%83%28%e4%b8%80%29--%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%20https://shqww.github.io/post/llmpost%E4%B8%80/" target="_blank" rel="noopener noreferrer" title="LLM后训练(一)--强化学习">
+      <div class="share-icon icon icon-bluesky"></div>
+    </a><a href="https://www.linkedin.com/shareArticle?url=https://shqww.github.io/post/llmpost%E4%B8%80/&amp;title=LLM%e5%90%8e%e8%ae%ad%e7%bb%83%28%e4%b8%80%29--%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0&amp;summary=%e6%9c%ac%e4%b8%ba%20LLM%20%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e5%90%8e%e8%ae%ad%e7%bb%83%e6%a2%b3%e7%90%86%e4%b8%8e%e6%80%bb%e7%bb%93%e3%80%82%e5%85%b6%e8%84%89%e7%bb%9c%e6%b2%bf%e7%9d%80%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5%e3%80%81%e7%ae%97%e6%b3%95%e5%8e%9f%e7%90%86%e3%80%81%e6%94%b9%e8%bf%9b%e7%ad%96%e7%95%a5%e3%80%81%e4%bb%a5%e5%8f%8a%e5%9c%a8%e5%a4%a7%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%e5%90%8e%e8%ae%ad%e7%bb%83%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%a8%e5%b1%95%e5%bc%80%e3%80%82%e4%b8%8d%e4%bc%9a%e6%b6%b5%e7%9b%96%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%89%80%e6%9c%89%e5%86%85%e5%ae%b9%ef%bc%8c%e8%80%8c%e6%98%af%e8%81%9a%e7%84%a6%e4%ba%8e%e4%b8%8e%e5%a4%a7%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%e5%90%8e%e8%ae%ad%e7%bb%83%e7%9b%b8%e5%85%b3%e7%9a%84%e9%83%a8%e5%88%86%e3%80%82%e4%b8%bb%e8%a6%81%e6%98%af%e7%90%86%e6%b8%85%e5%a4%a7%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%e5%90%8e%e8%ae%ad%e7%bb%83%e4%b8%ad%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%a0%b8%e5%bf%83%e9%80%bb%e8%be%91%e5%92%8c%e6%80%9d%e8%b7%af%e3%80%82%0a&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="LLM后训练(一)--强化学习">
+      <div class="share-icon icon icon-linkedin"></div>
+    </a><a href="https://www.reddit.com/submit?url=https://shqww.github.io/post/llmpost%E4%B8%80/&amp;title=LLM%e5%90%8e%e8%ae%ad%e7%bb%83%28%e4%b8%80%29--%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0" target="_blank" rel="noopener noreferrer" title="LLM后训练(一)--强化学习">
+      <div class="share-icon icon icon-reddit"></div>
+    </a><a href="https://service.weibo.com/share/share.php?url=https://shqww.github.io/post/llmpost%E4%B8%80/&amp;appkey=&amp;title=LLM%e5%90%8e%e8%ae%ad%e7%bb%83%28%e4%b8%80%29--%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="LLM后训练(一)--强化学习">
+      <div class="share-icon icon icon-weibo"></div>
+    </a><a href="https://connect.qq.com/widget/shareqq/index.html?url=https://shqww.github.io/post/llmpost%E4%B8%80/&amp;title=LLM%e5%90%8e%e8%ae%ad%e7%bb%83%28%e4%b8%80%29--%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0&amp;desc=%e6%9c%ac%e4%b8%ba%20LLM%20%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e5%90%8e%e8%ae%ad%e7%bb%83%e6%a2%b3%e7%90%86%e4%b8%8e%e6%80%bb%e7%bb%93%e3%80%82%e5%85%b6%e8%84%89%e7%bb%9c%e6%b2%bf%e7%9d%80%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5%e3%80%81%e7%ae%97%e6%b3%95%e5%8e%9f%e7%90%86%e3%80%81%e6%94%b9%e8%bf%9b%e7%ad%96%e7%95%a5%e3%80%81%e4%bb%a5%e5%8f%8a%e5%9c%a8%e5%a4%a7%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%e5%90%8e%e8%ae%ad%e7%bb%83%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%a8%e5%b1%95%e5%bc%80%e3%80%82%e4%b8%8d%e4%bc%9a%e6%b6%b5%e7%9b%96%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%89%80%e6%9c%89%e5%86%85%e5%ae%b9%ef%bc%8c%e8%80%8c%e6%98%af%e8%81%9a%e7%84%a6%e4%ba%8e%e4%b8%8e%e5%a4%a7%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%e5%90%8e%e8%ae%ad%e7%bb%83%e7%9b%b8%e5%85%b3%e7%9a%84%e9%83%a8%e5%88%86%e3%80%82%e4%b8%bb%e8%a6%81%e6%98%af%e7%90%86%e6%b8%85%e5%a4%a7%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%e5%90%8e%e8%ae%ad%e7%bb%83%e4%b8%ad%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%a0%b8%e5%bf%83%e9%80%bb%e8%be%91%e5%92%8c%e6%80%9d%e8%b7%af%e3%80%82%0a&amp;source=https://shqww.github.io/" target="_blank" rel="noopener noreferrer" title="LLM后训练(一)--强化学习">
+      <div class="share-icon icon icon-qq"></div>
+    </a><a href="javascript:;"  title="LLM后训练(一)--强化学习">
+      <div class="share-icon icon icon-weixin"><div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hugo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div></div>
+    </a></div><a
+          data-aos="zoom-in"
+          href="/post/llmpost%E4%B8%80/#comments"
+          class="article-comment-link"
+        >
+          <span
+            class="post-comments-count waline-comment-count"
+            data-path="/post/llmpost%e4%b8%80/"
+            itemprop="commentCount"
+          ></span>
+          留言
+        </a><span
+          data-aos="zoom-in"
+          class="article-visitor-link"
+        >
+          <span
+            class="waline-pageview-count"
+            data-path="/post/llmpost%E4%B8%80/"
+            >0</span
+          >
+          <em class="post-meta-item-text">阅读量</em>
+        </span><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/llm-post-training"
+      data-aos="zoom-in"
+      >LLM Post Training</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/reinforcement-learning"
+        rel="tag"
+        >Reinforcement Learning</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/llm"
+        rel="tag"
+        >LLM</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/covers/docker.png"
+            data-sizes="auto"
+            alt="Docker 之代理配置"
+            class="lazyload"
+          /><a
+          href="/post/docker_proxy/"
+          aria-label="前一篇:Docker 之代理配置"
+          title="前一篇:Docker 之代理配置"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">Docker 之代理配置</h3>
+      </div><div class="article-nav-link-wrap right"><img
+            data-src="/covers/rl1.jpg"
+            data-sizes="auto"
+            alt="LLM后训练(二)--价值函数"
+            class="lazyload"
+          /><a
+          href="/post/llmpost%E4%BA%8C/"
+          aria-label="后一篇:LLM后训练(二)--价值函数"
+          title="后一篇:LLM后训练(二)--价值函数"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">LLM后训练(二)--价值函数</h3>
+      </div></nav></article><section id="comments" data-aos="fade-up">
+<div class="comment-header"><h2 class="comment-title">说些什么吧！</h2>
+  <div class="comment-selector">
+    <div class="comment-selector-wrap"><div class="selector-item" data-selector="waline">
+          <span>waline</span>
+        </div></div>
+  </div>
+</div>
+
+<div class="comment-content"><div class="comment waline-comment" data-aos="fade-up"
+     >
+    </div></div>
+</section></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2024-2026<span class="footer-info-sep rotate"></span>MIMI
+    </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-背景">1. 背景</a></li>
+    <li><a href="#2-环境状态">2. 环境状态</a></li>
+    <li><a href="#3-奖励函数">3. 奖励函数</a></li>
+    <li><a href="#4-基于值的模型">4. 基于值的模型</a></li>
+    <li><a href="#5-基于策略的模型">5. 基于策略的模型</a>
+      <ul>
+        <li><a href="#51-策略梯度">5.1 策略梯度</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">12</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">9</div>
+  </a>
+</div>
+<div class="sidebar-social" ><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon '>&#xf015;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon '>&#xf187;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon '>&#xf05a;</div><div class="sidebar-menu-link">关于</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    
+    
+    
+    
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous"  ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax ></script><script
+    src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD&#43;jAPU55x/jj3wlf" crossorigin="anonymous"></script><script src="/js/pjax.js" integrity="" crossorigin="anonymous"  ></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "MIMI",
+          title: "LLM后训练(一)--强化学习",
+          url: "https:\/\/shqww.github.io\/post\/llmpost%E4%B8%80\/",
+          description: "本为 LLM 强化学习后训练梳理与总结。其脉络沿着强化学习的基本概念、算法原理、改进策略、以及在大语言模型后训练中的应用展开。不会涵盖强化学习的所有内容，而是聚焦于与大语言模型后训练相关的部分。主要是理清大语言模型后训练中强化学习的核心逻辑和思路。\n",
+          cover: "https:\/\/shqww.github.io\/covers\/rl1.jpg",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script><script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+  var commentConfigKeys = ['valine', 'waline', 'twikoo', 'gitalk', 'giscus', 'utterances', 'beaudar', 'disqus'];
+  var commentConfig = {waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https:\/\/npm.webcache.cn\/@waline\/client@2.15.8\/dist\/waline.mjs';
+        
+        if ('webcache|@waline\/client@2.15.8\/dist\/waline.mjs'.startsWith('local')) {
+          
+          const module = await safeImport(walineCdn);
+          walineInit = module.init;
+        } else {
+          
+          const module = await safeImport(
+            walineCdn, 
+            'sha384-9sbqJjrfGjbkI6\/PI4nU\/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH\/KinBEAZII\/5'
+          );
+          walineInit = module.init;
+        }
+        
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'github-blog-comment-two.vercel.app',
+          lang: document.documentElement.lang || 'en',
+          locale: JSON.parse("{}"),
+          emoji: JSON.parse("[\"https://unpkg.com/@waline/emojis@1.2.0/weibo\",\"https://unpkg.com/@waline/emojis@1.2.0/alus\",\"https://unpkg.com/@waline/emojis@1.2.0/bilibili\",\"https://unpkg.com/@waline/emojis@1.2.0/qq\",\"https://unpkg.com/@waline/emojis@1.2.0/tieba\",\"https://unpkg.com/@waline/emojis@1.2.0/tw-emoji\"]"),
+          meta: JSON.parse("[\"nick\",\"mail\",\"link\"]"),
+          requiredMeta: JSON.parse("[\"nick\",\"mail\"]"),
+          wordLimit:  0 ,
+          comment: true,
+          pageSize:  10 ,
+          dark: 'html[data-theme="dark"]',
+          pageview:  true ,
+        });
+      }
+    },};
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig?.[key]?.enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig?.[sys]?.enable) || '';
+    }
+  }
+
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false,
+      disqus: false,
+      utterances: false,
+      beaudar: false,
+    };
+
+    
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      
+      const commentType = item.getAttribute('data-selector');
+
+      
+      hideAllComments();
+
+      
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          
+          changeActiveCommentItems(item);
+        });
+      }
+
+      
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script><script
+    src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-VT1EeewTCEXgndcPMQ0PzV&#43;uVFYjxFIjmAA7s5gcMX9t4Dt5TD&#43;OVQIn7NJWIXn7" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/@zumer/snapdom@1.9.14/dist/snapdom.min.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-OEQ&#43;fJp/Mvi2uzBREXybtxryJvLytWapuHu4EE6LPwTKUwATYcc55tPPcZTzVcmx" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC&#43;gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
+</div><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script>
+    var setupAPlayer = () => {
+      if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const meting = _$('meting-js');
+          if (meting) {
+            meting.setAttribute('fixed', 'true');
+            const aside = meting.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              meting.parentNode.removeChild(meting);
+              document.body.appendChild(meting);
+            }
+          }
+        }
+      }
+    };</script><script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    defer
+    
+    
+    onload="setupAPlayer()"
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    defer
+    
+    
+    
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

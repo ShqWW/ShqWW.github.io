@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on MIMI&#39;s Blog</title>
+    <link>https://shqww.github.io/en/tags/machine-learning/</link>
+    <description>Recent content from MIMI&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    
+    <managingEditor>haoruw@outlook.com (MIMI)</managingEditor>
+    <webMaster>haoruw@outlook.com (MIMI)</webMaster>
+    
+    <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
+    
+    <lastBuildDate>Thu, 28 Nov 2024 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="https://shqww.github.io/en/tags/machine-learning/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>扩散模型中的随机微分方程</title>
+      <link>https://shqww.github.io/en/post/diffusion_model_sde/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/en/post/diffusion_model_sde/</guid>
+      <description>
+        <![CDATA[<h1>扩散模型中的随机微分方程</h1><p>Author: MIMI(haoruw@outlook.com)</p>
+        
+          对扩散模型中涉及的随机微分方程进行详细的数学分析和证明。
+        
+        <hr><p>Published on 2024-11-28 at <a href='https://shqww.github.io/'>MIMI's Blog</a>, last modified on 2024-11-28</p>]]>
+      </description>
+      
+        <category>Machine Learning</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>主成分分析和线性回归对比</title>
+      <link>https://shqww.github.io/en/post/pca_lr/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/en/post/pca_lr/</guid>
+      <description>
+        <![CDATA[<h1>主成分分析和线性回归对比</h1><p>Author: MIMI(haoruw@outlook.com)</p>
+        
+          对比二维空间下主成分分析和线性回归的优化目标和结果。
+        
+        <hr><p>Published on 2024-11-28 at <a href='https://shqww.github.io/'>MIMI's Blog</a>, last modified on 2024-11-28</p>]]>
+      </description>
+      
+        <category>Machine Learning</category>
+      
+    </item>
+    
+  </channel>
+</rss>

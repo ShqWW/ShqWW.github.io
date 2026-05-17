@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on MIMI&#39;s Blog</title>
+    <link>https://shqww.github.io/en/tags/docker/</link>
+    <description>Recent content from MIMI&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    
+    <managingEditor>haoruw@outlook.com (MIMI)</managingEditor>
+    <webMaster>haoruw@outlook.com (MIMI)</webMaster>
+    
+    <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
+    
+    <lastBuildDate>Thu, 28 Nov 2024 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="https://shqww.github.io/en/tags/docker/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>Docker 之代理配置</title>
+      <link>https://shqww.github.io/en/post/docker_proxy/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/en/post/docker_proxy/</guid>
+      <description>
+        <![CDATA[<h1>Docker 之代理配置</h1><p>Author: MIMI(haoruw@outlook.com)</p>
+        
+          本文介绍docker使用过程中的各种代理配置。
+        
+        <hr><p>Published on 2024-11-28 at <a href='https://shqww.github.io/'>MIMI's Blog</a>, last modified on 2024-11-28</p>]]>
+      </description>
+      
+        <category>Linux</category>
+      
+    </item>
+    
+  </channel>
+</rss>

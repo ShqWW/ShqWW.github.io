@@ -1,0 +1,843 @@
+<!doctype html>
+<html
+  lang="zh-CN" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  主成分分析和线性回归对比 | MIMI
+</title>
+<meta name="description" content=""/><script>
+  window.siteConfig = JSON.parse("{\"anchor\":null,\"anchor_icon\":\"f1b0\",\"base\":\"https://shqww.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"label\":\"简体中文\",\"lang\":\"zh-cn\"},{\"label\":\"English\",\"lang\":\"en\"}],\"icon_font\":false,\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link
+    rel="preload"
+    as="style"
+    crossorigin
+    href="https://fontsapi.zeoseven.com/292/main/result.css"
+    onload="this.rel='stylesheet'"
+  /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/regular.min.css"
+    integrity="sha384-4qYppzjH8EiA&#43;cGdaubu2vL7Rk8WGiqCSj7oRuP1uwtFWkfKNHD20lPfcrbQc8dU" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/solid.min.css"
+    integrity="sha384-wbMWab3UDSPm2kvIgVOn/d9KPTecgPU1&#43;Nb3zoQrm/oVu0EkPL6IaKinjbwW0rum" crossorigin="anonymous"/><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css"
+    integrity="sha384-KTGeC2hIMzpeQakhsmzB9bZfhCD5xZZCgI1iZH6f/O457SxzlkzTQg/WXFNoi3ih" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v5-font-face.min.css"
+    integrity="sha384-nJ1ThfldViXoLpJ6jlKcP2beas8BMbYq26SG9Hi8cH89bZi4RZ644v7helMCqJxd" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css"
+    integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><meta property="og:type" content="website" />
+  <meta property="og:title" content="主成分分析和线性回归对比 | MIMI" />
+  <meta
+    property="og:description"
+    content=""
+  />
+  <meta property="og:url" content="https://shqww.github.io/post/pca_lr/" />
+  <meta
+    property="og:site_name"
+    content="MIMI的博客"
+  />
+  <meta property="og:image" content="https://shqww.github.io/covers/pca.png" />
+  <meta property="article:author" content="MIMI" />
+  <meta property="article:published_time" content="2024-11-28T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2024-11-28T00:00:00&#43;00:00" /><meta property="article:tag" content="Machine Learning, graphics" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://shqww.github.io/covers/pca.png" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.42636b11f055d175901c8d1ffb6c9cd1c7b209cbf99c6fc058b3afc9f9247414.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css"
+    integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy&#43;Ub9QgnxUYJmwOhYCK" crossorigin="anonymous"/><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css"
+    integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj&#43;vDDLIL&#43;xBGQU/voDBY5XE2lVh" crossorigin="anonymous"/></head>
+  <body><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon '>&#xf015;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon '>&#xf187;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon '>&#xf05a;</div><span class="main-nav-link">关于</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="en" role="option" aria-selected="false" >English</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};langMap['en'] = '\/en\/post\/pca_lr\/';selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture>
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/pca.png" alt="主成分分析和线性回归对比"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">主成分分析和线性回归对比</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"><span id="subtitle">对比二维空间下主成分分析和线性回归的优化目标和结果。</span></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          class="sidebar-left"
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-线性回归">1. 线性回归</a></li>
+    <li><a href="#2-主成分分析">2. 主成分分析</a></li>
+    <li><a href="#特点总结">特点总结：</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">12</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">9</div>
+  </a>
+</div>
+<div class="sidebar-social" style="margin-bottom: 20px;"><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><meting-js
+        theme="var(--color-link)"
+        id="12622038301"server="netease"type="playlist"fixed="false"list-folded="true"class="aplayer-after-sidebar"
+        >
+      </meting-js><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+
+
+<div class="article-date">
+  
+    <div class="date-circle">
+      <div class="date-wrapper">
+        <time class="date-year" datetime="2024-11-28T00:00:00Z">2024</time>
+        <time class="date-day" datetime="2024-11-28T00:00:00Z">11-28</time>
+      </div>
+    </div>
+  </span>
+</div></div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><p>给定一样本点，找到贯穿样本点的直线; 处理这个问题有两类方法，一种是线性回归，另一种是主成分分析。本文从优化目标来比较两者区别。
+由于两类方法比较经典，教程也较多，本文不再详细介绍二类方法。</p>
+<p>假定样本点为：</p>
+$$
+\begin{align}
+\left( \hat{x}_1,\hat{y}_1 \right) ,\left( \hat{x}_2,\hat{y}_2 \right) ,\dots ,\left( \hat{x}_N,\hat{y}_N \right) 
+\end{align}
+$$<h2 id="1-线性回归">
+<a class="header-anchor" href="#1-%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92"></a>
+1. 线性回归
+</h2><p>线性回归假设直线方程为: $y=kx+b$, 众所周知它的优化目标是尽可能减小预测$y_i$以及真值 $\hat{y}_i$之间的距离的平方：</p>
+$$
+\begin{align}
+\min \sum_{i=1}^N{\left( y_i-\hat{y}_i \right) ^2}\Rightarrow \underset{k,b}{\min}\sum_{i=1}^N{\left( kx_i+b-\hat{y}_i \right) ^2}
+\end{align}
+$$<p>上式就是我们熟知的最小二乘法。对$k$和$b$分别求偏导并令偏导为0即可求解出最终的$\hat{k}$和$\hat{b}$。推导过程和最终结果省略。</p>
+<h2 id="2-主成分分析">
+<a class="header-anchor" href="#2-%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90"></a>
+2. 主成分分析
+</h2><p>与线性回归不同，主成分分析的优化目标是最小化点到直线距离，假设直线方程为$ax+by+c=0$。 简单起见，如果假设样本点均值和最终的直线截距均为0, 则直线方程简化为 $ax+by=0$.</p>
+<p>从解析几何的性质可知：假设某个样本点坐标为</p>
+$$
+\begin{align}
+\left( \hat{x}_i,\hat{y}_i \right) 
+\end{align}
+$$<p>那么这个样本点到直线距离如下：</p>
+$$
+\begin{align}
+d_i=\frac{a\hat{x}_i+b\hat{y}_i}{\sqrt{a^2+b^2}}
+\end{align}
+$$<p>最终优化目标可以表示为最小化所有点到直线的距离平方和：</p>
+$$
+\begin{align}
+\min \sum_{i=1}^N{d_{i}^{2}} 
+\end{align}
+$$<p>如果把优化参数写成列向量的形式 $\boldsymbol{w}\equiv\left(a;b\right) \in \mathbb{R}^{2\times1}$ 数据点写成行向量的形式 $\boldsymbol{p}_i\equiv\left(\hat{x}_i,\hat{y}_i\right) \in \mathbb{R}^{1\times2}$,那么公式(4)可以写成如下表达：</p>
+$$
+\begin{align}
+d_i=\frac{\boldsymbol{p}_i\boldsymbol{w}}{\left\| \boldsymbol{w}\right\|_2}
+\end{align}
+$$<p>如果约束 $\left\| \boldsymbol{w}\right\| _2=1$，并且所有点集合用大矩阵  $\boldsymbol{P}\equiv \left( \boldsymbol{p}_1;\boldsymbol{p}_2;\dots ;\boldsymbol{p}_N \right) \in \mathbb{R}^{n\times2}$表示，那么优化目标(5)可以转化为：</p>
+$$
+\begin{align}
+\underset{\boldsymbol{w}}{\min}\sum_{i=1}^N{\left( \boldsymbol{p}_i\boldsymbol{w} \right) ^2 },\,\, s.t. \,\left\| \boldsymbol{w} \right\| _2=1 \nonumber
+\\
+\Rightarrow \underset{\boldsymbol{w}}{\min}\,\,\boldsymbol{w}^T\boldsymbol{P}^T\boldsymbol{Pw},\,\, s.t.\, \boldsymbol{w}^T\boldsymbol{w}=1
+\end{align}
+$$<p>上式可以使用拉格朗日乘子法求解：</p>
+$$
+\begin{align}
+\boldsymbol{w}^T\boldsymbol{P}^T\boldsymbol{Pw}+\lambda \boldsymbol{w}^T\boldsymbol{w}
+\end{align}
+$$<p>对 $\boldsymbol{w}$求偏导并令导数为零：</p>
+$$
+\begin{align}
+2\boldsymbol{P}^T\boldsymbol{Pw}+2\lambda \boldsymbol{w}=0 \nonumber
+\\
+\Rightarrow \boldsymbol{P}^T\boldsymbol{Pw}=\left( -\lambda \right) \boldsymbol{w}
+\end{align}
+$$<p>问题转化为对协方差矩阵（零均值假设）$\boldsymbol{P}^T\boldsymbol{P} \in \mathbb{R}^{2\times 2}$求特征值和特征向量。下面分析拉格朗日乘子$\lambda$的物理意义，由于2阶方阵最多有两个特征值，那么应该选取哪个特征值呢？ 特征值有如下性质推导：</p>
+$$
+\begin{align}
+\sum_{i=1}^N{d_{i}^{2}}&=\boldsymbol{w}^T\boldsymbol{P}^T\boldsymbol{Pw} \nonumber
+\\
+&=\left( -\lambda \right) \boldsymbol{w}^T\left( -\lambda \right) \boldsymbol{w} \nonumber
+\\
+&=\lambda ^2\boldsymbol{w}^T\boldsymbol{w}=\lambda^2
+\end{align}
+$$<p>可知，优化目标值就是特征值的平方，由于我们希望优化目标值越小越好，因此选择绝对值较小的特征值对应的特征向量作为最终的解。</p>
+<h2 id="特点总结">
+<a class="header-anchor" href="#%e7%89%b9%e7%82%b9%e6%80%bb%e7%bb%93"></a>
+特点总结：
+</h2><ul>
+<li>线性回归通常用于两变量相关性分析以及机器学习预测， 它的侧重点是变量分析和预测本身, 数据点的坐标分量物理意义明确。但是优化目标和结果高度依赖坐标轴的选取和建立。</li>
+<li>主成分分析直接建模点到直线的距离，它不依赖坐标系的选取，优化结果具有旋转、镜像等变性。适合几何建模。</li>
+</ul>
+</div>
+    <footer class="article-footer"><blockquote class="article-copyright"><p><strong><span class="icon-user icon"></span>本文作者：</strong>MIMI</p><p>
+      <strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://shqww.github.io/post/pca_lr/">https://shqww.github.io/post/pca_lr/</a>
+    </p><p>
+      
+      <strong><span class="icon-copyright icon"></span>本文版权：</strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </p>
+    <span class="icon-creative-commons article-copyright-bg"></span></blockquote>
+<div class="share-wrapper"><a href="https://www.facebook.com/sharer/sharer.php?u=https://shqww.github.io/post/pca_lr/" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
+      <div class="share-icon icon icon-facebook"></div>
+    </a><a href="https://twitter.com/intent/tweet?url=https://shqww.github.io/post/pca_lr/&amp;text=%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90%e5%92%8c%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92%e5%af%b9%e6%af%94&amp;via=https://shqww.github.io/" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
+      <div class="share-icon icon icon-twitter"></div>
+    </a><a href="https://bsky.app/intent/compose?text=%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90%e5%92%8c%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92%e5%af%b9%e6%af%94%20https://shqww.github.io/post/pca_lr/" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
+      <div class="share-icon icon icon-bluesky"></div>
+    </a><a href="https://www.linkedin.com/shareArticle?url=https://shqww.github.io/post/pca_lr/&amp;title=%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90%e5%92%8c%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92%e5%af%b9%e6%af%94&amp;summary=%e5%af%b9%e6%af%94%e4%ba%8c%e7%bb%b4%e7%a9%ba%e9%97%b4%e4%b8%8b%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90%e5%92%8c%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92%e7%9a%84%e4%bc%98%e5%8c%96%e7%9b%ae%e6%a0%87%e5%92%8c%e7%bb%93%e6%9e%9c%e3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
+      <div class="share-icon icon icon-linkedin"></div>
+    </a><a href="https://www.reddit.com/submit?url=https://shqww.github.io/post/pca_lr/&amp;title=%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90%e5%92%8c%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92%e5%af%b9%e6%af%94" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
+      <div class="share-icon icon icon-reddit"></div>
+    </a><a href="https://service.weibo.com/share/share.php?url=https://shqww.github.io/post/pca_lr/&amp;appkey=&amp;title=%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90%e5%92%8c%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92%e5%af%b9%e6%af%94&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
+      <div class="share-icon icon icon-weibo"></div>
+    </a><a href="https://connect.qq.com/widget/shareqq/index.html?url=https://shqww.github.io/post/pca_lr/&amp;title=%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90%e5%92%8c%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92%e5%af%b9%e6%af%94&amp;desc=%e5%af%b9%e6%af%94%e4%ba%8c%e7%bb%b4%e7%a9%ba%e9%97%b4%e4%b8%8b%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90%e5%92%8c%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92%e7%9a%84%e4%bc%98%e5%8c%96%e7%9b%ae%e6%a0%87%e5%92%8c%e7%bb%93%e6%9e%9c%e3%80%82&amp;source=https://shqww.github.io/" target="_blank" rel="noopener noreferrer" title="主成分分析和线性回归对比">
+      <div class="share-icon icon icon-qq"></div>
+    </a><a href="javascript:;"  title="主成分分析和线性回归对比">
+      <div class="share-icon icon icon-weixin"><div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hugo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div></div>
+    </a></div><a
+          data-aos="zoom-in"
+          href="/post/pca_lr/#comments"
+          class="article-comment-link"
+        >
+          <span
+            class="post-comments-count waline-comment-count"
+            data-path="/post/pca_lr/"
+            itemprop="commentCount"
+          ></span>
+          留言
+        </a><span
+          data-aos="zoom-in"
+          class="article-visitor-link"
+        >
+          <span
+            class="waline-pageview-count"
+            data-path="/post/pca_lr/"
+            >0</span
+          >
+          <em class="post-meta-item-text">阅读量</em>
+        </span><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/machine-learning"
+      data-aos="zoom-in"
+      >Machine Learning</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/machine-learning"
+        rel="tag"
+        >Machine Learning</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/graphics"
+        rel="tag"
+        >graphics</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/covers/hugo.png"
+            data-sizes="auto"
+            alt="hugo-theme-reimu 博客主题定制与修改"
+            class="lazyload"
+          /><a
+          href="/post/hugo-reimu-themes/"
+          aria-label="前一篇:hugo-theme-reimu 博客主题定制与修改"
+          title="前一篇:hugo-theme-reimu 博客主题定制与修改"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">hugo-theme-reimu 博客主题定制与修改</h3>
+      </div><div class="article-nav-link-wrap right"><img
+            data-src="/covers/diffusion.png"
+            data-sizes="auto"
+            alt="扩散模型中的随机微分方程"
+            class="lazyload"
+          /><a
+          href="/post/diffusion_model_sde/"
+          aria-label="后一篇:扩散模型中的随机微分方程"
+          title="后一篇:扩散模型中的随机微分方程"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">扩散模型中的随机微分方程</h3>
+      </div></nav></article><section id="comments" data-aos="fade-up">
+<div class="comment-header"><h2 class="comment-title">说些什么吧！</h2>
+  <div class="comment-selector">
+    <div class="comment-selector-wrap"><div class="selector-item" data-selector="waline">
+          <span>waline</span>
+        </div></div>
+  </div>
+</div>
+
+<div class="comment-content"><div class="comment waline-comment" data-aos="fade-up"
+     >
+    </div></div>
+</section></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2024-2026<span class="footer-info-sep rotate"></span>MIMI
+    </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-线性回归">1. 线性回归</a></li>
+    <li><a href="#2-主成分分析">2. 主成分分析</a></li>
+    <li><a href="#特点总结">特点总结：</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">12</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">9</div>
+  </a>
+</div>
+<div class="sidebar-social" ><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon '>&#xf015;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon '>&#xf187;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon '>&#xf05a;</div><div class="sidebar-menu-link">关于</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    
+    
+    
+    
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous"  ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax ></script><script
+    src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD&#43;jAPU55x/jj3wlf" crossorigin="anonymous"></script><script src="/js/pjax.js" integrity="" crossorigin="anonymous"  ></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "MIMI",
+          title: "主成分分析和线性回归对比",
+          url: "https:\/\/shqww.github.io\/post\/pca_lr\/",
+          description: "对比二维空间下主成分分析和线性回归的优化目标和结果。",
+          cover: "https:\/\/shqww.github.io\/covers\/pca.png",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script><script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+  var commentConfigKeys = ['valine', 'waline', 'twikoo', 'gitalk', 'giscus', 'utterances', 'beaudar', 'disqus'];
+  var commentConfig = {waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https:\/\/npm.webcache.cn\/@waline\/client@2.15.8\/dist\/waline.mjs';
+        
+        if ('webcache|@waline\/client@2.15.8\/dist\/waline.mjs'.startsWith('local')) {
+          
+          const module = await safeImport(walineCdn);
+          walineInit = module.init;
+        } else {
+          
+          const module = await safeImport(
+            walineCdn, 
+            'sha384-9sbqJjrfGjbkI6\/PI4nU\/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH\/KinBEAZII\/5'
+          );
+          walineInit = module.init;
+        }
+        
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'github-blog-comment-two.vercel.app',
+          lang: document.documentElement.lang || 'en',
+          locale: JSON.parse("{}"),
+          emoji: JSON.parse("[\"https://unpkg.com/@waline/emojis@1.2.0/weibo\",\"https://unpkg.com/@waline/emojis@1.2.0/alus\",\"https://unpkg.com/@waline/emojis@1.2.0/bilibili\",\"https://unpkg.com/@waline/emojis@1.2.0/qq\",\"https://unpkg.com/@waline/emojis@1.2.0/tieba\",\"https://unpkg.com/@waline/emojis@1.2.0/tw-emoji\"]"),
+          meta: JSON.parse("[\"nick\",\"mail\",\"link\"]"),
+          requiredMeta: JSON.parse("[\"nick\",\"mail\"]"),
+          wordLimit:  0 ,
+          comment: true,
+          pageSize:  10 ,
+          dark: 'html[data-theme="dark"]',
+          pageview:  true ,
+        });
+      }
+    },};
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig?.[key]?.enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig?.[sys]?.enable) || '';
+    }
+  }
+
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false,
+      disqus: false,
+      utterances: false,
+      beaudar: false,
+    };
+
+    
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      
+      const commentType = item.getAttribute('data-selector');
+
+      
+      hideAllComments();
+
+      
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          
+          changeActiveCommentItems(item);
+        });
+      }
+
+      
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script><script
+    src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-VT1EeewTCEXgndcPMQ0PzV&#43;uVFYjxFIjmAA7s5gcMX9t4Dt5TD&#43;OVQIn7NJWIXn7" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/@zumer/snapdom@1.9.14/dist/snapdom.min.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-OEQ&#43;fJp/Mvi2uzBREXybtxryJvLytWapuHu4EE6LPwTKUwATYcc55tPPcZTzVcmx" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC&#43;gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
+</div><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script>
+    var setupAPlayer = () => {
+      if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const meting = _$('meting-js');
+          if (meting) {
+            meting.setAttribute('fixed', 'true');
+            const aside = meting.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              meting.parentNode.removeChild(meting);
+              document.body.appendChild(meting);
+            }
+          }
+        }
+      }
+    };</script><script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    defer
+    
+    
+    onload="setupAPlayer()"
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    defer
+    
+    
+    
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

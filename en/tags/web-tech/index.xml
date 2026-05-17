@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web Tech on MIMI&#39;s Blog</title>
+    <link>https://shqww.github.io/en/tags/web-tech/</link>
+    <description>Recent content from MIMI&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    
+    <managingEditor>haoruw@outlook.com (MIMI)</managingEditor>
+    <webMaster>haoruw@outlook.com (MIMI)</webMaster>
+    
+    <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
+    
+    <lastBuildDate>Wed, 27 Nov 2024 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="https://shqww.github.io/en/tags/web-tech/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>markdown博客语法</title>
+      <link>https://shqww.github.io/en/post/markdown_example/</link>
+      <pubDate>Wed, 27 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/en/post/markdown_example/</guid>
+      <description>
+        <![CDATA[<h1>markdown博客语法</h1><p>Author: MIMI(haoruw@outlook.com)</p>
+        
+          hugo博客markdown写法示例
+        
+        <hr><p>Published on 2024-11-27 at <a href='https://shqww.github.io/'>MIMI's Blog</a>, last modified on 2024-11-27</p>]]>
+      </description>
+      
+        <category>Blog</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>hugo-theme-reimu 博客主题定制与修改</title>
+      <link>https://shqww.github.io/en/post/hugo-reimu-themes/</link>
+      <pubDate>Wed, 27 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/en/post/hugo-reimu-themes/</guid>
+      <description>
+        <![CDATA[<h1>hugo-theme-reimu 博客主题定制与修改</h1><p>Author: MIMI(haoruw@outlook.com)</p>
+        
+          该文章介绍hugo-theme-reimu博客主题一些深度定制方法。
+        
+        <hr><p>Published on 2024-11-27 at <a href='https://shqww.github.io/'>MIMI's Blog</a>, last modified on 2024-11-27</p>]]>
+      </description>
+      
+        <category>Blog</category>
+      
+    </item>
+    
+  </channel>
+</rss>

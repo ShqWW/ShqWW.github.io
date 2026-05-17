@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LLM on MIMI的博客</title>
+    <link>https://shqww.github.io/tags/llm/</link>
+    <description>Recent content from MIMI的博客</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    <managingEditor>haoruw@outlook.com (MIMI)</managingEditor>
+    <webMaster>haoruw@outlook.com (MIMI)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Thu, 30 Apr 2026 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="https://shqww.github.io/tags/llm/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>LLM后训练(五)--GRPO和DPO</title>
+      <link>https://shqww.github.io/post/llmpost%E4%BA%94/</link>
+      <pubDate>Thu, 30 Apr 2026 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/post/llmpost%E4%BA%94/</guid>
+      <description>
+        <![CDATA[<h1>LLM后训练(五)--GRPO和DPO</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          <p>本文是LLM后训练的第五篇，介绍了两种基于LLM强化学习的后训练方法：GRPO（Generalized Reward Policy Optimization）和DPO（Direct Preference Optimization）。</p>
+        
+        <hr><p>本文2026-04-30首发于<a href='https://shqww.github.io/'>MIMI的博客</a>，最后修改于2026-04-30</p>]]>
+      </description>
+      
+        <category>LLM Post Training</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>LLM后训练(四)--RLHF-PPO</title>
+      <link>https://shqww.github.io/post/llmpost%E5%9B%9B/</link>
+      <pubDate>Wed, 29 Apr 2026 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/post/llmpost%E5%9B%9B/</guid>
+      <description>
+        <![CDATA[<h1>LLM后训练(四)--RLHF-PPO</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          <p>本文是LLM后训练的第四篇，从这篇开始，会介绍LLM的后训练。而本篇章主要介绍基于人类反馈的强化学习（Reinforcement Learning with Human Feedback, RLHF）以及PPO算法在RLHF中如何应用。</p>
+        
+        <hr><p>本文2026-04-29首发于<a href='https://shqww.github.io/'>MIMI的博客</a>，最后修改于2026-04-29</p>]]>
+      </description>
+      
+        <category>LLM Post Training</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>LLM后训练(三)--PPO算法</title>
+      <link>https://shqww.github.io/post/llmpost%E4%B8%89/</link>
+      <pubDate>Sun, 26 Apr 2026 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/post/llmpost%E4%B8%89/</guid>
+      <description>
+        <![CDATA[<h1>LLM后训练(三)--PPO算法</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          <!-- 本文是LLM后训练的第三篇，主要介绍GPT所使用的RLHF（Reinforcement Learning with Human Feedback）方法。RLHF是一种结合了人类反馈的强化学习方法，旨在提升LLM在特定任务上的表现。 -->
+<p>本文是LLM后训练的第三篇，主要介绍近端策略优化（Proximal Policy Optimization，简称PPO）算法。PPO算法在LLM后训练中起到举足轻重的作用。PPO算法更像是一个强化学习技巧的集合体，其设计重点在于保证训练的稳定性。因此在介绍PPO算法之前，需要先了解其背后的一些基础背景。</p>
+        
+        <hr><p>本文2026-04-26首发于<a href='https://shqww.github.io/'>MIMI的博客</a>，最后修改于2026-04-26</p>]]>
+      </description>
+      
+        <category>LLM Post Training</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>LLM后训练(二)--价值函数</title>
+      <link>https://shqww.github.io/post/llmpost%E4%BA%8C/</link>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/post/llmpost%E4%BA%8C/</guid>
+      <description>
+        <![CDATA[<h1>LLM后训练(二)--价值函数</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          <p>本文是LLM后训练的第二篇，主要介绍强化学习中价值函数以及Advantage Actor-Critic模型(A2C)。</p>
+<h2 id="奖励信号的构造方式">
+<a class="header-anchor" href="#%e5%a5%96%e5%8a%b1%e4%bf%a1%e5%8f%b7%e7%9a%84%e6%9e%84%e9%80%a0%e6%96%b9%e5%bc%8f"></a>
+奖励信号的构造方式
+</h2><p>在LLM后训练（一）中，我们介绍了强化学习的基本概念和一些常用的算法，并介绍了最原始的奖励损失函数：</p>
+        
+        <hr><p>本文2026-04-23首发于<a href='https://shqww.github.io/'>MIMI的博客</a>，最后修改于2026-04-23</p>]]>
+      </description>
+      
+        <category>LLM Post Training</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>LLM后训练(一)--强化学习</title>
+      <link>https://shqww.github.io/post/llmpost%E4%B8%80/</link>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/post/llmpost%E4%B8%80/</guid>
+      <description>
+        <![CDATA[<h1>LLM后训练(一)--强化学习</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          <p>本为 LLM 强化学习后训练梳理与总结。其脉络沿着强化学习的基本概念、算法原理、改进策略、以及在大语言模型后训练中的应用展开。不会涵盖强化学习的所有内容，而是聚焦于与大语言模型后训练相关的部分。主要是理清大语言模型后训练中强化学习的核心逻辑和思路。</p>
+        
+        <hr><p>本文2026-04-22首发于<a href='https://shqww.github.io/'>MIMI的博客</a>，最后修改于2026-04-22</p>]]>
+      </description>
+      
+        <category>LLM Post Training</category>
+      
+    </item>
+    
+  </channel>
+</rss>

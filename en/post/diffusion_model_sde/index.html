@@ -1,0 +1,1303 @@
+<!doctype html>
+<html
+  lang="en" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  扩散模型中的随机微分方程 | MIMI
+</title>
+<meta name="description" content=""/><script>
+  window.siteConfig = JSON.parse("{\"anchor\":null,\"anchor_icon\":\"f1b0\",\"base\":\"https://shqww.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"label\":\"简体中文\",\"lang\":\"zh-cn\"},{\"label\":\"English\",\"lang\":\"en\"}],\"icon_font\":false,\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link
+    rel="preload"
+    as="style"
+    crossorigin
+    href="https://fontsapi.zeoseven.com/292/main/result.css"
+    onload="this.rel='stylesheet'"
+  /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/regular.min.css"
+    integrity="sha384-4qYppzjH8EiA&#43;cGdaubu2vL7Rk8WGiqCSj7oRuP1uwtFWkfKNHD20lPfcrbQc8dU" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/solid.min.css"
+    integrity="sha384-wbMWab3UDSPm2kvIgVOn/d9KPTecgPU1&#43;Nb3zoQrm/oVu0EkPL6IaKinjbwW0rum" crossorigin="anonymous"/><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css"
+    integrity="sha384-KTGeC2hIMzpeQakhsmzB9bZfhCD5xZZCgI1iZH6f/O457SxzlkzTQg/WXFNoi3ih" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v5-font-face.min.css"
+    integrity="sha384-nJ1ThfldViXoLpJ6jlKcP2beas8BMbYq26SG9Hi8cH89bZi4RZ644v7helMCqJxd" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css"
+    integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><meta property="og:type" content="website" />
+  <meta property="og:title" content="扩散模型中的随机微分方程 | MIMI" />
+  <meta
+    property="og:description"
+    content=""
+  />
+  <meta property="og:url" content="https://shqww.github.io/en/post/diffusion_model_sde/" />
+  <meta
+    property="og:site_name"
+    content="MIMI&#39;s Blog"
+  />
+  <meta property="og:image" content="https://shqww.github.io/covers/diffusion.png" />
+  <meta property="article:author" content="MIMI" />
+  <meta property="article:published_time" content="2024-11-28T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2024-11-28T00:00:00&#43;00:00" /><meta property="article:tag" content="Machine Learning, Diffusion Models" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://shqww.github.io/covers/diffusion.png" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.42636b11f055d175901c8d1ffb6c9cd1c7b209cbf99c6fc058b3afc9f9247414.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css"
+    integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy&#43;Ub9QgnxUYJmwOhYCK" crossorigin="anonymous"/><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css"
+    integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj&#43;vDDLIL&#43;xBGQU/voDBY5XE2lVh" crossorigin="anonymous"/></head>
+  <body><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+This article does not have a corresponding language version
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/en/"><div class='main-nav-icon icon '>&#xf015;</div><span class="main-nav-link">Home</span>
+      </a><a class="main-nav-link-wrap" href="/en/archives"><div class='main-nav-icon icon '>&#xf187;</div><span class="main-nav-link">Archives</span>
+      </a><a class="main-nav-link-wrap" href="/en/about"><div class='main-nav-icon icon '>&#xf05a;</div><span class="main-nav-link">About</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">English</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="zh-cn" role="option" aria-selected="false" >简体中文</li><li data-value="en" role="option" class="selected" aria-selected="true" >English</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};langMap['zh-cn'] = '\/post\/diffusion_model_sde\/';selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'en') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture>
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/diffusion.png" alt="扩散模型中的随机微分方程"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">扩散模型中的随机微分方程</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"><span id="subtitle">对扩散模型中涉及的随机微分方程进行详细的数学分析和证明。</span></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          class="sidebar-left"
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1维纳过程wiener-process-和--布朗运动brownian-motion">1.维纳过程（Wiener Process） 和  布朗运动（Brownian Motion）</a>
+      <ul>
+        <li><a href="#11基本性质">1.1基本性质</a></li>
+        <li><a href="#12-三种维纳积分过程">1.2 三种维纳积分过程</a></li>
+      </ul>
+    </li>
+    <li><a href="#2itô过程">2.Itô过程</a>
+      <ul>
+        <li><a href="#21-定义">2.1 定义</a></li>
+        <li><a href="#22-itô引理">2.2 Itô引理</a></li>
+      </ul>
+    </li>
+    <li><a href="#3kolmogorov-方程">3.Kolmogorov 方程</a>
+      <ul>
+        <li><a href="#31-反向-kolmogorov-方程修正证明">3.1 反向 Kolmogorov 方程修正证明</a></li>
+        <li><a href="#32-前向kolmogorov方程">3.2 前向Kolmogorov方程</a></li>
+      </ul>
+    </li>
+    <li><a href="#4郎之万方程">4.郎之万方程</a></li>
+    <li><a href="#5时间反演的itô过程">5.时间反演的Itô过程</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">12</div>
+  </div>
+  <a class="sidebar-state-category" href="/en/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/en/tags/" aria-label="sidebar-state-tag-link">
+    <div>Tags</div>
+    <div class="sidebar-state-number">9</div>
+  </a>
+</div>
+<div class="sidebar-social" style="margin-bottom: 20px;"><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><meting-js
+        theme="var(--color-link)"
+        id="12622038301"server="netease"type="playlist"fixed="false"list-folded="true"class="aplayer-after-sidebar"
+        >
+      </meting-js><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+
+
+<div class="article-date">
+  
+    <div class="date-circle">
+      <div class="date-wrapper">
+        <time class="date-year" datetime="2024-11-28T00:00:00Z">2024</time>
+        <time class="date-day" datetime="2024-11-28T00:00:00Z">11-28</time>
+      </div>
+    </div>
+  </span>
+</div></div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><p>本文对扩散模型中涉及的随机微分方程进行详细的数学分析和证明。因为重点为理顺关键逻辑，因此使用一维的随机微分方程来进行分析。</p>
+<h2 id="1维纳过程wiener-process-和--布朗运动brownian-motion">
+<a class="header-anchor" href="#1%e7%bb%b4%e7%ba%b3%e8%bf%87%e7%a8%8bwiener-process-%e5%92%8c--%e5%b8%83%e6%9c%97%e8%bf%90%e5%8a%a8brownian-motion"></a>
+1.维纳过程（Wiener Process） 和  布朗运动（Brownian Motion）
+</h2><h3 id="11基本性质">
+<a class="header-anchor" href="#11%e5%9f%ba%e6%9c%ac%e6%80%a7%e8%b4%a8"></a>
+1.1基本性质
+</h3><p>如果从连续时间角度看，扩散模型的加噪过程实际上就是在扩散的常微分方程基础上增加了一个布朗运动漂移的过程
+布朗运动/维纳过程 $W_t$ 需要满足以下性质：</p>
+<ol>
+<li>$W_0=0$</li>
+<li>独立增量：
+
+$$
+\begin{align}
+P\left( W_{t+u}-W_t \right) =P\left( W_{t+u}-W_t|W_t \right)
+\end{align}
+$$</li>
+<li>增量满足正态分布 ：
+
+$$
+\begin{align}
+\left( W_{t+u}-W_t \right)  \sim \mathcal{N} \left( 0,u \right)
+\end{align}
+$$</li>
+<li>$W_t$ 随时间$t$几乎一定连续 (almost surely)。</li>
+</ol>
+<p>有了布朗运动的性质，为了后面证明需要需要用到下面三条引理：</p>
+<ol>
+<li>噪声微元的分布：
+
+$$
+\begin{align}
+dW_tdW_t=\sqrt{dt}\varepsilon \sqrt{dt}\varepsilon =dt\varepsilon ^2, where\,\,\varepsilon \sim \mathcal{N} \left( 0,1 \right) 
+\end{align}
+$$</li>
+<li>噪声微元的二阶原点矩等于时间微元， 方差则是时间微元的无穷小量
+
+$$
+\begin{align}
+E\left[ dW_tdW_t \right] =dt\,\,\,\,  D\left[ dW_tdW_t \right] \,\,\propto \,\,dtdt\equiv o\left( dt \right) 
+\end{align}
+$$</li>
+<li>由第二条引理可以推出一下性质几乎一定满足（因为期望是定值，方差满足无穷小量）：
+
+$$
+\begin{align}
+dW_tdW_t=dt
+\end{align}
+$$</li>
+</ol>
+<h3 id="12-三种维纳积分过程">
+<a class="header-anchor" href="#12-%e4%b8%89%e7%a7%8d%e7%bb%b4%e7%ba%b3%e7%a7%af%e5%88%86%e8%bf%87%e7%a8%8b"></a>
+1.2 三种维纳积分过程
+</h3><p>在连续时间的随机微分方程中，积分的定义有三种不同的方式：Itô积分、Stratonovich积分和反向Itô积分。这三种积分方式在处理随机过程时有不同的数学性质。</p>
+<h4 id="itô积分">
+<a class="header-anchor" href="#it%c3%b4%e7%a7%af%e5%88%86"></a>
+Itô积分
+</h4><p>Itô积分是最常用的随机积分方式，离散形式定义如下：</p>
+$$
+\begin{align}
+\int_0^T{g\left( W_t \right) dW_t}\,\, \equiv \sum_{i=0}^{k-1}{g\left( {W_{t_i}} \right)}\left( W_{t_{i+1}}-W_{t_i} \right) 
+\end{align} 
+$$<p>
+其中 $0=t_0<t_1<t_2<...<t_{k-1}<t_k=T$</p>
+<h4 id="stratonovich积分">
+<a class="header-anchor" href="#stratonovich%e7%a7%af%e5%88%86"></a>
+Stratonovich积分
+</h4><p>Stratonovich积分的离散形式定义如下：
+</p>
+$$
+\begin{align}
+\int_0^T{g\left( W_t \right) \circ dW_t}\,\, \equiv \sum_{i=0}^{k-1}{g\left( \frac{W_{t_i}+W_{t_{i+1}}}{2} \right)}\left( W_{t_{i+1}}-W_{t_i} \right)
+\end{align}
+$$<h4 id="反向itô积分">
+<a class="header-anchor" href="#%e5%8f%8d%e5%90%91it%c3%b4%e7%a7%af%e5%88%86"></a>
+反向Itô积分
+</h4><p>反向Itô积分的离散形式定义如下：
+</p>
+$$
+\begin{align}
+\int_0^T{g\left( W_t \right) \bullet dW_t}\,\, \equiv \sum_{i=0}^{k-1}{g\left( W_{t_{i+1}} \right)}\left( W_{t_{i+1}}-W_{t_i} \right)
+\end{align}
+$$<h4 id="三种积分的关系">
+<a class="header-anchor" href="#%e4%b8%89%e7%a7%8d%e7%a7%af%e5%88%86%e7%9a%84%e5%85%b3%e7%b3%bb"></a>
+三种积分的关系
+</h4><p>首先从Stratonovich积分作为中间桥梁入手，可以得到以下关系：
+</p>
+$$
+\begin{align}
+&\sum_{i=0}^{k-1}{g\left( \frac{W_{t_{i+1}}+W_{t_i}}{2} \right) \left( W_{t_{i+1}}-W_{t_i} \right)}
+\\
+&=\sum_{i=0}^{k-1}{g\left( W_{t_i}+\frac{W_{t_{i+1}}-W_{t_i}}{2} \right) \left( W_{t_{i+1}}-W_{t_i} \right)}
+\\
+&\approx \sum_{i=0}^{k-1}{\left( g\left( W_{t_i} \right) +g\prime\left( W_{t_i} \right) \frac{W_{t_{i+1}}-W_{t_i}}{2} \right) \left( W_{t_{i+1}}-W_{t_i} \right)}
+\\
+&=\sum_{i=0}^{k-1}{g\left( W_{t_i} \right) \left( W_{t_{i+1}}-W_{t_i} \right)}+\sum_{i=0}^{k-1}{\left( g'\left( W_{t_i} \right) \frac{W_{t_{i+1}}-W_{t_i}}{2} \right) \left( W_{t_{i+1}}-W_{t_i} \right)}
+\\
+&=\sum_{i=0}^{k-1}{g\left( W_{t_i} \right) \left( W_{t_{i+1}}-W_{t_i} \right)}+\frac{1}{2}\sum_{i=0}^{k-1}{g'\left( W_{t_i} \right) \left( W_{t_{i+1}}-W_{t_i} \right) ^2}
+\end{align}
+$$<p>联系之前的引理 $dW_tdW_t=dt$并结合上式第二项可以不严谨得到积分形式有如下关系</p>
+$$
+\begin{align}
+\int_0^T{g\left( W_t \right) \circ dW_t}=\int_0^T{g\left( W_t \right) dW_t}+\frac{1}{2}\int_0^T{g'\left( W_t \right) dt}
+\end{align}
+$$<p>仿照类似的思路我们可以得到另一组关系：
+</p>
+$$
+\begin{align}
+\sum_{i=0}^{k-1}{g\left( W_{t_{i+1}} \right) \left( W_{t_{i+1}}-W_{t_i} \right)}=\sum_{i=0}^{k-1}{g\left( W_{t_i} \right) \left( W_{t_{i+1}}-W_{t_i} \right)}+\sum_{i=0}^{k-1}{g\prime\left( W_{t_i} \right) {\left( W_{t_{i+1}}-W_{t_i} \right) ^2}}
+\end{align}
+$$<p>同样结合之前的引理可以得到如下关系：
+</p>
+$$
+\begin{align}
+\int_0^T{g\left( W_t \right) \bullet dW_t}=\int_0^T{g\left( W_t \right) dW_t}+\int_0^T{g'\left( W_t \right) dt}
+\end{align}
+$$<p>因此我们得到三种积分的关系如下：
+</p>
+$$
+\begin{align}
+\int_0^T{g\left( W_t \right) \bullet dW_t} &= \int_0^T{g\left( W_t \right) \circ dW_t} + \frac{1}{2}\int_0^T{g'\left( W_t \right) dt}
+\\
+&= \int_0^T{g\left( W_t \right) dW_t} + \int_0^T{g'\left( W_t \right) dt}
+\end{align}
+$$<h2 id="2itô过程">
+<a class="header-anchor" href="#2it%c3%b4%e8%bf%87%e7%a8%8b"></a>
+2.Itô过程
+</h2><h3 id="21-定义">
+<a class="header-anchor" href="#21-%e5%ae%9a%e4%b9%89"></a>
+2.1 定义
+</h3><p>Itô过程是指满足以下随机微分方程的过程：</p>
+$$
+dX_t\,\,=\,\,\mathop {\underbrace{\mu \left( X_t,t \right) }} \limits_{{ drift\,\,coefficient}}dt+\mathop {\underbrace{\sigma \left( X_t,t \right) }} \limits_{{ diffusion\,\, coefficient}}dW_t
+$$<p>该定义分为二部分 $\mu \left( X_t,t \right)$ 是漂移系数(必须满足Lipschitz连续条件）， $\sigma \left( X_t,t \right)$ 是扩散系数， $W_t$ 是布朗运动。</p>
+<h3 id="22-itô引理">
+<a class="header-anchor" href="#22-it%c3%b4%e5%bc%95%e7%90%86"></a>
+2.2 Itô引理
+</h3><p>Itô引理是随机微分方程中的一个重要工具，它描述了一个函数 $f(X_t,t)$ 的微分形式。具体来说，如果 $X_t$ 是一个Itô过程，那么对于一个足够光滑的函数 $f$，我们有：</p>
+$$
+\begin{align}
+&df\left( X_t,t \right) 
+\\
+&=\frac{\partial f}{\partial x}dX_t+\frac{\partial f}{\partial t}dt+\frac{1}{2}\frac{\partial ^2f}{\partial x^2}dX_tdX_t+o
+\\
+&=\frac{\partial f}{\partial x}\left( \mu \left( X_t,t \right) dt+\sigma \left( X_t,t \right) dW_t \right) +\frac{\partial f}{\partial t}dt\,\,+\frac{1}{2}\frac{\partial ^2f}{\partial x^2}\left( \mu \left( X_t,t \right) dt+\sigma \left( X_t,t \right) dW_t \right) ^2+o
+\\
+&=\frac{\partial f}{\partial x}\left( \mu \left( X_t,t \right) dt+\sigma \left( X_t,t \right) dW_t \right) +\frac{\partial f}{\partial t}dt\,\,+\frac{1}{2}\frac{\partial ^2f}{\partial x^2}\sigma ^2\left( X_t,t \right) dW_tdW_t+o
+\\
+&=\frac{\partial f}{\partial x}\left( \mu \left( X_t,t \right) dt+\sigma \left( X_t,t \right) dW_t \right) +\frac{\partial f}{\partial t}dt\,\,+\frac{1}{2}\frac{\partial ^2f}{\partial x^2}\sigma ^2\left( X_t,t \right) dt+o
+\\
+&=\left( \frac{\partial f}{\partial t}+\frac{\partial f}{\partial x}\mu \left( X_t,t \right) +\frac{1}{2}\frac{\partial ^2f}{\partial x^2}\sigma ^2\left( X_t,t \right) \right) dt+\frac{\partial f}{\partial x}\sigma \left( X_t,t \right) dW_t +o
+\end{align}
+$$<p>
+其中 $o$ 是高阶无穷小量。</p>
+<h2 id="3kolmogorov-方程">
+<a class="header-anchor" href="#3kolmogorov-%e6%96%b9%e7%a8%8b"></a>
+3.Kolmogorov 方程
+</h2><h3 id="31-反向-kolmogorov-方程修正证明">
+<a class="header-anchor" href="#31-%e5%8f%8d%e5%90%91-kolmogorov-%e6%96%b9%e7%a8%8b%e4%bf%ae%e6%ad%a3%e8%af%81%e6%98%8e"></a>
+3.1 反向 Kolmogorov 方程修正证明
+</h3><p>反向 Kolmogorov 方程（也称为 Fokker-Planck 方程的伴随方程）由以下偏微分方程描述：</p>
+$$
+\begin{align}
+-\frac{\partial}{\partial s}p\left( x_t,t|x_s,s \right) = \mu \left( x_s,s \right) \frac{\partial}{\partial x_s}p\left( x_t,t|x_s,s \right) +\frac{1}{2}\sigma ^2\left( x_s,s \right) \frac{\partial ^2}{\partial x_{s}^{2}}p\left( x_t,t|x_s,s \right) 
+\end{align}
+$$<p>其中 $s \leqslant t$，$p\left( x_t,t|x_s,s \right)$ 是在时间 $s$ 状态为 $x_s$ 的条件下，在时间 $t$ 状态为 $x_t$ 的转移概率密度函数。</p>
+<h4 id="证明过程">
+<a class="header-anchor" href="#%e8%af%81%e6%98%8e%e8%bf%87%e7%a8%8b"></a>
+证明过程
+</h4><p>首先，任意给定一个具有良好性质（如光滑、紧支集）的测试函数 $f(x)$。我们定义一个关于时间 $s$ 和状态 $y$ 的新函数 $u(y,s)$，它表示从状态 $(y,s)$ 出发，未来时刻 $t$ 的函数值 $f(X_t)$ 的条件期望：</p>
+$$
+\begin{align}
+u\left( y,s \right) = \mathbb{E}_{|y,s}\left[ f\left( X_t \right) \right] = \int f\left( x \right) p\left( x,t|y,s \right) dx, \quad s \leqslant t
+\end{align}
+$$<p>当 $s \to t$ 时，状态 $X_s$ 趋近于 $X_t$，此时的期望值即为函数值本身。因此，函数 $u(y,s)$ 满足如下终端边界条件（注意这里是 $s=t$ 时的条件）：</p>
+$$
+\begin{align}
+u\left( X_t,t \right) = \mathbb{E}_{|X_t,t}\left[ f\left( X_t \right) \right] = f\left( X_t \right) 
+\end{align}
+$$<p>由上面的边界条件，我们可以继续推导：</p>
+$$
+\begin{align}
+\mathbb{E}_{|y,s}\left[ u\left( X_t,t \right) \right] = \mathbb{E}_{|y,s}\left[ f\left( X_t \right) \right] = u\left( y,s \right) 
+\end{align}
+$$<p>第二个等号用到了$u$的定义，这意味着，如果我们把 $u(X_\tau, \tau)$ 看作一个随时间 $\tau$ 变化的过程（$s \le \tau \le t$），它在任何时刻的条件期望都等于初始值 $u(y,s)$，因此该过程是一个鞅。</p>
+<p>设随机过程 $X_\tau$ 服从随机微分方程 $dX_\tau = \mu(X_\tau, \tau)d\tau + \sigma(X_\tau, \tau)dW_\tau$。利用 Itô 引理对函数 $u(X_\tau, \tau)$ 在 $s \le \tau \le t$ 区间上进行微分：</p>
+$$
+\begin{align}
+du\left( X_\tau,\tau \right) &= \left( \frac{\partial u}{\partial \tau} + \mu \left( X_\tau,\tau \right) \frac{\partial u}{\partial x} + \frac{1}{2}\sigma ^2\left( X_\tau,\tau \right) \frac{\partial ^2 u}{\partial x^2} \right) d\tau \\
+&\quad + \frac{\partial u}{\partial x}\sigma \left( X_\tau,\tau \right) dW_\tau
+\end{align}
+$$<p>由于 $u(X_\tau, \tau)$ 是一个鞅，其漂移项期望为零（即 $d\tau$ 项的系数为零）。对上式两边关于给定条件 $(y,s)$ 求期望，由于 Itô 积分（扩散项）的期望为 0，我们得到：</p>
+$$
+\begin{align}
+\frac{d}{d\tau} \mathbb{E}_{|y,s}\left[ u\left( X_\tau,\tau \right) \right] = \mathbb{E}_{|y,s}\left[ \frac{\partial u}{\partial \tau} + \mu \left( X_\tau,\tau \right) \frac{\partial u}{\partial x} + \frac{1}{2}\sigma ^2\left( X_\tau,\tau \right) \frac{\partial ^2 u}{\partial x^2} \right]
+\end{align}
+$$<p>之前的边界条件推导可以得到 $\mathbb{E}_{|y,s}\left[ u\left( X_\tau,\tau \right) \right] = u(y,s)$ 是一个常数（不随 $\tau$ 变化），所以左端关于 $\tau$ 的导数为 0。特别地，令 $\tau \to s$（即取初始时刻），此时 $X_s = y$，我们有：</p>
+$$
+\begin{align}
+0 = \left( \frac{\partial u}{\partial \tau} + \mu \frac{\partial u}{\partial x} + \frac{1}{2}\sigma ^2 \frac{\partial ^2 u}{\partial x^2} \right) \bigg|_{(x=y, \tau=s)}
+\end{align}
+$$<p>为了符号统一，将变量 $\tau$ 替换回 $s$，并将状态变量 $y$ 视为通用的自变量，我们得到 $u(y,s)$ 满足的偏微分方程：</p>
+$$
+\begin{align}
+\frac{\partial u\left( y,s \right)}{\partial s} + \mu \left( y,s \right) \frac{\partial u\left( y,s \right)}{\partial y} + \frac{1}{2}\sigma ^2\left( y,s \right) \frac{\partial ^2 u\left( y,s \right)}{\partial y^2} = 0
+\end{align}
+$$<p>将 $u(y,s) = \int f\left( x \right) p\left( x,t|y,s \right) dx$ 代入上述方程。注意，这里的偏导数是针对变量 $y$ 和 $s$ 求的，而积分是针对 $x$ 的（$x$ 与 $y,s$ 无关）。因此可以将偏导符号移入积分号内：</p>
+$$
+\begin{align}
+\int f\left( x \right) \left( \frac{\partial p\left( x,t|y,s \right)}{\partial s} + \mu \left( y,s \right) \frac{\partial p\left( x,t|y,s \right)}{\partial y} + \frac{1}{2}\sigma ^2\left( y,s \right) \frac{\partial ^2 p\left( x,t|y,s \right)}{\partial y^2} \right) dx = 0
+\end{align}
+$$<p>由于测试函数 $f(x)$ 是任意的，要使上述积分恒为零，被积函数中关于 $f(x)$ 的系数项必须恒为零：</p>
+$$
+\begin{align}
+\frac{\partial p\left( x,t|y,s \right)}{\partial s} + \mu \left( y,s \right) \frac{\partial p\left( x,t|y,s \right)}{\partial y} + \frac{1}{2}\sigma ^2\left( y,s \right) \frac{\partial ^2 p\left( x,t|y,s \right)}{\partial y^2} = 0
+\end{align}
+$$<p>最后，我们将变量名进行统一替换：将起始状态变量 $y$ 替换为 $x_s$，将积分变量（目标状态）$x$ 替换为 $x_t$。方程变为：</p>
+$$
+\begin{align}
+\frac{\partial p\left( x_t,t|x_s,s \right)}{\partial s} + \mu \left( x_s,s \right) \frac{\partial p\left( x_t,t|x_s,s \right)}{\partial x_s} + \frac{1}{2}\sigma ^2\left( x_s,s \right) \frac{\partial ^2 p\left( x_t,t|x_s,s \right)}{\partial x_s^2} = 0
+\end{align}
+$$<p>将关于 $s$ 的偏导项移至等式右侧，即得到标准的反向 Kolmogorov 方程形式：</p>
+$$
+\begin{align}
+-\frac{\partial}{\partial s}p\left( x_t,t|x_s,s \right) =\mu \left( x_s,s \right) \frac{\partial}{\partial x_s}p\left( x_t,t|x_s,s \right) +\frac{1}{2}\sigma ^2\left( x_s,s \right) \frac{\partial ^2}{\partial x_{s}^{2}}p\left( x_t,t|x_s,s \right) 
+\end{align}
+$$<h3 id="32-前向kolmogorov方程">
+<a class="header-anchor" href="#32-%e5%89%8d%e5%90%91kolmogorov%e6%96%b9%e7%a8%8b"></a>
+3.2 前向Kolmogorov方程
+</h3><p>前向 Kolmogorov 方程（也称为 Fokker-Planck 方程）由以下偏微分方程描述：
+</p>
+$$
+\begin{align}
+\frac{\partial}{\partial t}p\left( x_t,t \right) =-\frac{\partial}{\partial x_t}\left[ \mu \left( x_t,t \right) p\left( x_t,t \right) \right] +\frac{1}{2}\frac{\partial ^2}{\partial x_{t}^{2}}\left[ \sigma ^2\left( x_t,t \right) p\left( x_t,t \right) \right] 
+\end{align}
+$$<p><strong>证明过程</strong></p>
+<p>可以用类似证明反向 Kolmogorov 方程的思路来证明前向 Kolmogorov 方程。
+首先定义一个测试函数 $u(x, t)$，让这个函数满足如下边界条件：
+</p>
+$$
+\begin{align}
+u(x,t_1) = u(x,t_2) =0, t_1 < t_2
+\end{align}
+$$<p>
+并且当$x \rightarrow \pm \infty $ 有$u\left( x,t \right) \rightarrow 0$和$\frac{\partial}{\partial x}u\left( x,t \right) \rightarrow 0$，因此可以推导：
+</p>
+$$
+\begin{align}
+0&=\mathbb{E} \left[ u\left( X_{t_2},t_2 \right) -u\left( X_{t_1},t_1 \right) \right] =\int{d\mathbb{E} \left[ u\left( X_t,t \right) \right]}
+\\
+&=\int_{t_1}^{t_2}{\mathbb{E} \left( \frac{\partial u}{\partial t}+\frac{\partial u}{\partial x}\mu +\frac{1}{2}\frac{\partial ^2u}{\partial x^2}\sigma ^2 \right) dt}
+\\
+&=\int_{t_1}^{t_2}{\int_{-\infty}^{+\infty}{\left( \frac{\partial u}{\partial t}+\frac{\partial u}{\partial x}\mu +\frac{1}{2}\frac{\partial ^2u}{\partial x^2}\sigma ^2 \right) p\left( x,t \right) dx}dt}
+\\
+&=\int_{t_1}^{t_2}{\int_{-\infty}^{+\infty}{\left( -\frac{\partial p\left( x,t \right)}{\partial t}-\frac{\partial}{\partial x}\left[ \mu p\left( x,t \right) \right] +\frac{1}{2}\frac{\partial ^2}{\partial x^2}\left[ p\left( x,t \right) \sigma ^2 \right] \right)u}dxdt}
+\end{align}
+$$<p>
+其中，第三个等号用到了 Itô 引理，而第五个等号用到了分部积分加之前的边界条件，因为$u$ 是是任意的（满足边界条件的基础上），且在引入$u$之前$t_1$和$t_2$也是任意设置的，因此被积函数中关于$u$的系数项必须恒为零，即得到前向 Kolmogorov 方程：
+</p>
+$$
+\begin{align}
+\frac{\partial}{\partial t}p\left( x,t \right) =-\frac{\partial}{\partial x}\left[ \mu \left( x,t \right) p\left( x,t \right) \right] +\frac{1}{2}\frac{\partial ^2}{\partial x^2}\left[ \sigma ^2\left( x,t \right) p\left( x,t \right) \right]
+\end{align}
+$$<h2 id="4郎之万方程">
+<a class="header-anchor" href="#4%e9%83%8e%e4%b9%8b%e4%b8%87%e6%96%b9%e7%a8%8b"></a>
+4.郎之万方程
+</h2><p>郎之万方程（Langevin equation）是描述粒子在流体中运动的随机微分方程。郎之万方程通用形式为：
+</p>
+$$
+\begin{align}
+\frac{d^2x}{dt^2}=-\lambda \frac{dx}{dt}+\eta \left( t \right) -\frac{\partial}{\partial x}V\left( x \right) 
+\end{align}
+$$<p>其中等式左侧的物理含义是粒子的加速度，右侧第一项 $-\lambda \frac{dx}{dt}$ 是阻尼项， $\lambda$ 是阻尼系数；第二项 $\eta \left( t \right)$ 是随机力，通常被建模为白噪声；第三项 $-\frac{\partial}{\partial x}V\left( x \right)$ 是由势能函数 $V(x)$ 导出的保守力。</p>
+<p>如果假设粒子加速度为零，且阻尼系数 $\lambda=1$，随机力为标准高斯过程，那么郎之万方程可以简化为如下形式：
+</p>
+$$
+\begin{align}
+\frac{dx}{dt}=-\frac{\partial}{\partial x}V\left( x \right) +\eta \left( t \right)
+\end{align}
+$$<p>
+如果写成全微分的形式，则可以得到如下随机微分方程：
+</p>
+$$
+\begin{align}
+dx=-\frac{\partial}{\partial x}V\left( x \right) dt+ dW_t
+\end{align}
+$$<p>
+可见上式是一种特殊的 Itô 过程。那么它对应的前向 Kolmogorov 方程（Fokker-Planck 方程）为：
+</p>
+$$
+\begin{align}
+\frac{\partial}{\partial t}p\left( x,t \right) =\frac{\partial}{\partial x}\left[ \frac{\partial}{\partial x}V\left( x \right) p\left( x,t \right) \right] +\frac{1}{2}\frac{\partial ^2}{\partial x^2}p\left( x,t \right)
+\end{align}
+$$<p>
+我们假设当$x\rightarrow \pm \infty $ 时，概率密度函数 $p(x,t)$ 以及其一阶导数 $\frac{\partial}{\partial x}p(x,t)$ 都趋近于零，假设平稳解存在，当$t\rightarrow +\infty $ 时，概率密度函数 $p(x,t)$ 收敛于一个平稳分布 $p(x)$，此时的前向 Kolmogorov 方程可以简化为如下形式：
+</p>
+$$
+\begin{align}
+0&=\frac{\partial}{\partial x}\left[ \frac{\partial}{\partial x}V\left( x \right) p\left( x \right) \right] +\frac{1}{2}\frac{\partial ^2}{\partial x^2}p\left( x \right)
+\\
+&=\frac{\partial}{\partial x}\left[ \frac{\partial}{\partial x}V\left( x \right) p\left( x \right) +\frac{1}{2}\frac{\partial}{\partial x}p\left( x \right) \right]
+\end{align}
+$$<p>
+左侧的零表示在平稳状态下，概率密度不随时间变化。接下来求解上述方程。</p>
+$$
+\begin{align}
+\frac{\partial}{\partial x_t}V\left( x \right) p\left( x \right) +\frac{1}{2}\frac{\partial}{\partial x}\left[ p\left( x \right) \right] =C_1
+\end{align}
+$$<p>
+根据之前的边界条件有如下关系：
+</p>
+$$
+\begin{align}
+0=\underset{x_t\rightarrow +\infty}{\lim}\frac{\partial}{\partial x}V\left( x \right) p\left( x \right) +\frac{1}{2}\frac{\partial}{\partial x}\left[ p\left( x \right) \right] =\underset{x_t\rightarrow +\infty}{\lim}C_1=C_1
+\end{align}
+$$<p>
+因此可以得到 $C_1=0$，即：
+</p>
+$$
+\begin{align}
+2\frac{\partial}{\partial x}V\left( x \right) p\left( x \right) +\frac{\partial}{\partial x}\left[ p\left( x \right) \right] =0
+\end{align}
+$$<p>
+上式是一个一阶线性常微分方程，可以通过积分因子法求解。首先计算积分因子：
+</p>
+$$
+\begin{align}
+\mu \left( x \right) =e^{\int{2\frac{\partial}{\partial x}V\left( x \right) dx}}=e^{2V\left( x \right)}
+\end{align}
+$$<p>
+将积分因子乘以原方程的两边，得到：
+</p>
+$$
+\begin{align}
+e^{2V\left( x \right)}\frac{\partial}{\partial x}p\left( x \right) +2e^{2V\left( x \right)}\frac{\partial}{\partial x}V\left( x \right) p\left( x \right) =0
+\end{align}
+$$<p>
+可以看出上式左侧是 $e^{2V\left( x \right)}p\left( x \right)$ 的导数，因此可以得到如下关系：
+</p>
+$$
+\begin{align}
+\frac{\partial}{\partial x}\left[ e^{2V\left( x \right)}p\left( x \right) \right] =0
+\end{align}
+$$<p>
+因此可以得到 $e^{2V\left( x \right)}p\left(x \right) =C_2$，即：
+</p>
+$$
+\begin{align}
+p\left( x \right) =C_2e^{-2V\left( x \right)}
+\end{align}
+$$<p>
+根据概率密度函数的归一化条件 $\int_{-\infty}^{+\infty}{p\left( x \right) dx}=1$ 可以得到 $C_2=\frac{1}{\int_{-\infty}^{+\infty}{e^{-2V\left( x \right)}dx}}$，因此最终的平稳分布为：
+</p>
+$$
+\begin{align}
+p\left( x \right) =\frac{e^{-2V\left( x \right)}}{\int_{-\infty}^{+\infty}{e^{-2V\left( x \right)}dx}}
+\end{align}
+$$<p>
+因此势能函数 $V(x)$ 和平稳分布 $p(x)$ 之间的关系为 $V\left( x \right) =-\frac{1}{2}\log p\left( x \right) +C$，其中 $C$ 是一个常数。
+如果要设计一种郎之万方程让其平稳分布为 $p_0(x)$，通过上述关系可以将对应郎之万方程设计如下：
+</p>
+$$
+\begin{align}
+dx=\frac{1}{2}\frac{\partial}{\partial x}\log p_0\left( x \right) dt +dW_t
+\end{align}
+$$<p>
+其中$\frac{\partial}{\partial x}\log p_0\left( x \right) $ 是 $p_0(x)$ 的得分函数,只要通过间接手段求出得分函数，就可以通过上述郎之万方程来采样 $p_0(x)$ 了。</p>
+<p>得分函数的求解见论文 <a href="https://arxiv.org/abs/1907.05600">Generative Modeling by Estimating Gradients of the Data Distribution</a> 和 <a href="https://arxiv.org/abs/1905.07088">Sliced Score Matching: A Scalable Approach to Density and Score Estimation</a>中的得分匹配方法。</p>
+<h2 id="5时间反演的itô过程">
+<a class="header-anchor" href="#5%e6%97%b6%e9%97%b4%e5%8f%8d%e6%bc%94%e7%9a%84it%c3%b4%e8%bf%87%e7%a8%8b"></a>
+5.时间反演的Itô过程
+</h2><p>时间反演的 Itô 过程是指在时间上进行反转的随机过程。首先回忆Itô过程的定义：如果 $X_t$ 是一个 Itô 过程，那么它满足如下随机微分方程：
+</p>
+$$
+\begin{align}
+dX_t = \mu(X_t, t) dt + \sigma(X_t, t) dW_t
+\end{align}
+$$<p>
+在实例离散采样中，有一个隐含条件，即$W_{t+u}-W_t$是独立于$X_t$的，即加入的高斯噪声是独立于当前状态的。</p>
+<p>我们假定反向时间的过程 $\tilde{X}_t$ 满足如下随机微分方程：
+</p>
+$$
+\begin{align}
+dX_t\,\,=\,\,\bar{\mu}\left( X_t,t \right) dt+\bar{\sigma}\left( X_t,t \right) d\bar{W}_t
+\end{align}
+$$<p>
+因为反向采样我们的加入的噪声是也独立于当前状态的，所以要求在反向过程也要满足 $\bar{W}_{t+u}-\bar{W}_t$ 是独立于 $X_t$ 的。</p>
+<p>抛开上述噪声项，我们构造一个新的随机变量的微分形式（用反向噪声项一样的符号，但是为了防止循环论证，暂且不把它看作噪声项只看成普通随机变量）：
+</p>
+$$
+\begin{align}
+d\bar{w}_t=\frac{1}{p\left( x_t,t \right)}\frac{\partial}{\partial x}\left[ p\left( x_t,t \right) \sigma \left( x_t,t \right) \right] dt+dw_t
+\end{align}
+$$<p>根据前向 Kolmogorov方程，可以写出如下两个关系：
+</p>
+$$
+\begin{align}
+\frac{\partial}{\partial t}p\left( x_t,t \right) =-\frac{\partial}{\partial x_t}\left[ \mu \left( x_t,t \right) p\left( x_t,t \right) \right] +\frac{1}{2}\frac{\partial ^2}{\partial x_{t}^{2}}\left[ \sigma ^2\left( x_t,t \right) p\left( x_t,t \right) \right] 
+\end{align}
+$$<p>
+和
+</p>
+$$
+\begin{align}
+&\frac{\partial}{\partial t}p\left( x_t,\bar{w}_t,t \right) = -\frac{\partial}{\partial x_t}\left[ p\left( x_t,\bar{w}_t,t \right) \mu \left( x_t,t \right) \right] dt \\
+&-\frac{\partial}{\partial \bar{w}_t}\left[ p\left( x_t,\bar{w}_t,t \right) \frac{1}{p\left( x_t,t \right)}\frac{\partial}{\partial x}\left[ p\left( x_t,t \right) \sigma \left( x_t,t \right) \right] \right] 
+\\
+&+\frac{1}{2}\frac{\partial ^2}{\partial x_{t}^{2}}\left[ p\left( x_t,\bar{w}_t,t \right) \sigma ^2\left( x_t,t \right) \right] +\frac{1}{2}\frac{\partial ^2}{\partial \bar{w}_{t}^{2}}\left[ p\left( x_t,\bar{w}_t,t \right) \right] 
+\\
+&+\frac{\partial ^2}{\partial \bar{w}_t\partial x_t}\left[ p\left( x_t,\bar{w}_t,t \right) \sigma \left( x_t,t \right) \right] 
+\end{align}
+$$<p>
+第二项用到了二维的前向 Kolmogorov 方程，这里不加证明地直接使用，区别就是含有二阶偏导数以及交叉项。</p>
+<p>注意到$\bar{w}_t$和$w_t$实际上可以任意选取坐标原点，不妨假设在某个$s > 0$时刻，它们的坐标原点重合，即$\bar{w}_{s}=w_{s}$，因此在$s$时刻有如下关系：
+</p>
+$$
+\begin{align}
+p\left( x_s,\bar{w}_s,s \right) =p\left( x_s,s \right) \delta \left( \bar{w}_s \right)
+\end{align}
+$$<p>
+将$\bar{w}_t$的分布作为狄拉克函数单独分离出来，</p>
+<p>另外针对$t > s$单独构造一种分布：
+</p>
+$$
+\begin{align}
+p_0\left( x_t,\bar{w}_t,t \right) =\phi \left( \bar{w}_t,t \right) p\left( x_t,t \right) 
+\end{align}
+$$<p>
+其中，$\phi \left( \bar{w}_t,t \right) =\frac{1}{\sqrt{2\pi \left( t-s \right)}}e^{-\frac{{\bar{w}_t}^2}{2\left( t-s \right)}}$，可以发现，当$t\rightarrow s^+$时这一项也是狄拉克函数，并且可以很容易证明：
+</p>
+$$
+\begin{align}
+\frac{\partial}{\partial t}\phi \left( \bar{w}_t,t \right) =\frac{1}{2}\frac{\partial ^2}{\partial \bar{w}_{t}^{2}}\phi \left( \bar{w}_t,t \right) 
+\end{align}
+$$<p>对这个分布进行超长推导：
+</p>
+$$
+\begin{align}
+&-\frac{\partial}{\partial x_t}\left[ p_0\left( x_t,w_t,t \right) \mu \left( x_t,t \right) \right] -\frac{\partial}{\partial \bar{w}_t}\left[ p_0\left( x_t,w_t,t \right) \frac{1}{p\left( x_t,t \right)}\frac{\partial}{\partial x}\left[ p\left( x_t,t \right) \sigma \left( x_t,t \right) \right] \right] 
+\\
+&+\frac{1}{2}\frac{\partial ^2}{\partial x_{t}^{2}}\left[ p_0\left( x_t,\bar{w}_t,t \right) \sigma ^2\left( x_t,t \right) \right] +\frac{1}{2}\frac{\partial ^2}{\partial \bar{w}_{t}^{2}}\left[ p_0\left( x_t,\bar{w}_t,t \right) \right] +\frac{\partial ^2}{\partial \bar{w}_t\partial x_t}\left[ p_0\left( x_t,\bar{w}_t,t \right) \sigma \left( x_t,t \right) \right] 
+\\
+&=-\phi \left( \bar{w}_t,t \right) \frac{\partial}{\partial x_t}\left[ p\left( x_t,t \right) \mu \left( x_t,t \right) \right] { -\frac{\partial}{\partial x_t}\left[ p_0\left( x_t,t \right) \sigma \left( x_t,t \right) \right] \frac{\partial}{\partial \bar{w}_t}\left[ \phi \left( \bar{w}_t,t \right) \right] }
+\\
+&+\frac{1}{2}\phi \left( \bar{w}_t,t \right) \frac{\partial ^2}{\partial x_{t}^{2}}\left[ p\left( x_t,t \right) \sigma ^2\left( x_t,t \right) \right] +p\left( x_t,t \right) \frac{1}{2}\frac{\partial ^2}{\partial \bar{w}_{t}^{2}}\left[ \phi \left( \bar{w}_t,t \right) \right] 
+\\
+&+{ \frac{\partial}{\partial \bar{w}_t}\left[ \phi \left( \bar{w}_t,t \right) \right] \frac{\partial}{\partial x_t}\left[ p\left( x_t,t \right) \sigma \left( x_t,t \right) \right] }
+\\
+&=\phi \left( \bar{w}_t,t \right) \left( -\frac{\partial}{\partial x_t}\left[ p\left( x_t,t \right) \mu \left( x_t,t \right) \right] +\frac{1}{2}\frac{\partial ^2}{\partial x_{t}^{2}}\left[ p\left( x_t,t \right) \sigma ^2\left( x_t,t \right) \right] \right) +\frac{1}{2}p\left( x_t,t \right) \frac{\partial ^2}{\partial \bar{w}_{t}^{2}}\left[ \phi \left( \bar{w}_t,t \right) \right] 
+\\
+&=\phi \left( \bar{w}_t,t \right) \frac{\partial}{\partial t}p\left( x_t,t \right) +p\left( x_t,t \right) \frac{\partial}{\partial t}\left[ \phi \left( \bar{w}_t,t \right) \right] 
+\\
+&=\frac{\partial}{\partial t}\left[ \phi \left( \bar{w}_t,t \right) p\left( x_t,t \right) \right] 
+\\
+&=\frac{\partial}{\partial t}p_0\left( x_t,w_t,t \right) 
+\end{align}
+$$<p>倒数第三个等号用了前向 Kolmogorov 方程，最后一个等号用了 $p_0\left( x_t,w_t,t \right) $的定义。</p>
+<p>可以发现新构造的分布 $p_0\left( x_t,w_t,t \right) $ 也满足和$p\left( x_{t_0},\bar{w}_{t_0},t_0 \right)$一样的前向 Kolmogorov 方程，并且在起始点s边界取值相同。因此可以认为二者服从同一种分布演化，所以可以认为：
+</p>
+$$
+\begin{align}
+p\left( x_t,\bar{w}_t,t \right) \equiv p_0\left( x_t,\bar{w}_t,t \right) =\phi \left( \bar{w}_t,t \right) p\left( x_t,t \right) 
+\end{align}
+$$<p>
+既然$\bar{w}_t$的概率可以分离并且是高斯过程的形式，因此可以认为$\bar{w}_t-\bar{w}_s$是一个独立于$x_t$的高斯噪声过程。因此我们将$\bar{w}_t$代入之前的前向过程
+</p>
+$$
+\begin{align}
+dx_t\,\,=\,\,\left( \mu \left( x_t,t \right) -\frac{\sigma \left( x_t,t \right)}{p\left( x_t,t \right)}\frac{\partial}{\partial x_t}\left[ p\left( x_t,t \right) \sigma \left( x_t,t \right) \right] \right) dt+\sigma \left( x_t,t \right) d\bar{w}_t\equiv \hat{\mu}\left( x_t,t \right) dt+\sigma \left( x_t,t \right) d\bar{w}_t
+\end{align}
+$$<p>
+其中，$\hat{\mu}\left( x_t,t \right) =\mu \left( x_t,t \right) -\frac{\sigma \left( x_t,t \right)}{p\left( x_t,t \right)}\frac{\partial}{\partial x_t}\left[ p\left( x_t,t \right) \sigma \left( x_t,t \right) \right] $</p>
+<p>对于一个Itô过程 $dx_t\,\,=\,\,\hat{\mu}\left( x_t,t \right) dt+\sigma \left( x_t,t \right) d\bar{w}_t
+\\$, 上面式子随机项来自$\bar{w}_t$, 在一个极短时间$t+\varDelta t$内令$x=f(\bar{w}_t)$并有$f'(\bar{w}_t)=\sigma \left( x_t ,t \right)$，
+对它进行积分可以得到：
+</p>
+$$
+\begin{align}
+x_t&=x_s+\int_s^t{\hat{\mu}\left( x_t,t \right) dt}+\int_s^t{\sigma \left( f\left( \bar{w}_t \right) ,t \right) d\bar{w}_t}
+\\
+&=x_s+\int_s^t{\hat{\mu}\left( x_t,t \right) dt}+\int_s^t{\sigma \left( f\left( \bar{w}_t \right) ,t \right) \bullet d\bar{w}_t}-\int_s^t{f'\left( \bar{w}_t \right) \sigma _x\left( f\left( \bar{w}_t \right) ,t \right) dt}
+\\
+&=x_s+\int_s^t{\hat{\mu}\left( x_t,t \right) dt}+\int_s^t{\sigma \left( f\left( \bar{w}_t \right) ,t \right) \bullet d\bar{w}_t}-\int_s^t{\sigma \left( x_t,t \right) \frac{\partial}{\partial x_t}\sigma \left( x_t,t \right) dt}
+\end{align}
+$$<p>
+对上面的积分再次微分可以得到：
+</p>
+$$
+\begin{align}
+dx_t&=\left( \hat{\mu}\left( x_t,t \right) -\sigma \left( x_t,t \right) \frac{\partial}{\partial x_t}\sigma \left( x_t,t \right) \right) dt+\sigma \left( f\left( \bar{w}_t \right) ,t \right) \bullet d\bar{w}_t
+\\
+&=\left( \mu \left( x_t,t \right) -\frac{\sigma \left( x_t,t \right)}{p\left( x_t,t \right)}\frac{\partial}{\partial x_t}\left[ p\left( x_t,t \right) \sigma \left( x_t,t \right) \right] -\sigma \left( x_t,t \right) \frac{\partial}{\partial x_t}\sigma \left( x_t,t \right) \right) dt+\sigma \left( x_t,t \right) \bullet d\bar{w}_t
+\\
+&=\left( \mu \left( x_t,t \right) -\frac{\partial}{\partial x_t}\sigma ^2\left( x_t,t \right) -\sigma ^2\left( x_t,t \right) \frac{\partial}{\partial x_t}\left[ \log p\left( x_t,t \right) \right] \right) dt+\sigma \left( x_t,t \right) \bullet d\bar{w}_t
+\\
+&\equiv \bar{\mu}\left( x_t,t \right) dt+\sigma \left( x_t,t \right) \bullet d\bar{w}_t
+\\
+\end{align}
+$$<p>其中，$\bar{\mu}\left( x_t,t \right) =\mu \left( x_t,t \right) -\frac{\partial}{\partial x_t}\sigma ^2\left( x_t,t \right) -\sigma ^2\left( x_t,t \right) \frac{\partial}{\partial x_t}\left[ \log p\left( x_t,t \right) \right] $</p>
+<p>因此我们就得到了时间反演的 Itô 过程。它的噪声项独立于未来状态，因为反向过程加入的噪声是加在“下一个时刻”然后得到“当前时刻”的，和正向加噪过程刚好反过来，因此依赖条件也要反过来。</p>
+<p>漂移项中有一项含时间的分数项$\frac{\partial}{\partial x_t}\left[ \log p\left( x_t,t \right) \right]$，只要求出它，即可以通过上述反向过程来采样从终点分布回到初始分布了 （例如从高斯分布回到数据分布）。分数项求解不再赘述，具体求解方式参考论文 <a href="https://arxiv.org/abs/2011.13456">SCORE-BASED GENERATIVE MODELING THROUGH  STOCHASTIC DIFFERENTIAL EQUATIONS</a>。</p>
+</div>
+    <footer class="article-footer"><blockquote class="article-copyright"><p><strong><span class="icon-user icon"></span>Author: </strong>MIMI</p><p>
+      <strong><span class="icon-link icon"></span>Permalink: </strong><a href="https://shqww.github.io/en/post/diffusion_model_sde/">https://shqww.github.io/en/post/diffusion_model_sde/</a>
+    </p><p>
+      
+      <strong><span class="icon-copyright icon"></span>License: </strong>
+      All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!
+    </p>
+    <span class="icon-creative-commons article-copyright-bg"></span></blockquote>
+<div class="share-wrapper"><a href="https://www.facebook.com/sharer/sharer.php?u=https://shqww.github.io/en/post/diffusion_model_sde/" target="_blank" rel="noopener noreferrer" title="扩散模型中的随机微分方程">
+      <div class="share-icon icon icon-facebook"></div>
+    </a><a href="https://twitter.com/intent/tweet?url=https://shqww.github.io/en/post/diffusion_model_sde/&amp;text=%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8b%e4%b8%ad%e7%9a%84%e9%9a%8f%e6%9c%ba%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b&amp;via=https://shqww.github.io/" target="_blank" rel="noopener noreferrer" title="扩散模型中的随机微分方程">
+      <div class="share-icon icon icon-twitter"></div>
+    </a><a href="https://bsky.app/intent/compose?text=%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8b%e4%b8%ad%e7%9a%84%e9%9a%8f%e6%9c%ba%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%20https://shqww.github.io/en/post/diffusion_model_sde/" target="_blank" rel="noopener noreferrer" title="扩散模型中的随机微分方程">
+      <div class="share-icon icon icon-bluesky"></div>
+    </a><a href="https://www.linkedin.com/shareArticle?url=https://shqww.github.io/en/post/diffusion_model_sde/&amp;title=%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8b%e4%b8%ad%e7%9a%84%e9%9a%8f%e6%9c%ba%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b&amp;summary=%e5%af%b9%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8b%e4%b8%ad%e6%b6%89%e5%8f%8a%e7%9a%84%e9%9a%8f%e6%9c%ba%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e8%bf%9b%e8%a1%8c%e8%af%a6%e7%bb%86%e7%9a%84%e6%95%b0%e5%ad%a6%e5%88%86%e6%9e%90%e5%92%8c%e8%af%81%e6%98%8e%e3%80%82&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="扩散模型中的随机微分方程">
+      <div class="share-icon icon icon-linkedin"></div>
+    </a><a href="https://www.reddit.com/submit?url=https://shqww.github.io/en/post/diffusion_model_sde/&amp;title=%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8b%e4%b8%ad%e7%9a%84%e9%9a%8f%e6%9c%ba%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b" target="_blank" rel="noopener noreferrer" title="扩散模型中的随机微分方程">
+      <div class="share-icon icon icon-reddit"></div>
+    </a><a href="https://service.weibo.com/share/share.php?url=https://shqww.github.io/en/post/diffusion_model_sde/&amp;appkey=&amp;title=%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8b%e4%b8%ad%e7%9a%84%e9%9a%8f%e6%9c%ba%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="扩散模型中的随机微分方程">
+      <div class="share-icon icon icon-weibo"></div>
+    </a><a href="https://connect.qq.com/widget/shareqq/index.html?url=https://shqww.github.io/en/post/diffusion_model_sde/&amp;title=%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8b%e4%b8%ad%e7%9a%84%e9%9a%8f%e6%9c%ba%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b&amp;desc=%e5%af%b9%e6%89%a9%e6%95%a3%e6%a8%a1%e5%9e%8b%e4%b8%ad%e6%b6%89%e5%8f%8a%e7%9a%84%e9%9a%8f%e6%9c%ba%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b%e8%bf%9b%e8%a1%8c%e8%af%a6%e7%bb%86%e7%9a%84%e6%95%b0%e5%ad%a6%e5%88%86%e6%9e%90%e5%92%8c%e8%af%81%e6%98%8e%e3%80%82&amp;source=https://shqww.github.io/" target="_blank" rel="noopener noreferrer" title="扩散模型中的随机微分方程">
+      <div class="share-icon icon icon-qq"></div>
+    </a><a href="javascript:;"  title="扩散模型中的随机微分方程">
+      <div class="share-icon icon icon-weixin"><div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hugo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div></div>
+    </a></div><a
+          data-aos="zoom-in"
+          href="/en/post/diffusion_model_sde/#comments"
+          class="article-comment-link"
+        >
+          <span
+            class="post-comments-count waline-comment-count"
+            data-path="/en/post/diffusion_model_sde/"
+            itemprop="commentCount"
+          ></span>
+          Comments
+        </a><span
+          data-aos="zoom-in"
+          class="article-visitor-link"
+        >
+          <span
+            class="waline-pageview-count"
+            data-path="/en/post/diffusion_model_sde/"
+            >0</span
+          >
+          <em class="post-meta-item-text">Readings</em>
+        </span><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/en/categories/machine-learning"
+      data-aos="zoom-in"
+      >Machine Learning</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/en/tags/machine-learning"
+        rel="tag"
+        >Machine Learning</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/en/tags/diffusion-models"
+        rel="tag"
+        >Diffusion Models</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/covers/hugo.png"
+            data-sizes="auto"
+            alt="hugo-theme-reimu 博客主题定制与修改"
+            class="lazyload"
+          /><a
+          href="/en/post/hugo-reimu-themes/"
+          aria-label="Prev:hugo-theme-reimu 博客主题定制与修改"
+          title="Prev:hugo-theme-reimu 博客主题定制与修改"
+        ></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">hugo-theme-reimu 博客主题定制与修改</h3>
+      </div><div class="article-nav-link-wrap right"><img
+            data-src="/covers/pca.png"
+            data-sizes="auto"
+            alt="主成分分析和线性回归对比"
+            class="lazyload"
+          /><a
+          href="/en/post/pca_lr/"
+          aria-label="Next:主成分分析和线性回归对比"
+          title="Next:主成分分析和线性回归对比"
+        ></a>
+        <div class="article-nav-caption">Next</div>
+        <h3 class="article-nav-title">主成分分析和线性回归对比</h3>
+      </div></nav></article><section id="comments" data-aos="fade-up">
+<div class="comment-header"><h2 class="comment-title">Leave a comment</h2>
+  <div class="comment-selector">
+    <div class="comment-selector-wrap"><div class="selector-item" data-selector="waline">
+          <span>waline</span>
+        </div></div>
+  </div>
+</div>
+
+<div class="comment-content"><div class="comment waline-comment" data-aos="fade-up"
+     >
+    </div></div>
+</section></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2024-2026<span class="footer-info-sep rotate"></span>MIMI
+    </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1维纳过程wiener-process-和--布朗运动brownian-motion">1.维纳过程（Wiener Process） 和  布朗运动（Brownian Motion）</a>
+      <ul>
+        <li><a href="#11基本性质">1.1基本性质</a></li>
+        <li><a href="#12-三种维纳积分过程">1.2 三种维纳积分过程</a></li>
+      </ul>
+    </li>
+    <li><a href="#2itô过程">2.Itô过程</a>
+      <ul>
+        <li><a href="#21-定义">2.1 定义</a></li>
+        <li><a href="#22-itô引理">2.2 Itô引理</a></li>
+      </ul>
+    </li>
+    <li><a href="#3kolmogorov-方程">3.Kolmogorov 方程</a>
+      <ul>
+        <li><a href="#31-反向-kolmogorov-方程修正证明">3.1 反向 Kolmogorov 方程修正证明</a></li>
+        <li><a href="#32-前向kolmogorov方程">3.2 前向Kolmogorov方程</a></li>
+      </ul>
+    </li>
+    <li><a href="#4郎之万方程">4.郎之万方程</a></li>
+    <li><a href="#5时间反演的itô过程">5.时间反演的Itô过程</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">12</div>
+  </div>
+  <a class="sidebar-state-category" href="/en/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/en/tags/" aria-label="sidebar-state-tag-link">
+    <div>Tags</div>
+    <div class="sidebar-state-number">9</div>
+  </a>
+</div>
+<div class="sidebar-social" ><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/en/"
+        aria-label="Home"
+      ></a><div class='sidebar-menu-icon icon '>&#xf015;</div><div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/en/archives"
+        aria-label="Archives"
+      ></a><div class='sidebar-menu-icon icon '>&#xf187;</div><div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/en/about"
+        aria-label="About"
+      ></a><div class='sidebar-menu-icon icon '>&#xf05a;</div><div class="sidebar-menu-link">About</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    
+    
+    
+    
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous"  ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax ></script><script
+    src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD&#43;jAPU55x/jj3wlf" crossorigin="anonymous"></script><script src="/js/pjax.js" integrity="" crossorigin="anonymous"  ></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "MIMI",
+          title: "扩散模型中的随机微分方程",
+          url: "https:\/\/shqww.github.io\/en\/post\/diffusion_model_sde\/",
+          description: "对扩散模型中涉及的随机微分方程进行详细的数学分析和证明。",
+          cover: "https:\/\/shqww.github.io\/covers\/diffusion.png",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script><script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+  var commentConfigKeys = ['valine', 'waline', 'twikoo', 'gitalk', 'giscus', 'utterances', 'beaudar', 'disqus'];
+  var commentConfig = {waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https:\/\/npm.webcache.cn\/@waline\/client@2.15.8\/dist\/waline.mjs';
+        
+        if ('webcache|@waline\/client@2.15.8\/dist\/waline.mjs'.startsWith('local')) {
+          
+          const module = await safeImport(walineCdn);
+          walineInit = module.init;
+        } else {
+          
+          const module = await safeImport(
+            walineCdn, 
+            'sha384-9sbqJjrfGjbkI6\/PI4nU\/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH\/KinBEAZII\/5'
+          );
+          walineInit = module.init;
+        }
+        
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'github-blog-comment-two.vercel.app',
+          lang: document.documentElement.lang || 'en',
+          locale: JSON.parse("{}"),
+          emoji: JSON.parse("[\"https://unpkg.com/@waline/emojis@1.2.0/weibo\",\"https://unpkg.com/@waline/emojis@1.2.0/alus\",\"https://unpkg.com/@waline/emojis@1.2.0/bilibili\",\"https://unpkg.com/@waline/emojis@1.2.0/qq\",\"https://unpkg.com/@waline/emojis@1.2.0/tieba\",\"https://unpkg.com/@waline/emojis@1.2.0/tw-emoji\"]"),
+          meta: JSON.parse("[\"nick\",\"mail\",\"link\"]"),
+          requiredMeta: JSON.parse("[\"nick\",\"mail\"]"),
+          wordLimit:  0 ,
+          comment: true,
+          pageSize:  10 ,
+          dark: 'html[data-theme="dark"]',
+          pageview:  true ,
+        });
+      }
+    },};
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig?.[key]?.enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig?.[sys]?.enable) || '';
+    }
+  }
+
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false,
+      disqus: false,
+      utterances: false,
+      beaudar: false,
+    };
+
+    
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      
+      const commentType = item.getAttribute('data-selector');
+
+      
+      hideAllComments();
+
+      
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          
+          changeActiveCommentItems(item);
+        });
+      }
+
+      
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script><script
+    src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-VT1EeewTCEXgndcPMQ0PzV&#43;uVFYjxFIjmAA7s5gcMX9t4Dt5TD&#43;OVQIn7NJWIXn7" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/@zumer/snapdom@1.9.14/dist/snapdom.min.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-OEQ&#43;fJp/Mvi2uzBREXybtxryJvLytWapuHu4EE6LPwTKUwATYcc55tPPcZTzVcmx" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC&#43;gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
+</div><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script>
+    var setupAPlayer = () => {
+      if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const meting = _$('meting-js');
+          if (meting) {
+            meting.setAttribute('fixed', 'true');
+            const aside = meting.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              meting.parentNode.removeChild(meting);
+              document.body.appendChild(meting);
+            }
+          }
+        }
+      }
+    };</script><script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    defer
+    
+    
+    onload="setupAPlayer()"
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    defer
+    
+    
+    
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

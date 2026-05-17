@@ -1,0 +1,2147 @@
+<!doctype html>
+<html
+  lang="zh-CN" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  markdown博客语法 | MIMI
+</title>
+<meta name="description" content=""/><script>
+  window.siteConfig = JSON.parse("{\"anchor\":null,\"anchor_icon\":\"f1b0\",\"base\":\"https://shqww.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"label\":\"简体中文\",\"lang\":\"zh-cn\"},{\"label\":\"English\",\"lang\":\"en\"}],\"icon_font\":false,\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link
+    rel="preload"
+    as="style"
+    crossorigin
+    href="https://fontsapi.zeoseven.com/292/main/result.css"
+    onload="this.rel='stylesheet'"
+  /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/regular.min.css"
+    integrity="sha384-4qYppzjH8EiA&#43;cGdaubu2vL7Rk8WGiqCSj7oRuP1uwtFWkfKNHD20lPfcrbQc8dU" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/solid.min.css"
+    integrity="sha384-wbMWab3UDSPm2kvIgVOn/d9KPTecgPU1&#43;Nb3zoQrm/oVu0EkPL6IaKinjbwW0rum" crossorigin="anonymous"/><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css"
+    integrity="sha384-KTGeC2hIMzpeQakhsmzB9bZfhCD5xZZCgI1iZH6f/O457SxzlkzTQg/WXFNoi3ih" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v5-font-face.min.css"
+    integrity="sha384-nJ1ThfldViXoLpJ6jlKcP2beas8BMbYq26SG9Hi8cH89bZi4RZ644v7helMCqJxd" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.1.0/css/v4-font-face.min.css"
+    integrity="sha384-UlkrhOIvZxJFd4MElSUp7ow6/RUeYKi/orfCZIRRiOENFuQPIAA3T3HjYfmBRhNq" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><meta property="og:type" content="website" />
+  <meta property="og:title" content="markdown博客语法 | MIMI" />
+  <meta
+    property="og:description"
+    content=""
+  />
+  <meta property="og:url" content="https://shqww.github.io/post/markdown_example/" />
+  <meta
+    property="og:site_name"
+    content="MIMI的博客"
+  />
+  <meta property="og:image" content="https://shqww.github.io/covers/hugo.png" />
+  <meta property="article:author" content="MIMI" />
+  <meta property="article:published_time" content="2024-11-27T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2024-11-27T00:00:00&#43;00:00" /><meta property="article:tag" content="Blog, Web Tech" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://shqww.github.io/covers/hugo.png" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.42636b11f055d175901c8d1ffb6c9cd1c7b209cbf99c6fc058b3afc9f9247414.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css"
+    integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy&#43;Ub9QgnxUYJmwOhYCK" crossorigin="anonymous"/><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css"
+    integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj&#43;vDDLIL&#43;xBGQU/voDBY5XE2lVh" crossorigin="anonymous"/></head>
+  <body><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon '>&#xf015;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon '>&#xf187;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon '>&#xf05a;</div><span class="main-nav-link">关于</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="en" role="option" aria-selected="false" >English</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};langMap['en'] = '\/en\/post\/markdown_example\/';selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture>
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/hugo.png" alt="markdown博客语法"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">markdown博客语法</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"><span id="subtitle">hugo博客markdown写法示例</span></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          class="sidebar-left"
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#markdown-基本语法">Markdown 基本语法</a>
+      <ul>
+        <li><a href="#标题">标题</a></li>
+        <li><a href="#强调与删除线">强调与删除线</a></li>
+        <li><a href="#列表">列表</a></li>
+        <li><a href="#段落">段落</a></li>
+        <li><a href="#表格">表格</a></li>
+        <li><a href="#其他元素---abbr-acronym-sub-sup-kbd-etc">其他元素 - abbr, acronym, sub, sup, kbd, etc.</a></li>
+        <li><a href="#图片">图片</a></li>
+        <li><a href="#分隔线">分隔线</a></li>
+      </ul>
+    </li>
+    <li><a href="#代码块">代码块</a></li>
+    <li><a href="#数学公式">数学公式</a></li>
+    <li><a href="#流程图">流程图</a></li>
+    <li><a href="#卡片">卡片</a>
+      <ul>
+        <li><a href="#链接卡片">链接卡片</a></li>
+        <li><a href="#热力图卡片">热力图卡片</a></li>
+        <li><a href="#tag卡片">Tag卡片</a></li>
+        <li><a href="#alert-卡片">Alert 卡片</a></li>
+      </ul>
+    </li>
+    <li><a href="#选项卡">选项卡</a></li>
+    <li><a href="#照片墙">照片墙</a></li>
+    <li><a href="#单元网格">单元网格</a></li>
+    <li><a href="#折叠项">折叠项</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">12</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">9</div>
+  </a>
+</div>
+<div class="sidebar-social" style="margin-bottom: 20px;"><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><meting-js
+        theme="var(--color-link)"
+        id="12622038301"server="netease"type="playlist"fixed="false"list-folded="true"class="aplayer-after-sidebar"
+        >
+      </meting-js><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+
+
+<div class="article-date">
+  
+    <div class="date-circle">
+      <div class="date-wrapper">
+        <time class="date-year" datetime="2024-11-27T00:00:00Z">2024</time>
+        <time class="date-day" datetime="2024-11-27T00:00:00Z">11-27</time>
+      </div>
+    </div>
+  </span>
+</div></div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="markdown-基本语法">
+<a class="header-anchor" href="#markdown-%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95"></a>
+Markdown 基本语法
+</h2><h3 id="标题">
+<a class="header-anchor" href="#%e6%a0%87%e9%a2%98"></a>
+标题
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-MARKDOWN" data-lang="MARKDOWN"><span class="line"><span class="cl"><span class="gh"># H1
+</span></span></span><span class="line"><span class="cl"><span class="gu">## H2
+</span></span></span><span class="line"><span class="cl"><span class="gu">### H3
+</span></span></span><span class="line"><span class="cl"><span class="gu">#### H4
+</span></span></span><span class="line"><span class="cl"><span class="gu">##### H5
+</span></span></span><span class="line"><span class="cl"><span class="gu">###### H6
+</span></span></span></code></pre></div><h3 id="强调与删除线">
+<a class="header-anchor" href="#%e5%bc%ba%e8%b0%83%e4%b8%8e%e5%88%a0%e9%99%a4%e7%ba%bf"></a>
+强调与删除线
+</h3><p>Emphasis, aka italics, with <em>asterisks</em> or <em>underscores</em>.</p>
+<p>Strong emphasis, aka bold, with <strong>asterisks</strong> or <strong>underscores</strong>.</p>
+<p>Combined emphasis with <strong>asterisks and <em>underscores</em></strong>.</p>
+<p>Strikethrough uses two tildes. <del>Scratch this.</del></p>
+<h3 id="列表">
+<a class="header-anchor" href="#%e5%88%97%e8%a1%a8"></a>
+列表
+</h3><h4 id="definition-list-dl">
+<a class="header-anchor" href="#definition-list-dl"></a>
+Definition List (dl)
+</h4><dl><dt>Definition List Title</dt><dd>This is a definition list division.</dd></dl>
+<h4 id="ordered-list-ol">
+<a class="header-anchor" href="#ordered-list-ol"></a>
+Ordered List (ol)
+</h4><ol>
+<li>List Item 1</li>
+<li>List Item 2</li>
+<li>List Item 3</li>
+</ol>
+<h4 id="unordered-list-ul">
+<a class="header-anchor" href="#unordered-list-ul"></a>
+Unordered List (ul)
+</h4><ul>
+<li>List Item 1</li>
+<li>List Item 2</li>
+<li>List Item 3</li>
+</ul>
+<h3 id="段落">
+<a class="header-anchor" href="#%e6%ae%b5%e8%90%bd"></a>
+段落
+</h3><p>Lorem ipsum dolor sit amet, <a href="">test link</a> consectetur adipiscing elit. <strong>Strong text</strong> pellentesque ligula commodo viverra vehicula. <em>Italic text</em> at ullamcorper enim. Morbi a euismod nibh. <u>Underline text</u> non elit nisl. <del>Deleted text</del> tristique, sem id condimentum tempus, metus lectus venenatis mauris, sit amet semper lorem felis a eros. Fusce egestas nibh at sagittis auctor. Sed ultricies ac arcu quis molestie. Donec dapibus nunc in nibh egestas, vitae volutpat sem iaculis. Curabitur sem tellus, elementum nec quam id, fermentum laoreet mi. Ut mollis ullamcorper turpis, vitae facilisis velit ultricies sit amet. Etiam laoreet dui odio, id tempus justo tincidunt id. Phasellus scelerisque nunc sed nunc ultricies accumsan.</p>
+<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. <code>Sed erat diam</code>, blandit eget felis aliquam, rhoncus varius urna. Donec tellus sapien, sodales eget ante vitae, feugiat ullamcorper urna. Praesent auctor dui vitae dapibus eleifend. Proin viverra mollis neque, ut ullamcorper elit posuere eget.</p>
+<blockquote>
+<p>This is a very long line that will still be quoted properly when it wraps. Oh boy let&rsquo;s keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can <em>put</em> <strong>Markdown</strong> into a blockquote.</p>
+</blockquote>
+<p>Maecenas ornare arcu at mi suscipit, non molestie tortor ultrices. Aenean convallis, diam et congue ultricies, erat magna tincidunt orci, pulvinar posuere mi sapien ac magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent vitae placerat mauris. Nullam laoreet ante posuere tortor blandit auctor. Sed id ligula volutpat leo consequat placerat. Mauris fermentum dolor sed augue malesuada sollicitudin. Vivamus ultrices nunc felis, quis viverra orci eleifend ut. Donec et quam id urna cursus posuere. Donec elementum scelerisque laoreet.</p>
+<h3 id="表格">
+<a class="header-anchor" href="#%e8%a1%a8%e6%a0%bc"></a>
+表格
+</h3><table>
+  <thead>
+      <tr>
+          <th>Table Header 1</th>
+          <th>Table Header 2</th>
+          <th>Table Header 3</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Division 1</td>
+          <td>Division 2</td>
+          <td>Division 3</td>
+      </tr>
+      <tr>
+          <td>Division 1</td>
+          <td>Division 2</td>
+          <td>Division 3</td>
+      </tr>
+      <tr>
+          <td>Division 1</td>
+          <td>Division 2</td>
+          <td>Division 3</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>Markdown</th>
+          <th>Less</th>
+          <th>Pretty</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><em>Still</em></td>
+          <td><code>renders</code></td>
+          <td><strong>nicely</strong></td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="其他元素---abbr-acronym-sub-sup-kbd-etc">
+<a class="header-anchor" href="#%e5%85%b6%e4%bb%96%e5%85%83%e7%b4%a0---abbr-acronym-sub-sup-kbd-etc"></a>
+其他元素 - abbr, acronym, sub, sup, kbd, etc.
+</h3><p>Lorem <sup>superscript</sup> dolor <sub>subscript</sub> amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. <cite>cite</cite>. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. <acronym title="National Basketball Association">NBA</acronym> Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. <abbr title="Avenue">AVE</abbr>. Use <kbd>Crtl</kbd> + <kbd>C</kbd> to stop.</p>
+<h3 id="图片">
+<a class="header-anchor" href="#%e5%9b%be%e7%89%87"></a>
+图片
+</h3><p>宽度 100%
+<img src="/images/gallary/sponge.png" alt="image"></p>
+<p>宽度 50%
+<img src="/images/gallary/sponge2.png" style="width: 50%;"></p>
+<h3 id="分隔线">
+<a class="header-anchor" href="#%e5%88%86%e9%9a%94%e7%ba%bf"></a>
+分隔线
+</h3><hr>
+<h2 id="代码块">
+<a class="header-anchor" href="#%e4%bb%a3%e7%a0%81%e5%9d%97"></a>
+代码块
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+</span></span></code></pre></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="hl"><span class="lnt">206
+</span></span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="hl"><span class="lnt">213
+</span></span><span class="hl"><span class="lnt">214
+</span></span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="cp">#[derive(Debug)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nc">State</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Start</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Transient</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Closed</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="k">impl</span><span class="w"> </span><span class="nb">From</span><span class="o">&lt;&amp;</span><span class="na">&#39;a</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">from</span><span class="p">(</span><span class="n">s</span>: <span class="kp">&amp;</span><span class="na">&#39;a</span> <span class="kt">str</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;start&#34;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">State</span>::<span class="n">Start</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;closed&#34;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">State</span>::<span class="n">Closed</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">unreachable!</span><span class="p">(),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="cp">#[derive(Debug)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nc">State</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Start</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Transient</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Closed</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">impl</span><span class="w"> </span><span class="nb">From</span><span class="o">&lt;&amp;</span><span class="na">&#39;a</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">from</span><span class="p">(</span><span class="n">s</span>: <span class="kp">&amp;</span><span class="na">&#39;a</span> <span class="kt">str</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;start&#34;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">State</span>::<span class="n">Start</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;closed&#34;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">State</span>::<span class="n">Closed</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">unreachable!</span><span class="p">(),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;apples&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;count&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;text&#34;</span><span class="p">:</span> <span class="s2">&#34;...&#34;</span><span class="p">,</span> <span class="nt">&#34;sensitive&#34;</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;oranges&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;count&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">17500</span><span class="p">,</span> <span class="kc">null</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;text&#34;</span><span class="p">:</span> <span class="s2">&#34;...&#34;</span><span class="p">,</span> <span class="nt">&#34;sensitive&#34;</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@requires_authorization</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">somefunc</span><span class="p">(</span><span class="n">param1</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">param2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="sa">r</span><span class="s1">&#39;&#39;&#39;A docstring&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">param1</span> <span class="o">&gt;</span> <span class="n">param2</span><span class="p">:</span> <span class="c1"># interesting</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span> <span class="s1">&#39;Gre</span><span class="se">\&#39;</span><span class="s1">ater&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">param2</span> <span class="o">-</span> <span class="n">param1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mb">0b10</span><span class="n">l</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SomeClass</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;interpreter
+</span></span></span><span class="line"><span class="cl"><span class="s1">... prompt&#39;&#39;&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">body</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;application/javascript&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">function</span> <span class="nx">$init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">checked</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;title&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- here goes the rest of the page --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">$initHighlight</span><span class="p">(</span><span class="nx">block</span><span class="p">,</span> <span class="nx">cls</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">cls</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/\bno\-highlight\b/</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">process</span><span class="p">(</span><span class="nx">block</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="mh">0x0F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">             <span class="sb">` class=&#34;</span><span class="si">${</span><span class="nx">cls</span><span class="si">}</span><span class="sb">&#34;`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* handle exception */</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">classes</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">checkCondition</span><span class="p">(</span><span class="nx">classes</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;undefined&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="nx">web</span><span class="o">-</span><span class="nx">component</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">block</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/web-component&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="nx">$initHighlight</span><span class="p">;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/* An annoying &#34;Hello World&#34; example */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mh">0xFFFF</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hello, World!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">unordered_map</span> <span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">m</span><span class="p">[</span><span class="s">&#34;key&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#34;</span><span class="se">\\\\</span><span class="s">&#34;</span><span class="p">;</span> <span class="c1">// this is an error
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="o">-</span><span class="mf">2e3</span> <span class="o">+</span> <span class="mi">12l</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="s2">&#34;topic&#34;</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s2">&#34;id&#34;</span><span class="w"> </span><span class="nb">serial</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s2">&#34;forum_id&#34;</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s2">&#34;subject&#34;</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="s2">&#34;topic&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">forum_id</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="s2">&#34;forum_id&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">REFERENCES</span><span class="w"> </span><span class="s2">&#34;forum&#34;</span><span class="w"> </span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- Initials
+</span></span></span><span class="line"><span class="cl"><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="s2">&#34;topic&#34;</span><span class="w"> </span><span class="p">(</span><span class="s2">&#34;forum_id&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;subject&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;D&#39;&#39;artagnian&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-objectivec" data-lang="objectivec"><span class="line"><span class="cl"><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cp">#import &#34;Dependency.h&#34;
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@protocol</span> <span class="nc">WorldDataSource</span>
+</span></span><span class="line"><span class="cl"><span class="k">@optional</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">worldName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@required</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">allowsToLive</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">readonly</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">title</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span> <span class="nf">show</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@end</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author John Smith &lt;john.smith@example.com&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">l2f.gameserver.model</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">L2Char</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">L2Object</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Short</span><span class="w"> </span><span class="n">ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0x0001</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">moveTo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">_ai</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">log</span><span class="p">(</span><span class="s">&#34;Should not be called&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// wtf!?</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">import</span> <span class="nc">Foundation</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">@objc</span> <span class="kd">class</span> <span class="nc">Person</span><span class="p">:</span> <span class="n">Entity</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">!</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nv">age</span><span class="p">:</span>  <span class="nb">Int</span><span class="p">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* /* ... */ */</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Return a descriptive string for this person</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">func</span> <span class="nf">description</span><span class="p">(</span><span class="n">offset</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s">&#34;</span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s"> is </span><span class="si">\(</span><span class="n">age</span> <span class="o">+</span> <span class="n">offset</span><span class="si">)</span><span class="s"> years old&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">font-face</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">font-family</span><span class="o">:</span> <span class="nt">Chunkfive</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">src</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s2">&#34;Chunkfive.otf&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">body</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">usertext</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="mh">#f0f0f0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background</span><span class="p">:</span> <span class="mh">#600</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-family</span><span class="p">:</span> <span class="n">Chunkfive</span><span class="p">,</span> <span class="n">sans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">print</span><span class="p">.</span><span class="nc">css</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&#34;http&#34;</span><span class="o">]</span><span class="p">::</span><span class="nd">after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">content</span><span class="p">:</span> <span class="nb">attr</span><span class="p">(</span><span class="n">href</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># The Greeter class</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Greeter</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span><span class="o">.</span><span class="n">capitalize</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">salute</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">puts</span> <span class="s2">&#34;Hello </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="s2">!&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="o">=</span> <span class="no">Greeter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&#34;world&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span><span class="o">.</span><span class="n">salute</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="c"># Makefile
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">BUILDDIR</span>      <span class="o">=</span> _build
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRAS</span>       <span class="o">?=</span> <span class="k">$(</span>BUILDDIR<span class="k">)</span>/extras
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">main</span> <span class="n">clean</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">main</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	@echo <span class="s2">&#34;Building main facility...&#34;</span>
+</span></span><span class="line"><span class="cl">	build_main <span class="k">$(</span>BUILDDIR<span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">clean</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	rm -rf <span class="k">$(</span>BUILDDIR<span class="k">)</span>/*
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="s">&#34;fmt&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">ch</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">float64</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">ch</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mf">1.0e10</span><span class="w">    </span><span class="c1">// magic number</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">ch</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">`exitting now\`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="nb">println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s">&#34;hello world!&#34;</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">###### CONFIG</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ACCEPTED_HOSTS</span><span class="o">=</span><span class="s2">&#34;/root/.hag_accepted.conf&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">BE_VERBOSE</span><span class="o">=</span><span class="nb">false</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$UID</span><span class="s2">&#34;</span> -ne <span class="m">0</span> <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;Superuser rights required&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">exit</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">genApacheConf<span class="o">(){</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> -e <span class="s2">&#34;# Host </span><span class="si">${</span><span class="nv">HOME_DIR</span><span class="si">}</span><span class="nv">$1</span><span class="s2">/</span><span class="nv">$2</span><span class="s2"> :&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="c1">; boilerplate</span>
+</span></span><span class="line"><span class="cl"><span class="k">[package]</span>
+</span></span><span class="line"><span class="cl"><span class="na">name</span> <span class="o">=</span> <span class="s">&#34;some_name&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">authors</span> <span class="o">=</span> <span class="s">[&#34;Author&#34;]</span>
+</span></span><span class="line"><span class="cl"><span class="na">description</span> <span class="o">=</span> <span class="s">&#34;This is \</span>
+</span></span><span class="line"><span class="cl"><span class="na">a description&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[[lib]]</span>
+</span></span><span class="line"><span class="cl"><span class="na">name</span> <span class="o">=</span> <span class="s">${NAME}</span>
+</span></span><span class="line"><span class="cl"><span class="na">default</span> <span class="o">=</span> <span class="s">True</span>
+</span></span><span class="line"><span class="cl"><span class="na">auto</span> <span class="o">=</span> <span class="s">no</span>
+</span></span><span class="line"><span class="cl"><span class="na">counter</span> <span class="o">=</span> <span class="s">1_000</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-patch" data-lang="patch"><span class="line"><span class="cl"><span class="gd">-   if (i &lt; 0) {
+</span></span></span><span class="line"><span class="cl"><span class="gd">-       return false;
+</span></span></span><span class="line"><span class="cl"><span class="gd">-   }
+</span></span></span><span class="line"><span class="cl"><span class="gi">+   if (i &lt; 0) {
+</span></span></span><span class="line"><span class="cl"><span class="gi">+       return true;
+</span></span></span><span class="line"><span class="cl"><span class="gi">+   }
+</span></span></span></code></pre></div><h2 id="数学公式">
+<a class="header-anchor" href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f"></a>
+数学公式
+</h2><ol>
+<li>
+<p>设三维欧式空间 $V$ 在基 $\alpha_1, \alpha_2, \alpha_3$ 下的度量矩阵为
+</p>
+$$
+   T = \begin{pmatrix}
+   1 & 0 & 0 \\
+   0 & 2 & 0 \\
+   0 & 0 & 3
+   \end{pmatrix},
+   $$<p>
+求 $V$ 的一组标准正交基（用 $\alpha_1, \alpha_2, \alpha_3$ 的线性组合）。</p>
+<p><strong>解</strong>:
+对 $(T, I)$ 作合同变换，将 $T$ 化为单位矩阵 $I$:</p>
+$$
+    \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 2 & 0 \\
+    0 & 0 & 3
+    \end{bmatrix} \rightarrow \cdots \rightarrow \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+    \end{bmatrix}
+    $$</li>
+<li>
+<p>带编号公式-麦克斯韦方程组：
+</p>
+$$
+\begin{align}
+\nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{align}
+$$</li>
+<li>
+<p>行内公式：爱因斯坦质能方程 $E=mc^2$。</p>
+</li>
+<li>
+<p>公式统一编号-洛伦茨变换：
+</p>
+$$
+\begin{aligned}
+t' &= \gamma \left( t - \frac{vx}{c^2} \right) \\
+x' &= \gamma (x - vt) \\
+y' &= y \\
+z' &= z
+\end{aligned}
+\tag{9}
+$$</li>
+</ol>
+<h2 id="流程图">
+<a class="header-anchor" href="#%e6%b5%81%e7%a8%8b%e5%9b%be"></a>
+流程图
+</h2><pre class="mermaid">
+    sequenceDiagram
+  participant 客户端
+  participant 代理对象
+  participant 代理处理器
+  participant 目标对象
+  客户端->>代理对象:调用方法
+  代理对象->>代理处理器:转发代理处理器<br>Invoke()方法
+  代理处理器->>目标对象:判断Method<br>调用目标对象的方法
+  目标对象->>代理处理器:返回结果
+  代理处理器->>代理对象:返回结果
+  代理对象->>客户端:返回结果
+</pre><pre class="mermaid">
+    graph LR
+  c1[Client1<br>Socket]--客户端发出连接-->ss[ServerSocket]
+  c2[Client2<br>Socket]--客户端发出连接-->ss[ServerSocket]
+  ss--服务器接受请求并创建新的Socket-->s1[为Client1创<br>建的Socket]
+  ss--服务器接受请求并创建新的Socket-->s2[为Client2创<br>建的Socket]
+  c1--两个Socket间建立专线连接-->s1
+  c2--两个Socket间建立专线连接-->s2
+</pre><h2 id="卡片">
+<a class="header-anchor" href="#%e5%8d%a1%e7%89%87"></a>
+卡片
+</h2><h3 id="链接卡片">
+<a class="header-anchor" href="#%e9%93%be%e6%8e%a5%e5%8d%a1%e7%89%87"></a>
+链接卡片
+</h3><div class="post-link-card-wrap">
+  <div class="post-link-card">
+    <a href="https://github.com/D-Sketon/hugo-theme-reimu" title="Github" rel="noopener nofollow noreferrer" target="_blank"></a><div class="post-link-card-cover-wrap">
+        <img
+          src="https://github.githubassets.com/assets/apple-touch-icon-144x144-b882e354c005.png"
+          class="no-lightbox"
+          title="Github"
+          alt="Github"
+        />
+      </div><div class="post-link-card-item-wrap">
+      <div class="post-link-card-title">Github</div>
+      <div class="post-link-card-excerpt">
+        <span class="icon-link"></span>https://github.com/D-Sketon/hugo-theme-reimu
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 id="热力图卡片">
+<a class="header-anchor" href="#%e7%83%ad%e5%8a%9b%e5%9b%be%e5%8d%a1%e7%89%87"></a>
+热力图卡片
+</h3><link rel="preload" as="style" href="/css/heat-map.min.f0ed6b92b1d5e3a11b04c6fb247880e74d24b5aac1f3bbf2a73ed8b35a0a35af.css" onload="this.onload=null;this.rel='stylesheet'" /><div id="heatmap"></div>
+<script>
+var MONTH_NAMES = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+var pluralize = (num, word) => (`${num} ${word}${num <= 1 ? '' : 's'}`);
+
+function getTooltip(contributionDay, contributionDate) {
+  
+  const formattedDate = new Date(
+    contributionDate.getTime() - contributionDate.getTimezoneOffset() * 60000,
+  )
+    .toISOString()
+    .split("T")[0];
+
+  if (contributionDay.count === 0) {
+    return `No writing on ${formattedDate}`;
+  }
+
+  const postText = pluralize(contributionDay.post, "post");
+  const wordText = pluralize(contributionDay.count, "word");
+
+  return `${postText} ${wordText} on ${formattedDate}`;
+}
+
+
+var heatmapTooltip = document.getElementById("heatmap-tooltip");
+
+function hideTooltip() {
+  heatmapTooltip.style.display = 'none';
+}
+
+function tileClickHandler(event) {
+  const tile = event.target;
+  if (!tile.classList.contains("tile")) return;
+  
+  const date = new Date(Number(tile.dataset.date));
+  const dateStr = date.toISOString().split('T')[0];
+  
+  
+  const articles = articleStats.filter(article => article.date === dateStr);
+  
+  const level = tile.dataset.level;
+  const formattedDate = date.toLocaleDateString();
+  let totalWords = 0;
+  
+  let html = `
+    <div class="tooltip-header">
+      <div class="tooltip-header-content">${formattedDate} (Level ${level})</div>
+      <div class="popup-btn-close tooltip-close"></div>
+    </div>
+    <div class="tooltip-content">
+      <ul>
+  `;
+
+  if (articles.length === 0) {
+    html += `<li>没有文章</li>`;
+  } else {
+    articles.forEach(article => {
+      totalWords += article.wordcount;
+      html += `<li><a href="${article.url}">${article.title}</a> (${article.wordcount} 字)</li>`;
+    });
+  }
+
+  const footerTemplate ="共 $1 篇文章，$2 字".replace("$1", articles.length).replace("$2", totalWords);
+  
+  html += `
+      </ul>
+      <div class="tooltip-footer">
+        ${footerTemplate}
+      </div>
+    </div>
+  `;
+  
+  
+  heatmapTooltip.innerHTML = html;
+  
+  
+  const rect = tile.getBoundingClientRect();
+  heatmapTooltip.style.display = 'block';
+  heatmapTooltip.style.visibility = 'hidden';
+  heatmapTooltip.style.left = '0px';
+
+  
+  const tooltipRect = heatmapTooltip.getBoundingClientRect();
+  const tooltipWidth = tooltipRect.width;
+  
+  
+  let left = rect.right + 10;
+  if (left + tooltipWidth > window.innerWidth) {
+    left = rect.left - tooltipWidth - 10;
+  }
+  
+  heatmapTooltip.style.left = `${left}px`;
+  heatmapTooltip.style.top = `${rect.top}px`;
+  heatmapTooltip.style.display = 'block';
+  heatmapTooltip.style.visibility = 'visible';
+  
+  
+
+  const closeBtn = heatmapTooltip.querySelector('.tooltip-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', hideTooltip);
+  }
+  
+  
+  document.addEventListener('click', function closeTooltipOnClickOutside(e) {
+    if (e.target.classList.contains('tile')) {
+      return;
+    }
+    if (!heatmapTooltip.contains(e.target) && e.target !== tile) {
+      hideTooltip();
+      document.removeEventListener('click', closeTooltipOnClickOutside);
+    }
+  });
+}
+
+function createCalendar(element, contributionData) {
+  if (!element) {
+    return;
+  }
+  element.innerHTML = `
+    <div class="outer-box">
+      <div class="year-select"></div>
+      <div class="inner-box">
+        <div class="calendar-container">
+          ${["Mon", "Wed", "Fri"].map((t) => `<span class="week">${t}</span>`).join("")}
+          <div class="legend">Less${new Array(5)
+            .fill(0)
+            .map((_, i) => `<i class="tile" data-level="${i}"></i>`)
+            .join("")}More</div>
+          <div class="tiles"></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const calendarContainer = element.querySelector(".calendar-container");
+  const yearSelector = element.querySelector(".year-select");
+  const tilesContainer = element.querySelector(".tiles");
+
+  const allContributionData = completeContributionData(contributionData);
+  const currentDisplayYear = new Date().getFullYear();
+
+  yearSelector.innerHTML = Object.keys(allContributionData)
+    .sort((a, b) => b - a)
+    .map(
+      (year) =>
+        `<div class="year-option ${year == currentDisplayYear ? "active" : ""}">${year}</div>`,
+    )
+    .join("");
+
+  yearSelector.addEventListener("click", ({ target }) => {
+    if (target.classList.contains("year-option")) {
+      element.querySelector(".active")?.classList.remove("active");
+      target.classList.add("active");
+      generateYearContributions(target.textContent);
+    }
+  });
+
+  const generateYearContributions = (year) => {
+    tilesContainer.innerHTML = "";
+    calendarContainer.querySelectorAll(".month").forEach((m) => m.remove());
+    calendarContainer.querySelectorAll(".total").forEach((t) => t.remove());
+    const data = allContributionData[year];
+    const startRow = new Date(data[0].date).getDay();
+    let latestMonth = -1;
+
+    const monthFragment = document.createDocumentFragment();
+    const tilesFragment = document.createDocumentFragment();
+
+    let lastGridColumn = -1;
+
+    const [tiles, totalStatistical] = data.reduce(
+      ([tiles, stats], c, i) => {
+        const date = new Date(c.date);
+        const month = date.getMonth();
+
+        
+        stats.count += c.count;
+        stats.post += c.post;
+
+        
+        if (date.getDay() === 0 && month !== latestMonth) {
+          let gridColumn = 2 + Math.floor((i + startRow) / 7);
+          if (gridColumn - lastGridColumn <= 1) {
+            gridColumn += (2 - gridColumn + lastGridColumn); 
+          }
+          lastGridColumn = gridColumn;
+          latestMonth = month;
+          const monthLabel = document.createElement("span");
+          monthLabel.className = "month";
+          monthLabel.textContent = MONTH_NAMES[month];
+          monthLabel.style.gridColumn = gridColumn;
+          monthFragment.append(monthLabel);
+        }
+        
+        const tile = document.createElement("i");
+        tile.className = "tile";
+        tile.dataset.level = c.level;
+        tile.title = getTooltip(c, date);
+        tile.dataset.level = c.level;
+        tile.dataset.date = c.date; 
+        tile.addEventListener('click', tileClickHandler);
+        
+        
+
+        tiles.push(tile);
+        return [tiles, stats];
+      },
+      [[], { count: 0, post: 0 }],
+    );
+
+    
+    if (tiles[0]) {
+      tiles[0].style.gridRow = startRow + 1;
+    }
+
+    tilesFragment.append(...tiles);
+
+    calendarContainer.append(monthFragment);
+    tilesContainer.append(tilesFragment);
+
+    calendarContainer.insertAdjacentHTML(
+      "beforeend",
+      `<div class="total">${pluralize(totalStatistical.post, "post")} ${pluralize(totalStatistical.count, "word")} in ${year}</div>`,
+    );
+  };
+
+  
+  generateYearContributions(currentDisplayYear);
+}
+
+function completeContributionData(userData) {
+  
+  userData.sort((a, b) => a.date - b.date);
+
+  
+  const startDate = new Date(userData[0].date);
+  const currentDate = new Date();
+
+  
+  const allData = {};
+  
+  const userDataMap = {};
+  userData.forEach((data) => {
+    const dataDate = new Date(data.date);
+    const key = `${dataDate.getFullYear()}-${dataDate.getMonth()}-${dataDate.getDate()}`;
+    userDataMap[key] = data;
+  });
+
+  
+  for (
+    let year = startDate.getFullYear();
+    year <= currentDate.getFullYear();
+    year++
+  ) {
+    const [startYear, endYear] =
+      year === currentDate.getFullYear()
+        ? [
+            new Date(
+              new Date(currentDate).setDate(currentDate.getDate() - 365),
+            ),
+            new Date(currentDate.getTime() + 86400000),
+          ]
+        : [new Date(year, 0, 1), new Date(year + 1, 0, 1)];
+
+    const yearData = [];
+    for (let d = startYear; d < endYear; d.setDate(d.getDate() + 1)) {
+      const key = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+      yearData.push(
+        userDataMap[key] || {
+          level: 0,
+          date: d.getTime(),
+          count: 0,
+          post: 0,
+        },
+      );
+    }
+    allData[year] = yearData;
+  }
+  return allData;
+}
+
+
+var articleStats = [{"date":"2026-04-30","lastmod":"2026-04-30","title":"LLM后训练(五)--GRPO和DPO","url":"/post/llmpost%E4%BA%94/","wordcount":92},{"date":"2026-04-29","lastmod":"2026-04-29","title":"LLM后训练(四)--RLHF-PPO","url":"/post/llmpost%E5%9B%9B/","wordcount":1427},{"date":"2026-04-26","lastmod":"2026-04-26","title":"LLM后训练(三)--PPO算法","url":"/post/llmpost%E4%B8%89/","wordcount":4192},{"date":"2026-04-23","lastmod":"2026-04-23","title":"LLM后训练(二)--价值函数","url":"/post/llmpost%E4%BA%8C/","wordcount":2367},{"date":"2026-04-22","lastmod":"2026-04-22","title":"LLM后训练(一)--强化学习","url":"/post/llmpost%E4%B8%80/","wordcount":2697},{"date":"2024-11-28","lastmod":"2024-11-28","title":"Docker 之代理配置","url":"/post/docker_proxy/","wordcount":431},{"date":"2024-11-28","lastmod":"2024-11-28","title":"linux服务器使用ssh秘钥登录以及禁用ssh密码登录","url":"/post/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8ssh%E7%A7%98%E9%92%A5%E7%99%BB%E5%BD%95%E4%BB%A5%E5%8F%8A%E7%A6%81%E7%94%A8ssh%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/","wordcount":350},{"date":"2024-11-28","lastmod":"2024-11-28","title":"Linux下配置zsh和oh my zsh","url":"/post/zsh_oh-my-zsh/","wordcount":442},{"date":"2024-11-28","lastmod":"2024-11-28","title":"扩散模型中的随机微分方程","url":"/post/diffusion_model_sde/","wordcount":518},{"date":"2024-11-28","lastmod":"2024-11-28","title":"主成分分析和线性回归对比","url":"/post/pca_lr/","wordcount":1012},{"date":"2024-11-27","lastmod":"2024-11-27","title":"hugo-theme-reimu 博客主题定制与修改","url":"/post/hugo-reimu-themes/","wordcount":643},{"date":"2022-06-09","lastmod":"2022-06-09","title":"关于","url":"/about/","wordcount":245}];
+
+function getLevelFromWordCount(totalCount) {
+  const levelStandard = "1000,5000,10000".split(",").map(Number);
+  if (totalCount <= 0) return 0;
+  if (totalCount <= levelStandard[0]) return 1;
+  if (totalCount <= levelStandard[1]) return 2;
+  if (totalCount <= levelStandard[2]) return 3;
+  return 4;
+}
+
+var currentDate = new Date();
+
+function transformArticlesData(articlesData) {
+  const dailyStats = articlesData.reduce((map, { date, wordcount }) => {
+    if (new Date(date) > currentDate) {
+      return map; 
+    }
+    const entry = map.get(date) ?? { count: 0, post: 0 };
+    return map.set(date, {
+      count: entry.count + wordcount,
+      post: entry.post + 1,
+    });
+  }, new Map());
+
+  return Array.from(dailyStats, ([dayStr, { count, post }]) => ({
+    level: getLevelFromWordCount(count),
+    date: new Date(dayStr).getTime(),
+    count,
+    post,
+  }));
+}
+
+createCalendar(document.querySelector("#heatmap"), transformArticlesData(articleStats));
+</script>
+
+<h3 id="tag卡片">
+<a class="header-anchor" href="#tag%e5%8d%a1%e7%89%87"></a>
+Tag卡片
+</h3><div class="roll">
+    <div class="roll-button" onclick="rollTagRoulette()">🕹️</div>
+    <div class="roll-tags"><span class="ready removing"></span></div>
+</div>
+
+<script>
+var rollTagRoulette = () => {
+    
+    var tags = "好想睡觉".split(",");
+    var tag = document.querySelector('.roll-tags');
+    tag.innerHTML = '';
+
+    var interval = setInterval(function () {
+        var span = document.createElement('span');
+        span.classList.add('ready');
+        span.classList.add('blur');
+        span.innerText = tags[Math.floor(Math.random() * tags.length)];
+        tag.appendChild(span);
+        spans = tag.querySelectorAll('span');
+        for (var i = 0; i < spans.length; i++) {
+            spans[i].classList.add('removing');
+        }
+    }, 200);
+    
+    setTimeout(function () {
+        clearInterval(interval);
+        for (var i = 0; i < spans.length-1; i++) {
+            tag.removeChild(spans[i]);
+        }
+        setTimeout(function () {
+            spans[spans.length-1].classList.remove('blur');
+        }, 100);
+    }, 1000);
+}
+
+rollTagRoulette(); 
+</script><link rel="preload" as="style" href="/css/tag-roulette.min.3347a2c65d43497c922a5e776753ec7047f9bedd6f17792e8a541de0ca699276.css" onload="this.onload=null;this.rel='stylesheet'" />
+<h3 id="alert-卡片">
+<a class="header-anchor" href="#alert-%e5%8d%a1%e7%89%87"></a>
+Alert 卡片
+</h3><blockquote class="alert-blockquote note">
+  <p class="alert-heading">
+    Note
+  </p>
+  <p>Useful information that users should know, even when skimming content.</p>
+
+</blockquote>
+<blockquote class="alert-blockquote tip">
+  <p class="alert-heading">
+    Tip
+  </p>
+  <p>Helpful advice for doing things better or more easily.</p>
+
+</blockquote>
+<blockquote class="alert-blockquote important">
+  <p class="alert-heading">
+    Important
+  </p>
+  <p>Key information users need to know to achieve their goal.</p>
+
+</blockquote>
+<blockquote class="alert-blockquote warning">
+  <p class="alert-heading">
+    Warning
+  </p>
+  <p>Urgent info that needs immediate user attention to avoid problems.</p>
+
+</blockquote>
+<blockquote class="alert-blockquote danger">
+  <p class="alert-heading">
+    Danger
+  </p>
+  <p>Advises about risks or negative outcomes of certain actions.</p>
+
+</blockquote>
+<h2 id="选项卡">
+<a class="header-anchor" href="#%e9%80%89%e9%a1%b9%e5%8d%a1"></a>
+选项卡
+</h2><div class="tabs" id="tab-tab_c38b713b_8">
+		<ul class="nav-tabs"><li class="tab active"><a class="#tab_c38b713b_8-1">文本</a></li><li class="tab"><a class="#tab_c38b713b_8-2"><span class="icon" style="margin:0 4px;">&#xe60c;</span>代码块</a></li><li class="tab"><a class="#tab_c38b713b_8-3">表格</a></li><li class="tab"><a class="#tab_c38b713b_8-4">图片</a></li><div class="tab-indicator"></div></ul>
+		<div class="tab-content"><div class="tab-pane active" id="tab_c38b713b_8-1"><p>Lorem <sup>superscript</sup> dolor <sub>subscript</sub> amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. <cite>cite</cite>. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. <acronym title="National Basketball Association">NBA</acronym> Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. <abbr title="Avenue">AVE</abbr>. Use <kbd>Crtl</kbd> + <kbd>C</kbd> to stop.</p>
+<ol>
+<li>List Item 1</li>
+<li>List Item 2</li>
+<li>List Item 3</li>
+</ol></div><div class="tab-pane" id="tab_c38b713b_8-2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">font-face</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">font-family</span><span class="o">:</span> <span class="nt">Chunkfive</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">src</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s2">&#34;Chunkfive.otf&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">body</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">usertext</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="mh">#f0f0f0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background</span><span class="p">:</span> <span class="mh">#600</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-family</span><span class="p">:</span> <span class="n">Chunkfive</span><span class="p">,</span> <span class="n">sans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">import</span> <span class="nt">url</span><span class="o">(</span><span class="nt">print</span><span class="p">.</span><span class="nc">css</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&#34;http&#34;</span><span class="o">]</span><span class="p">::</span><span class="nd">after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">content</span><span class="p">:</span> <span class="nb">attr</span><span class="p">(</span><span class="n">href</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></div><div class="tab-pane" id="tab_c38b713b_8-3"><table>
+  <thead>
+      <tr>
+          <th>Table Header 1</th>
+          <th>Table Header 2</th>
+          <th>Table Header 3</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Division 1</td>
+          <td>Division 2</td>
+          <td>Division 3</td>
+      </tr>
+      <tr>
+          <td>Division 1</td>
+          <td>Division 2</td>
+          <td>Division 3</td>
+      </tr>
+      <tr>
+          <td>Division 1</td>
+          <td>Division 2</td>
+          <td>Division 3</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>Markdown</th>
+          <th>Less</th>
+          <th>Pretty</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><em>Still</em></td>
+          <td><code>renders</code></td>
+          <td><strong>nicely</strong></td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+      </tr>
+  </tbody>
+</table></div><div class="tab-pane" id="tab_c38b713b_8-4"><img src="/images/gallary/sponge.png" alt="image"></div></div>
+	</div><link rel="preload" as="style" href="/css/tabs.min.34ed4e4e6a20aa3e070206a925312789aa1d038753cf5a1a4d07ab2786dc51cd.css" onload="this.onload=null;this.rel='stylesheet'" />
+<h2 id="照片墙">
+<a class="header-anchor" href="#%e7%85%a7%e7%89%87%e5%a2%99"></a>
+照片墙
+</h2><div class="gallery-wall" id="photoWall-a65526a74"></div>
+<script>
+  (function() {
+    const imageUrls = JSON.parse("[\"/images/gallary/sponge2.png\",\"/images/gallary/sponge3.png\",\"/images/gallary/sponge4.png\",\"/images/gallary/sponge5.png\",\"/images/gallary/sponge6.png\",\"/images/gallary/sponge7.png\"]");
+    let images = [];
+    const wallId = '#photoWall-a65526a74';
+    let resizeTimer;
+    let lastWidth = 0;
+    
+    function init() {
+      createInitialDOM();
+      loadImages();
+      const wall = _$(wallId);
+      if (wall && window.ResizeObserver) {
+        const observer = new ResizeObserver((entries) => {
+          const newWidth = entries[0].contentRect.width;
+          if (Math.abs(newWidth - lastWidth) > 1) {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(renderPhotoWall, 250);
+          }
+        });
+        observer.observe(wall);
+      } else {
+        window.addEventListener('resize', handleResize);
+      }
+    }
+    
+    function createInitialDOM() {
+      const wall = _$(wallId);
+      if (!wall || !imageUrls.length) return;
+      
+      wall.style.opacity = '0';
+      wall.style.pointerEvents = 'none';
+      
+      imageUrls.forEach((url) => {
+        images.push({
+          width: 800,
+          height: 600,
+          aspectRatio: 4/3,
+          url: url,
+          loaded: false
+        });
+      });
+      
+      renderPhotoWall();
+    }
+    
+    function loadImages() {
+      const loadPromises = imageUrls.map((url, index) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => {
+            if (images[index]) {
+              images[index].width = img.naturalWidth;
+              images[index].height = img.naturalHeight;
+              images[index].aspectRatio = img.naturalWidth / img.naturalHeight;
+              images[index].loaded = true;
+            }
+            resolve();
+          };
+          img.onerror = () => {
+            if (images[index]) {
+              images[index].loaded = true;
+            }
+            resolve();
+          };
+          img.src = url;
+        });
+      });
+      
+      Promise.all(loadPromises)
+        .then(() => {
+          const wall = _$(wallId);
+          if (wall) {
+            wall.style.opacity = '1';
+            wall.style.pointerEvents = 'auto';
+            wall.style.transition = 'opacity 0.3s ease';
+          }
+          renderPhotoWall();
+        })
+        .catch((error) => console.error("图片加载失败:", error));
+    }
+    
+    function renderPhotoWall() {
+      const wall = _$(wallId);
+      
+      if (!images.length || !wall) return;
+      
+      const screenWidth = wall.offsetWidth || window.innerWidth - 40;
+      lastWidth = screenWidth;
+      
+      wall.innerHTML = "";
+      const rowHeight = 200;
+      const gap = 10;
+      const maxPerRow = 4;
+      
+      let row = [];
+      let rowWidth = 0;
+      const rows = [];
+      
+      images.forEach((img) => {
+        const scaledWidth = rowHeight * img.aspectRatio;
+        
+        if (rowWidth + scaledWidth <= screenWidth && row.length < maxPerRow) {
+          row.push(img);
+          rowWidth += scaledWidth + gap;
+        } else {
+          if (row.length) rows.push(row);
+          row = [img];
+          rowWidth = scaledWidth + gap;
+        }
+      });
+      
+      if (row.length) rows.push(row);
+      
+      rows.forEach((row) => {
+        const rowDiv = document.createElement("div");
+        rowDiv.style.cssText = `display: flex; gap: ${gap}px; width: 100%`;
+        
+        row.forEach((img) => {
+          const item = document.createElement("div");
+          item.className = "photo-item";
+          const flex = row.length === 1 ? '1' : img.aspectRatio;
+          item.style.cssText = `flex: ${flex}; height: ${rowHeight}px`;
+          
+          const imgEl = document.createElement("img");
+          imgEl.alt = "Gallery Image";
+          imgEl.style.cssText = "width: 100%; height: 100%; object-fit: cover";
+          imgEl.className = "lazyload";
+          imgEl.dataset.src = img.url;
+          imgEl.dataset.sizes = "auto";
+
+          const link = document.createElement("a");
+          link.href = img.url;
+          link.dataset.pswpWidth = img.width;
+          link.dataset.pswpHeight = img.height;
+          link.target = "_blank";
+          link.className = "article-gallery-item";
+          link.style.cssText = "width: 100%; height: 100%";
+          link.appendChild(imgEl);
+          
+          item.appendChild(link);
+          rowDiv.appendChild(item);
+        });
+        
+        wall.appendChild(rowDiv);
+      });
+    }
+    
+    function handleResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(renderPhotoWall, 250);
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script><link rel="preload" as="style" href="/css/gallery.min.94cd3998ffbf0abe50a0f8a9251c39f9df60899a02db59add20026d894f2d44f.css" onload="this.onload=null;this.rel='stylesheet'" />
+<h2 id="单元网格">
+<a class="header-anchor" href="#%e5%8d%95%e5%85%83%e7%bd%91%e6%a0%bc"></a>
+单元网格
+</h2><div class="reimu-grid grid-container-240-col-2" style="grid-template-columns: repeat(2, 1fr);"><div class="grid-cell"><p>这是第一个网格单元，支持 Markdown 语法</p>
+<ul>
+<li>列表项 1</li>
+<li>列表项 2</li>
+</ul>
+<p><img src="/images/gallary/sponge3.png" alt="image"></p>
+</div><div class="grid-cell"><p>这是第二个网格单元，支持 Markdown 语法</p>
+<ul>
+<li>列表项 1</li>
+<li>列表项 2</li>
+</ul>
+<p><img src="/images/gallary/sponge4.png" alt="image"></p>
+</div><div class="grid-cell"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello Grid!&#39;</span><span class="p">);</span>
+</span></span></code></pre></div><div class="post-link-card-wrap">
+	<div class="post-link-card">
+		<a
+			href="/post/hugo-reimu-themes/"
+			title="hugo-theme-reimu 博客主题定制与修改"></a><div class="post-link-card-cover-wrap">
+				<img
+					src="/covers/hugo.png"
+					class="no-lightbox"
+					title="hugo-theme-reimu 博客主题定制与修改"
+					alt="hugo-theme-reimu 博客主题定制与修改"
+				/>
+			</div><div class="post-link-card-item-wrap">
+			<div class="post-link-card-title">hugo-theme-reimu 博客主题定制与修改</div>
+			<div class="post-link-card-excerpt">该文章介绍hugo-theme-reimu博客主题一些深度定制方法。</div>
+		</div>
+	</div>
+</div></div><div class="grid-cell"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello Grid!&#39;</span><span class="p">);</span>
+</span></span></code></pre></div><div class="post-link-card-wrap">
+	<div class="post-link-card">
+		<a
+			href="/post/hugo-reimu-themes/"
+			title="hugo-theme-reimu 博客主题定制与修改"></a><div class="post-link-card-cover-wrap">
+				<img
+					src="/covers/hugo.png"
+					class="no-lightbox"
+					title="hugo-theme-reimu 博客主题定制与修改"
+					alt="hugo-theme-reimu 博客主题定制与修改"
+				/>
+			</div><div class="post-link-card-item-wrap">
+			<div class="post-link-card-title">hugo-theme-reimu 博客主题定制与修改</div>
+			<div class="post-link-card-excerpt">该文章介绍hugo-theme-reimu博客主题一些深度定制方法。</div>
+		</div>
+	</div>
+</div></div><div class="grid-cell"><table>
+  <thead>
+      <tr>
+          <th>表头1</th>
+          <th>表头2</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+      </tr>
+  </tbody>
+</table>
+</div><div class="grid-cell"><table>
+  <thead>
+      <tr>
+          <th>表头1</th>
+          <th>表头2</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+      </tr>
+  </tbody>
+</table>
+</div></div><link rel="preload" as="style" href="/css/grid.min.153881eef7f7b86103896edc9eda83c6fc333d7d434136cfba87e2e3e21f08ac.css" onload="this.onload=null;this.rel='stylesheet'" />
+<h2 id="折叠项">
+<a class="header-anchor" href="#%e6%8a%98%e5%8f%a0%e9%a1%b9"></a>
+折叠项
+</h2><details class="details custom-block">
+  <summary>Details Summary</summary>
+  <div class="details-content"><p>This is the details content.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li>List Item 1</li>
+<li>List Item 2</li>
+<li>List Item 3</li>
+</ul>
+</div>
+</details>
+</div>
+    <footer class="article-footer"><blockquote class="article-copyright"><p><strong><span class="icon-user icon"></span>本文作者：</strong>MIMI</p><p>
+      <strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://shqww.github.io/post/markdown_example/">https://shqww.github.io/post/markdown_example/</a>
+    </p><p>
+      
+      <strong><span class="icon-copyright icon"></span>本文版权：</strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </p>
+    <span class="icon-creative-commons article-copyright-bg"></span></blockquote>
+<div class="share-wrapper"><a href="https://www.facebook.com/sharer/sharer.php?u=https://shqww.github.io/post/markdown_example/" target="_blank" rel="noopener noreferrer" title="markdown博客语法">
+      <div class="share-icon icon icon-facebook"></div>
+    </a><a href="https://twitter.com/intent/tweet?url=https://shqww.github.io/post/markdown_example/&amp;text=markdown%e5%8d%9a%e5%ae%a2%e8%af%ad%e6%b3%95&amp;via=https://shqww.github.io/" target="_blank" rel="noopener noreferrer" title="markdown博客语法">
+      <div class="share-icon icon icon-twitter"></div>
+    </a><a href="https://bsky.app/intent/compose?text=markdown%e5%8d%9a%e5%ae%a2%e8%af%ad%e6%b3%95%20https://shqww.github.io/post/markdown_example/" target="_blank" rel="noopener noreferrer" title="markdown博客语法">
+      <div class="share-icon icon icon-bluesky"></div>
+    </a><a href="https://www.linkedin.com/shareArticle?url=https://shqww.github.io/post/markdown_example/&amp;title=markdown%e5%8d%9a%e5%ae%a2%e8%af%ad%e6%b3%95&amp;summary=hugo%e5%8d%9a%e5%ae%a2markdown%e5%86%99%e6%b3%95%e7%a4%ba%e4%be%8b&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="markdown博客语法">
+      <div class="share-icon icon icon-linkedin"></div>
+    </a><a href="https://www.reddit.com/submit?url=https://shqww.github.io/post/markdown_example/&amp;title=markdown%e5%8d%9a%e5%ae%a2%e8%af%ad%e6%b3%95" target="_blank" rel="noopener noreferrer" title="markdown博客语法">
+      <div class="share-icon icon icon-reddit"></div>
+    </a><a href="https://service.weibo.com/share/share.php?url=https://shqww.github.io/post/markdown_example/&amp;appkey=&amp;title=markdown%e5%8d%9a%e5%ae%a2%e8%af%ad%e6%b3%95&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="markdown博客语法">
+      <div class="share-icon icon icon-weibo"></div>
+    </a><a href="https://connect.qq.com/widget/shareqq/index.html?url=https://shqww.github.io/post/markdown_example/&amp;title=markdown%e5%8d%9a%e5%ae%a2%e8%af%ad%e6%b3%95&amp;desc=hugo%e5%8d%9a%e5%ae%a2markdown%e5%86%99%e6%b3%95%e7%a4%ba%e4%be%8b&amp;source=https://shqww.github.io/" target="_blank" rel="noopener noreferrer" title="markdown博客语法">
+      <div class="share-icon icon icon-qq"></div>
+    </a><a href="javascript:;"  title="markdown博客语法">
+      <div class="share-icon icon icon-weixin"><div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hugo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div></div>
+    </a></div><a
+          data-aos="zoom-in"
+          href="/post/markdown_example/#comments"
+          class="article-comment-link"
+        >
+          <span
+            class="post-comments-count waline-comment-count"
+            data-path="/post/markdown_example/"
+            itemprop="commentCount"
+          ></span>
+          留言
+        </a><span
+          data-aos="zoom-in"
+          class="article-visitor-link"
+        >
+          <span
+            class="waline-pageview-count"
+            data-path="/post/markdown_example/"
+            >0</span
+          >
+          <em class="post-meta-item-text">阅读量</em>
+        </span><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/blog"
+      data-aos="zoom-in"
+      >Blog</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/blog"
+        rel="tag"
+        >Blog</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/web-tech"
+        rel="tag"
+        >Web Tech</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap right"><img
+            data-src="/covers/hugo.png"
+            data-sizes="auto"
+            alt="hugo-theme-reimu 博客主题定制与修改"
+            class="lazyload"
+          /><a
+          href="/post/hugo-reimu-themes/"
+          aria-label="后一篇:hugo-theme-reimu 博客主题定制与修改"
+          title="后一篇:hugo-theme-reimu 博客主题定制与修改"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">hugo-theme-reimu 博客主题定制与修改</h3>
+      </div></nav></article><section id="comments" data-aos="fade-up">
+<div class="comment-header"><h2 class="comment-title">说些什么吧！</h2>
+  <div class="comment-selector">
+    <div class="comment-selector-wrap"><div class="selector-item" data-selector="waline">
+          <span>waline</span>
+        </div></div>
+  </div>
+</div>
+
+<div class="comment-content"><div class="comment waline-comment" data-aos="fade-up"
+     >
+    </div></div>
+</section></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2024-2026<span class="footer-info-sep rotate"></span>MIMI
+    </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#markdown-基本语法">Markdown 基本语法</a>
+      <ul>
+        <li><a href="#标题">标题</a></li>
+        <li><a href="#强调与删除线">强调与删除线</a></li>
+        <li><a href="#列表">列表</a></li>
+        <li><a href="#段落">段落</a></li>
+        <li><a href="#表格">表格</a></li>
+        <li><a href="#其他元素---abbr-acronym-sub-sup-kbd-etc">其他元素 - abbr, acronym, sub, sup, kbd, etc.</a></li>
+        <li><a href="#图片">图片</a></li>
+        <li><a href="#分隔线">分隔线</a></li>
+      </ul>
+    </li>
+    <li><a href="#代码块">代码块</a></li>
+    <li><a href="#数学公式">数学公式</a></li>
+    <li><a href="#流程图">流程图</a></li>
+    <li><a href="#卡片">卡片</a>
+      <ul>
+        <li><a href="#链接卡片">链接卡片</a></li>
+        <li><a href="#热力图卡片">热力图卡片</a></li>
+        <li><a href="#tag卡片">Tag卡片</a></li>
+        <li><a href="#alert-卡片">Alert 卡片</a></li>
+      </ul>
+    </li>
+    <li><a href="#选项卡">选项卡</a></li>
+    <li><a href="#照片墙">照片墙</a></li>
+    <li><a href="#单元网格">单元网格</a></li>
+    <li><a href="#折叠项">折叠项</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">12</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      4
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">9</div>
+  </a>
+</div>
+<div class="sidebar-social" ><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon '>&#xf015;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon '>&#xf187;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon '>&#xf05a;</div><div class="sidebar-menu-link">关于</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    
+    
+    
+    
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous"  ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax ></script><script
+    src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD&#43;jAPU55x/jj3wlf" crossorigin="anonymous"></script><script src="/js/pjax.js" integrity="" crossorigin="anonymous"  ></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "MIMI",
+          title: "markdown博客语法",
+          url: "https:\/\/shqww.github.io\/post\/markdown_example\/",
+          description: "hugo博客markdown写法示例",
+          cover: "https:\/\/shqww.github.io\/covers\/hugo.png",
+        };
+      </script><script
+    src="https://npm.webcache.cn/mermaid@11.12.0/dist/mermaid.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-o&#43;g/BxPwhi0C3RK7oQBxQuNimeafQ3GE/ST4iT2BxVI4Wzt60SH4pq9iXVYujjaS" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/dompurify@3.2.6/dist/purify.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-JEyTNhjM6R1ElGoJns4U2Ln4ofPcqzSsynQkmEc/KGy6336qAZl70tDLufbkla&#43;3" crossorigin="anonymous"></script><script data-pjax>
+        if (window.mermaid) {
+          
+          const elementCode = '.mermaid'
+          const processElements = (callback) => {
+            const els = _$$(elementCode);
+            if (!els.length) return Promise.resolve();
+            
+            return new Promise((resolve, reject) => {
+              try {
+                els.forEach(callback);
+                resolve();
+              } catch (error) {
+                reject(error);
+              }
+            });
+          };
+          const saveOriginalData = () => processElements(el => {
+            if (!el.getAttribute('data-original-code')) {
+              el.setAttribute('data-original-code', el.innerHTML);
+            }
+          });
+
+          const resetProcessed = () => processElements(el => {
+            const originalCode = el.getAttribute('data-original-code');
+            if (originalCode) {
+              el.removeAttribute('data-processed');
+              el.innerHTML = DOMPurify.sanitize(originalCode);
+            }
+          });
+          const loadMermaid = async (theme) => {
+            window.mermaid.initialize({theme, startOnLoad: false})
+            await window.mermaid.run({querySelector: elementCode, suppressErrors: true})
+            if (window.svgPanZoom) {
+              window.__panZoomList?.forEach(panZoom => {try {panZoom.destroy()} catch {}});
+              window.__panZoomList = [];
+              _$$('.mermaid > svg').forEach(el => {
+                const bbox = el.getBBox();
+                el.setAttribute('height', Math.max(bbox.height, 80));
+                window.__panZoomList.push(window.svgPanZoom(el, {
+                  zoomEnabled: true,
+                  controlIconsEnabled: true,
+                  fit: true,
+                  center: true
+                }));
+              });
+              if (window.__resizeMermaidSvg) {
+                window.removeEventListener('resize', window.__resizeMermaidSvg);
+              }
+              window.__resizeMermaidSvg = () => {
+                try {
+                  window.__panZoomList.forEach(panZoom => {
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                  });
+                } catch {
+                  window.removeEventListener('resize', window.__resizeMermaidSvg);
+                  window.__panZoomList = [];
+                }
+              }
+              window.addEventListener('resize', window.__resizeMermaidSvg);
+            }
+          }
+          const initMermaid = async (theme) => {
+            try {
+              await saveOriginalData();
+              await resetProcessed();
+              await loadMermaid(theme);
+            } catch (error) {
+              console.error(error);
+            }
+          };
+          
+          document.body.addEventListener('reimu:theme-set', (e) => {
+            const isDark = e.detail.isDark;
+            initMermaid(isDark ? 'dark' : 'default');
+          });
+
+          const mode = localStorage.getItem('dark_mode');
+          if (mode === 'auto') {
+            const osMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            initMermaid(osMode ? 'dark' : 'default');
+          } else {
+            initMermaid(mode === 'true' ? 'dark' : 'default');
+          }
+        }
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script><script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+  var commentConfigKeys = ['valine', 'waline', 'twikoo', 'gitalk', 'giscus', 'utterances', 'beaudar', 'disqus'];
+  var commentConfig = {waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https:\/\/npm.webcache.cn\/@waline\/client@2.15.8\/dist\/waline.mjs';
+        
+        if ('webcache|@waline\/client@2.15.8\/dist\/waline.mjs'.startsWith('local')) {
+          
+          const module = await safeImport(walineCdn);
+          walineInit = module.init;
+        } else {
+          
+          const module = await safeImport(
+            walineCdn, 
+            'sha384-9sbqJjrfGjbkI6\/PI4nU\/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH\/KinBEAZII\/5'
+          );
+          walineInit = module.init;
+        }
+        
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'github-blog-comment-two.vercel.app',
+          lang: document.documentElement.lang || 'en',
+          locale: JSON.parse("{}"),
+          emoji: JSON.parse("[\"https://unpkg.com/@waline/emojis@1.2.0/weibo\",\"https://unpkg.com/@waline/emojis@1.2.0/alus\",\"https://unpkg.com/@waline/emojis@1.2.0/bilibili\",\"https://unpkg.com/@waline/emojis@1.2.0/qq\",\"https://unpkg.com/@waline/emojis@1.2.0/tieba\",\"https://unpkg.com/@waline/emojis@1.2.0/tw-emoji\"]"),
+          meta: JSON.parse("[\"nick\",\"mail\",\"link\"]"),
+          requiredMeta: JSON.parse("[\"nick\",\"mail\"]"),
+          wordLimit:  0 ,
+          comment: true,
+          pageSize:  10 ,
+          dark: 'html[data-theme="dark"]',
+          pageview:  true ,
+        });
+      }
+    },};
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig?.[key]?.enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig?.[sys]?.enable) || '';
+    }
+  }
+
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false,
+      disqus: false,
+      utterances: false,
+      beaudar: false,
+    };
+
+    
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      
+      const commentType = item.getAttribute('data-selector');
+
+      
+      hideAllComments();
+
+      
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          
+          changeActiveCommentItems(item);
+        });
+      }
+
+      
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script><script
+    src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-VT1EeewTCEXgndcPMQ0PzV&#43;uVFYjxFIjmAA7s5gcMX9t4Dt5TD&#43;OVQIn7NJWIXn7" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/@zumer/snapdom@1.9.14/dist/snapdom.min.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-OEQ&#43;fJp/Mvi2uzBREXybtxryJvLytWapuHu4EE6LPwTKUwATYcc55tPPcZTzVcmx" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC&#43;gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
+</div><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script>
+    var setupAPlayer = () => {
+      if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const meting = _$('meting-js');
+          if (meting) {
+            meting.setAttribute('fixed', 'true');
+            const aside = meting.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              meting.parentNode.removeChild(meting);
+              document.body.appendChild(meting);
+            }
+          }
+        }
+      }
+    };</script><script
+    src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js"
+    defer
+    
+    
+    onload="setupAPlayer()"
+    integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr&#43;h5UfruuRL/aORyw&#43;5&#43;HZoU6e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    defer
+    
+    
+    
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

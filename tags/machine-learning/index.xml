@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on MIMI的博客</title>
+    <link>https://shqww.github.io/tags/machine-learning/</link>
+    <description>Recent content from MIMI的博客</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    <managingEditor>haoruw@outlook.com (MIMI)</managingEditor>
+    <webMaster>haoruw@outlook.com (MIMI)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Thu, 28 Nov 2024 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="https://shqww.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>主成分分析和线性回归对比</title>
+      <link>https://shqww.github.io/post/pca_lr/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/post/pca_lr/</guid>
+      <description>
+        <![CDATA[<h1>主成分分析和线性回归对比</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          对比二维空间下主成分分析和线性回归的优化目标和结果。
+        
+        <hr><p>本文2024-11-28首发于<a href='https://shqww.github.io/'>MIMI的博客</a>，最后修改于2024-11-28</p>]]>
+      </description>
+      
+        <category>Machine Learning</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>扩散模型中的随机微分方程</title>
+      <link>https://shqww.github.io/post/diffusion_model_sde/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://shqww.github.io/post/diffusion_model_sde/</guid>
+      <description>
+        <![CDATA[<h1>扩散模型中的随机微分方程</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          对扩散模型中涉及的随机微分方程进行详细的数学分析和证明。
+        
+        <hr><p>本文2024-11-28首发于<a href='https://shqww.github.io/'>MIMI的博客</a>，最后修改于2024-11-28</p>]]>
+      </description>
+      
+        <category>Machine Learning</category>
+      
+    </item>
+    
+  </channel>
+</rss>

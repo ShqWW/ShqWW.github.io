@@ -1,0 +1,896 @@
+<!doctype html>
+<html
+  lang="en"data-theme-mode="auto"
+>
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  RIME输入法安装与定制 | MIMI
+</title>
+<meta name="description" content=""/><script>
+  window.siteConfig = JSON.parse("{\"anchor\":null,\"anchor_icon\":\"f1b0\",\"base\":\"https://blog.shqww.top/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"dark_mode\":{\"button\":true,\"mode\":\"auto\"},\"i18n_languages\":[{\"label\":\"简体中文\",\"lang\":\"zh-cn\"},{\"label\":\"English\",\"lang\":\"en\"}],\"icon_font\":false,\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link
+    rel="preload"
+    as="style"
+    crossorigin
+    href="https://fontsapi.zeoseven.com/292/main/result.css"
+    onload="this.rel='stylesheet'"
+  /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.3.1/css/regular.min.css"
+    integrity="sha384-2RNNQHI9yrjVDjr8zReHCzBa25B4jlokRSel4Cnp9s&#43;PCUDvwxBq8ZbIODO51CZL" crossorigin="anonymous"/><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.3.1/css/solid.min.css"
+    integrity="sha384-p/nJzgOJxEnSeUkMQ0nk5oPsUT5x8eOWi6pxU2ls9qcO9B78dCvZk0JSAOXWXUQN" crossorigin="anonymous"/><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.3.1/css/brands.min.css"
+    integrity="sha384-pIEnzgIAdkjnrjeHT4EuN7Kq2yGdMr3Vk0e3gLOkA7/e07sPVkOqclXo09iTJVEo" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.3.1/css/v5-font-face.min.css"
+    integrity="sha384-bgty3ASWr/wgPqaNmdRW2QRzOUN359e1lysD9FJvOi5vcnpF0zw7X3w3SzQ8eXg3" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.3.1/css/v4-font-face.min.css"
+    integrity="sha384-PR7IRkzcQVYE18&#43;Qzo&#43;jvCpk7aBZUsKQtpDyImfQ92ONj5u3VwMmMCIi7VMoGCCS" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><meta property="og:type" content="website" />
+  <meta property="og:title" content="RIME输入法安装与定制 | MIMI" />
+  <meta
+    property="og:description"
+    content=""
+  />
+  <meta property="og:url" content="https://blog.shqww.top/en/post/rime/" />
+  <meta
+    property="og:site_name"
+    content="MIMI&#39;s Blog"
+  />
+  <meta property="og:image" content="https://blog.shqww.top/covers/rime.jpg" />
+  <meta property="article:author" content="MIMI" />
+  <meta property="article:published_time" content="2026-05-20T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-05-20T00:00:00&#43;00:00" /><meta property="article:tag" content="Input" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://blog.shqww.top/covers/rime.jpg" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.e195a02f8f96fd018e208ebdda5be960ac01813cbe3df27d4bd99337637c021b.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.47/dist/katex.min.css"
+    integrity="sha384-nH0MfJ44wi1dd7w6jinlyBgljjS8EJAh2JBoRad8a3VDw2K69vfaaqm4WnR&#43;gXtA" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css"
+    integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy&#43;Ub9QgnxUYJmwOhYCK" crossorigin="anonymous"/><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.3/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+This article does not have a corresponding language version
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/en/"><div class='main-nav-icon icon '>&#xf015;</div><span class="main-nav-link">Home</span>
+      </a><a class="main-nav-link-wrap" href="/en/archives"><div class='main-nav-icon icon '>&#xf187;</div><span class="main-nav-link">Archives</span>
+      </a><a class="main-nav-link-wrap" href="/en/about"><div class='main-nav-icon icon '>&#xf05a;</div><span class="main-nav-link">About</span>
+      </a><a class="main-nav-link-wrap" href="/en/friend"><div class='main-nav-icon icon '>&#xf0c0;</div><span class="main-nav-link">Friend</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">English</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="zh-cn" role="option" aria-selected="false" >简体中文</li><li data-value="en" role="option" class="selected" aria-selected="true" >English</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};langMap['zh-cn'] = '\/post\/rime\/';selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'en') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture>
+    <img crossorigin="anonymous" fetchpriority="high" src="/covers/rime.jpg" alt="RIME输入法安装与定制"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">RIME输入法安装与定制</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"><span id="subtitle">RIME输入法安装与定制</span></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          class="sidebar-left"
+            ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#定制">定制</a>
+      <ul>
+        <li><a href="#1-导入方案">1. 导入方案</a></li>
+        <li><a href="#2-修改输入法界面">2. 修改输入法界面</a></li>
+        <li><a href="#3-定制输入方案">3. 定制输入方案</a></li>
+        <li><a href="#4-定制输入法快捷键">4. 定制输入法快捷键</a></li>
+        <li><a href="#5添加输入法词库">5.添加输入法词库</a></li>
+      </ul>
+    </li>
+    <li><a href="#跨设备同步">跨设备同步</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.jpg"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">15</div>
+  </div>
+  <a class="sidebar-state-category" href="/en/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      5
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/en/tags/" aria-label="sidebar-state-tag-link">
+    <div>Tags</div>
+    <div class="sidebar-state-number">10</div>
+  </a>
+</div>
+<div class="sidebar-social" style="margin-bottom: 20px;"><div class="icon-bilibili sidebar-social-icon">
+        <a
+          href="https://space.bilibili.com/12323180"
+          itemprop="url"
+          target="_blank"
+          aria-label="bilibili"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-email sidebar-social-icon">
+        <a
+          href="mailto:haoruw@outlook.com"
+          itemprop="url"
+          target="_blank"
+          aria-label="email"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-steam sidebar-social-icon">
+        <a
+          href="https://steamcommunity.com/profiles/76561198276956169/"
+          itemprop="url"
+          target="_blank"
+          aria-label="steam"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+
+
+<div class="article-date">
+  
+    <div class="date-circle">
+      <div class="date-wrapper">
+        <time class="date-year" datetime="2026-05-20T00:00:00Z">2026</time>
+        <time class="date-day" datetime="2026-05-20T00:00:00Z">05-20</time>
+      </div>
+    </div>
+  </span>
+</div></div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><p>本文梳理一下RIME输入法的安装与定制过程，主要以Windows（weasel）平台为主，其他平台日后有时间摸索与记录。</p>
+<h2 id="安装">
+<a class="header-anchor" href="#%e5%ae%89%e8%a3%85"></a>
+安装
+</h2><p>RIME输入法安装包可以在<a href="https://RIME.im/download/">RIME输入法官网</a>下载，对于Windows平台，下载Weasel（小狼毫）版本的安装包。安装过程非常简单，按照安装向导的提示进行即可。</p>
+<h2 id="定制">
+<a class="header-anchor" href="#%e5%ae%9a%e5%88%b6"></a>
+定制
+</h2><p>RIME输入法的定制主要通过编辑配置文件来实现。本地配置文件默认地址为：</p>
+<ul>
+<li>Windows
+<ul>
+<li>Weasel: <code>%APPDATA%\RIME</code></li>
+</ul>
+</li>
+<li>Mac OS X
+<ul>
+<li>Squirrel: <code>~/Library/RIME</code></li>
+<li>Fcitx5 macOS: <code>~/.local/share/fcitx5/RIME</code></li>
+</ul>
+</li>
+<li>Linux
+<ul>
+<li>iBus:<code>~/.config/ibus/RIME</code></li>
+<li>Fcitx5: <code>~/.local/share/fcitx5/RIME</code></li>
+</ul>
+</li>
+<li>Fctix5 Android(小企鹅入法): <code>/storage/emulated/0/Android/data/org.fcitx.fcitx5.android/files/data/RIME/</code></li>
+</ul>
+<p>这里以Windows平台的Weasel输入法为例，介绍一些常见的定制方法。注意：每次调整完设置都需要重新部署输入法才能生效，可以通过右键点击输入法图标，选择“重新部署”来完成。</p>
+<h3 id="1-导入方案">
+<a class="header-anchor" href="#1-%e5%af%bc%e5%85%a5%e6%96%b9%e6%a1%88"></a>
+1. 导入方案
+</h3><p>有很多开源RIME方案可供选择，这里以<a href="https://amzxyz.github.io/doc/intro/">万象输入法</a>为例，介绍如何导入方案。首先，下载万像输入法的方案文件，通常是一个压缩包，解压后会得到一个文件夹，里面包含了<code>default.custom.yaml</code>等配置文件。将这个文件夹复制到RIME输入法的配置目录下（如<code>%APPDATA%\RIME</code>），复制之前将原有配置目录清空即可。</p>
+<h3 id="2-修改输入法界面">
+<a class="header-anchor" href="#2-%e4%bf%ae%e6%94%b9%e8%be%93%e5%85%a5%e6%b3%95%e7%95%8c%e9%9d%a2"></a>
+2. 修改输入法界面
+</h3><p>Windows下RIME输入法的界面可以通过修改<code>weasel.yaml</code>和<code>weasel.custom.yaml</code>文件来定制。</p>
+<p>例如可以自定义输入法配色皮肤，在<code>weasel.yaml</code>中添加如下内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">preset_color_schemes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">orange</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;熔岩橙 / orange&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">catww</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">text_color</span><span class="p">:</span><span class="w"> </span><span class="m">0xffffff</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">label_color</span><span class="p">:</span><span class="w"> </span><span class="m">0xffffff</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">back_color</span><span class="p">:</span><span class="w"> </span><span class="m">0x1e1e1e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">border_color</span><span class="p">:</span><span class="w"> </span><span class="m">0x333333</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hilited_text_color</span><span class="p">:</span><span class="w"> </span><span class="m">0x6730f5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hilited_mark_color</span><span class="p">:</span><span class="w"> </span><span class="m">0x6730f5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hilited_candidate_text_color</span><span class="p">:</span><span class="w"> </span><span class="m">0x6730f5</span><span class="w">
+</span></span></span></code></pre></div><p>添加皮肤配置</p>
+<p>然后在<code>weasel.custom.yaml</code>中启用这个皮肤：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">patch</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">&#34;style/color_scheme&#34;: </span><span class="l">win11_light</span><span class="w"> </span><span class="c"># 系统亮色主题方案</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">&#34;style/color_scheme_dark&#34;: </span><span class="l">orange</span><span class="w"> </span><span class="c"># 系统暗色主题方案</span><span class="w">
+</span></span></span></code></pre></div><p>同时可以调整预编辑区位置，在<code>weasel.yaml</code>中修改如下内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">inline_preedit</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c">#将预编辑区和输入法候选区域放在一起</span><span class="w">
+</span></span></span></code></pre></div><h3 id="3-定制输入方案">
+<a class="header-anchor" href="#3-%e5%ae%9a%e5%88%b6%e8%be%93%e5%85%a5%e6%96%b9%e6%a1%88"></a>
+3. 定制输入方案
+</h3><p>RIME输入法的输入方案可以通过编辑<code>default.yaml</code>文件来定制，例如各种快捷键。深度定制可以通过lua脚本实现。这里给出一个类似搜狗输入法中空格键上屏预编辑区英文候选的例子：</p>
+<p>首先在<code>lua</code>目录下创建一个新的lua脚本文件，例如<code>space_commit.lua</code>，内容如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="c1">-- space_to_commit.lua</span>
+</span></span><span class="line"><span class="cl"><span class="kd">local</span> <span class="kr">function</span> <span class="nf">processor</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">local</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">env.engine</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">local</span> <span class="n">context</span> <span class="o">=</span> <span class="n">engine.context</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">-- 逻辑条件：</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- 1. 必须在中文模式下</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- 2. 必须有输入内容</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- 3. 必须是空格键</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="ow">not</span> <span class="n">context</span><span class="p">:</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&#34;ascii_mode&#34;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">context</span><span class="p">:</span><span class="n">has_menu</span><span class="p">()</span> <span class="ow">and</span> <span class="n">key</span><span class="p">:</span><span class="n">repr</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&#34;space&#34;</span> <span class="kr">then</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">local</span> <span class="n">input</span> <span class="o">=</span> <span class="n">context.input</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">-- 只要缓冲区里有内容，不论是什么字符（字母、数字、标点、混合），都执行上屏</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">if</span> <span class="n">input</span> <span class="ow">and</span> <span class="o">#</span><span class="n">input</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="kr">then</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1">-- 上屏默认会加空格，直接传入input即可</span>
+</span></span><span class="line"><span class="cl">      <span class="n">engine</span><span class="p">:</span><span class="n">commit_text</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="c1">-- 清空输入框</span>
+</span></span><span class="line"><span class="cl">      <span class="n">context</span><span class="p">:</span><span class="n">clear</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="c1">-- 拦截信号，不让 Rime 继续处理这个空格</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">return</span> <span class="n">k.Accepted</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">end</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">end</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1">-- 不符合条件则放行（例如：输入编码正好有候选词，但你想选第一候选项时需要用到 express_editor）</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- 注意：由于这里拦截了所有空格，如果你想要“正常选词功能”，请使用数字键 1，或者暂时禁用此脚本</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">return</span> <span class="n">k.Noop</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">return</span> <span class="p">{</span> <span class="n">func</span> <span class="o">=</span> <span class="n">processor</span> <span class="p">}</span>
+</span></span></code></pre></div><p>然后在<code>wanxiang.schema.yaml</code>中修改如下内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">engine</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">processors</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># ................保留其他lua脚本...................</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">lua_processor@*wanxiang.space_commit</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># ................保留其他lua脚本...................</span><span class="w">
+</span></span></span></code></pre></div><p>上述功能实现了在中文输入模式下获得类似英文输入的体验。当输入内容时，按下空格键会将当前输入的内容（无论是字母、数字、标点还是混合）上屏，并在后面自动添加一个空格。这样可以方便地输入英文单词或短语，同时保持中文输入的流畅性。</p>
+<h3 id="4-定制输入法快捷键">
+<a class="header-anchor" href="#4-%e5%ae%9a%e5%88%b6%e8%be%93%e5%85%a5%e6%b3%95%e5%bf%ab%e6%8d%b7%e9%94%ae"></a>
+4. 定制输入法快捷键
+</h3><p>RIME输入法的快捷键可以通过编辑<code>default.yaml</code>文件来定制，例如禁用shift切换中英文。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">ascii_composer</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">switch_key</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Shift_L</span><span class="p">:</span><span class="w"> </span><span class="l">noop </span><span class="w"> </span><span class="c"># commit_code | commit_text | inline_ascii | clear | noop</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Shift_R</span><span class="p">:</span><span class="w"> </span><span class="l">noop</span><span class="w">
+</span></span></span></code></pre></div><h3 id="5添加输入法词库">
+<a class="header-anchor" href="#5%e6%b7%bb%e5%8a%a0%e8%be%93%e5%85%a5%e6%b3%95%e8%af%8d%e5%ba%93"></a>
+5.添加输入法词库
+</h3><p>RIME输入法的词库可以通过添加<code>dict.yaml</code>文件实现，以搜狗输入法为例，首先进入(搜狗输入法词库)[https://pinyin.sogou.com/dict/]，选择需要领域的词库进行下载。下载文件不能直接用，需要用到转换工具进行转换，推荐使用<a href="https://github.com/studyzy/imewlconverter/releases">深蓝输入法词库转换工具</a>进行转换。转换前需要选择文件并设置输入输出文件类型。输入是搜狗细胞词库格式，输入为中州韵格式。</p>
+<p>转换完成后会得到一个<code>txt</code>文件，假设这个文件名为<code>sougou_web.txt</code>。将后缀改为<code>.dict.yaml</code>，例如<code>sougou_web.dict.yaml</code>，并在开头补充内容如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">sougou_web </span><span class="w"> </span><span class="c"># 词库名称和文件名保持一致</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2026-05-01&#34;</span><span class="w">  </span><span class="l">日期</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">sort</span><span class="p">:</span><span class="w"> </span><span class="l">by_weight  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
+</span></span></span></code></pre></div><p>将这个文件复制到RIME输入法的配置目录下（Windows下为<code>%APPDATA%\RIME\dicts</code>），然后在<code>wanxiang.dict.yaml</code>中修改如下内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">import_tables</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">dicts/sougou_web  </span><span class="w"> </span><span class="c">#搜狗网络词库，包含了大量的网络流行词和新词，在线供</span><span class="w">
+</span></span></span></code></pre></div><p>最后重新部署输入法，新的词库就会生效了。</p>
+<h2 id="跨设备同步">
+<a class="header-anchor" href="#%e8%b7%a8%e8%ae%be%e5%a4%87%e5%90%8c%e6%ad%a5"></a>
+跨设备同步
+</h2><p>RIME输入法的配置文件可以通过云盘（如OneDrive、Google Drive等）进行同步。只需将配置目录（如<code>%APPDATA%\RIME</code>）链接到云盘中的一个文件夹即可。以OneDrive为例，可以使用以下命令创建符号链接：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl"><span class="k">mklink</span> /D <span class="s2">&#34;</span><span class="nv">%APPDATA%</span><span class="s2">\RIME&#34;</span> <span class="s2">&#34;C:\Users\YourUsername\OneDrive\RIME&#34;</span>
+</span></span></code></pre></div><p>这样，无论在哪台设备上修改了RIME输入法的配置，都会自动同步到其他设备上，非常方便。</p>
+</div>
+    <footer class="article-footer"><blockquote class="article-copyright"><p><strong><span class="icon-user icon"></span>Author: </strong>MIMI</p><p>
+      <strong><span class="icon-link icon"></span>Permalink: </strong><a href="https://blog.shqww.top/en/post/rime/">https://blog.shqww.top/en/post/rime/</a>
+    </p><p>
+      
+      <strong><span class="icon-copyright icon"></span>License: </strong>
+      All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!
+    </p>
+    <span class="icon-creative-commons article-copyright-bg"></span></blockquote>
+<div class="share-wrapper"><a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.shqww.top/en/post/rime/" target="_blank" rel="noopener noreferrer" title="RIME输入法安装与定制">
+      <div class="share-icon icon icon-facebook"></div>
+    </a><a href="https://twitter.com/intent/tweet?url=https://blog.shqww.top/en/post/rime/&amp;text=RIME%e8%be%93%e5%85%a5%e6%b3%95%e5%ae%89%e8%a3%85%e4%b8%8e%e5%ae%9a%e5%88%b6&amp;via=https://blog.shqww.top/" target="_blank" rel="noopener noreferrer" title="RIME输入法安装与定制">
+      <div class="share-icon icon icon-twitter"></div>
+    </a><a href="https://bsky.app/intent/compose?text=RIME%e8%be%93%e5%85%a5%e6%b3%95%e5%ae%89%e8%a3%85%e4%b8%8e%e5%ae%9a%e5%88%b6%20https://blog.shqww.top/en/post/rime/" target="_blank" rel="noopener noreferrer" title="RIME输入法安装与定制">
+      <div class="share-icon icon icon-bluesky"></div>
+    </a><a href="https://www.linkedin.com/shareArticle?url=https://blog.shqww.top/en/post/rime/&amp;title=RIME%e8%be%93%e5%85%a5%e6%b3%95%e5%ae%89%e8%a3%85%e4%b8%8e%e5%ae%9a%e5%88%b6&amp;summary=RIME%e8%be%93%e5%85%a5%e6%b3%95%e5%ae%89%e8%a3%85%e4%b8%8e%e5%ae%9a%e5%88%b6&amp;mini=true&amp;ro=true" target="_blank" rel="noopener noreferrer" title="RIME输入法安装与定制">
+      <div class="share-icon icon icon-linkedin"></div>
+    </a><a href="https://www.reddit.com/submit?url=https://blog.shqww.top/en/post/rime/&amp;title=RIME%e8%be%93%e5%85%a5%e6%b3%95%e5%ae%89%e8%a3%85%e4%b8%8e%e5%ae%9a%e5%88%b6" target="_blank" rel="noopener noreferrer" title="RIME输入法安装与定制">
+      <div class="share-icon icon icon-reddit"></div>
+    </a><a href="https://service.weibo.com/share/share.php?url=https://blog.shqww.top/en/post/rime/&amp;appkey=&amp;title=RIME%e8%be%93%e5%85%a5%e6%b3%95%e5%ae%89%e8%a3%85%e4%b8%8e%e5%ae%9a%e5%88%b6&amp;pic=&amp;ralateUid=" target="_blank" rel="noopener noreferrer" title="RIME输入法安装与定制">
+      <div class="share-icon icon icon-weibo"></div>
+    </a><a href="https://connect.qq.com/widget/shareqq/index.html?url=https://blog.shqww.top/en/post/rime/&amp;title=RIME%e8%be%93%e5%85%a5%e6%b3%95%e5%ae%89%e8%a3%85%e4%b8%8e%e5%ae%9a%e5%88%b6&amp;desc=RIME%e8%be%93%e5%85%a5%e6%b3%95%e5%ae%89%e8%a3%85%e4%b8%8e%e5%ae%9a%e5%88%b6&amp;source=https://blog.shqww.top/" target="_blank" rel="noopener noreferrer" title="RIME输入法安装与定制">
+      <div class="share-icon icon icon-qq"></div>
+    </a><a href="javascript:;"  title="RIME输入法安装与定制">
+      <div class="share-icon icon icon-weixin"><div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hugo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div></div>
+    </a></div><a
+          data-aos="zoom-in"
+          href="/en/post/rime/#comments"
+          class="article-comment-link"
+        >
+          <span
+            class="post-comments-count waline-comment-count"
+            data-path="/en/post/rime/"
+            itemprop="commentCount"
+          ></span>
+          Comments
+        </a><span
+          data-aos="zoom-in"
+          class="article-visitor-link"
+        >
+          <span
+            class="waline-pageview-count"
+            data-path="/en/post/rime/"
+            >0</span
+          >
+          <em class="post-meta-item-text">Readings</em>
+        </span><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/en/categories/software"
+      data-aos="zoom-in"
+      >Software</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/en/tags/input"
+        rel="tag"
+        >Input</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/covers/rl2.jpg"
+            data-sizes="auto"
+            alt="LLM后训练(五)--GRPO和DPO"
+            class="lazyload"
+          /><a
+          href="/en/post/llmpost5/"
+          aria-label="Prev:LLM后训练(五)--GRPO和DPO"
+          title="Prev:LLM后训练(五)--GRPO和DPO"
+        ></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">LLM后训练(五)--GRPO和DPO</h3>
+      </div><div class="article-nav-link-wrap right"><img
+            data-src="/covers/openwrt2512.jpg"
+            data-sizes="auto"
+            alt="OpenWrt安装与设置"
+            class="lazyload"
+          /><a
+          href="/en/post/openwrt/"
+          aria-label="Next:OpenWrt安装与设置"
+          title="Next:OpenWrt安装与设置"
+        ></a>
+        <div class="article-nav-caption">Next</div>
+        <h3 class="article-nav-title">OpenWrt安装与设置</h3>
+      </div></nav></article><section id="comments" data-aos="fade-up">
+<div class="comment-header"><h2 class="comment-title">Leave a comment</h2>
+  <div class="comment-selector">
+    <div class="comment-selector-wrap"><div class="selector-item" data-selector="waline">
+          <span>waline</span>
+        </div></div>
+  </div>
+</div>
+
+<div class="comment-content"><div class="comment waline-comment" data-aos="fade-up"
+     >
+    </div></div>
+</section></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2024-2026<span class="footer-info-sep rotate"></span>MIMI
+    </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#定制">定制</a>
+      <ul>
+        <li><a href="#1-导入方案">1. 导入方案</a></li>
+        <li><a href="#2-修改输入法界面">2. 修改输入法界面</a></li>
+        <li><a href="#3-定制输入方案">3. 定制输入方案</a></li>
+        <li><a href="#4-定制输入法快捷键">4. 定制输入法快捷键</a></li>
+        <li><a href="#5添加输入法词库">5.添加输入法词库</a></li>
+      </ul>
+    </li>
+    <li><a href="#跨设备同步">跨设备同步</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.jpg"
+    data-sizes="auto"
+    alt="MIMI"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">MIMI</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Posts</div><div class="sidebar-state-number">15</div>
+  </div>
+  <a class="sidebar-state-category" href="/en/categories/" aria-label="sidebar-state-category-link">
+    <div>Categories</div>
+    <div class="sidebar-state-number">
+      5
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/en/tags/" aria-label="sidebar-state-tag-link">
+    <div>Tags</div>
+    <div class="sidebar-state-number">10</div>
+  </a>
+</div>
+<div class="sidebar-social" ><div class="icon-bilibili sidebar-social-icon">
+        <a
+          href="https://space.bilibili.com/12323180"
+          itemprop="url"
+          target="_blank"
+          aria-label="bilibili"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-email sidebar-social-icon">
+        <a
+          href="mailto:haoruw@outlook.com"
+          itemprop="url"
+          target="_blank"
+          aria-label="email"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-github sidebar-social-icon">
+        <a
+          href="https://github.com/shqww"
+          itemprop="url"
+          target="_blank"
+          aria-label="github"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div><div class="icon-steam sidebar-social-icon">
+        <a
+          href="https://steamcommunity.com/profiles/76561198276956169/"
+          itemprop="url"
+          target="_blank"
+          aria-label="steam"
+          rel="noopener nofollow noreferrer"
+        ></a>
+      </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/en/"
+        aria-label="Home"
+      ></a><div class='sidebar-menu-icon icon '>&#xf015;</div><div class="sidebar-menu-link">Home</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/en/archives"
+        aria-label="Archives"
+      ></a><div class='sidebar-menu-icon icon '>&#xf187;</div><div class="sidebar-menu-link">Archives</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/en/about"
+        aria-label="About"
+      ></a><div class='sidebar-menu-icon icon '>&#xf05a;</div><div class="sidebar-menu-link">About</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/en/friend"
+        aria-label="Friend"
+      ></a><div class='sidebar-menu-icon icon '>&#xf0c0;</div><div class="sidebar-menu-link">Friend</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    
+    
+    
+    
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous"  ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax ></script><script
+    src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE/jMSCxD&#43;jAPU55x/jj3wlf" crossorigin="anonymous"></script><script src="/js/pjax.js" integrity="" crossorigin="anonymous"  ></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "MIMI",
+          title: "RIME输入法安装与定制",
+          url: "https:\/\/blog.shqww.top\/en\/post\/rime\/",
+          description: "RIME输入法安装与定制",
+          cover: "https:\/\/blog.shqww.top\/covers\/rime.jpg",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script><script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+  var commentConfigKeys = ['valine', 'waline', 'twikoo', 'gitalk', 'giscus', 'utterances', 'beaudar', 'disqus'];
+  var commentConfig = {waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https:\/\/npm.webcache.cn\/@waline\/client@2.15.8\/dist\/waline.mjs';
+        
+        if ('webcache|@waline\/client@2.15.8\/dist\/waline.mjs'.startsWith('local')) {
+          
+          const module = await safeImport(walineCdn);
+          walineInit = module.init;
+        } else {
+          
+          const module = await safeImport(
+            walineCdn, 
+            'sha384-9sbqJjrfGjbkI6\/PI4nU\/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH\/KinBEAZII\/5'
+          );
+          walineInit = module.init;
+        }
+        
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'github-blog-comment-two.vercel.app',
+          lang: document.documentElement.lang || 'en',
+          locale: JSON.parse("{}"),
+          emoji: JSON.parse("[\"https://unpkg.com/@waline/emojis@1.2.0/weibo\",\"https://unpkg.com/@waline/emojis@1.2.0/alus\",\"https://unpkg.com/@waline/emojis@1.2.0/bilibili\",\"https://unpkg.com/@waline/emojis@1.2.0/qq\",\"https://unpkg.com/@waline/emojis@1.2.0/tieba\",\"https://unpkg.com/@waline/emojis@1.2.0/tw-emoji\"]"),
+          meta: JSON.parse("[\"nick\",\"mail\",\"link\"]"),
+          requiredMeta: JSON.parse("[\"nick\",\"mail\"]"),
+          wordLimit:  0 ,
+          comment: true,
+          pageSize:  10 ,
+          dark: 'html[data-theme="dark"]',
+          pageview:  true ,
+        });
+      }
+    },};
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig?.[key]?.enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig?.[sys]?.enable) || '';
+    }
+  }
+
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false,
+      disqus: false,
+      utterances: false,
+      beaudar: false,
+    };
+
+    
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      
+      const commentType = item.getAttribute('data-selector');
+
+      
+      hideAllComments();
+
+      
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          
+          changeActiveCommentItems(item);
+        });
+      }
+
+      
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script><script
+    src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-VT1EeewTCEXgndcPMQ0PzV&#43;uVFYjxFIjmAA7s5gcMX9t4Dt5TD&#43;OVQIn7NJWIXn7" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/@zumer/snapdom@1.9.14/dist/snapdom.min.js"
+    defer
+    
+    data-pjax
+    
+    integrity="sha384-OEQ&#43;fJp/Mvi2uzBREXybtxryJvLytWapuHu4EE6LPwTKUwATYcc55tPPcZTzVcmx" crossorigin="anonymous"></script></div>
+</div><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script></body>
+</html>

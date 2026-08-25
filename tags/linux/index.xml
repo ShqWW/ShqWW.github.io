@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on MIMI的博客</title>
+    <link>https://blog.shqww.top/tags/linux/</link>
+    <description>Recent content from MIMI的博客</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    <managingEditor>haoruw@outlook.com (MIMI)</managingEditor>
+    <webMaster>haoruw@outlook.com (MIMI)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Tue, 25 Aug 2026 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="https://blog.shqww.top/tags/linux/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>OpenWrt安装与设置</title>
+      <link>https://blog.shqww.top/post/openwrt/</link>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://blog.shqww.top/post/openwrt/</guid>
+      <description>
+        <![CDATA[<h1>OpenWrt安装与设置</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          软路由系统OpenWrt安装与基本设置，基于25.12的x86版本。
+        
+        <hr><p>本文2026-08-25首发于<a href='https://blog.shqww.top/'>MIMI的博客</a>，最后修改于2026-08-25</p>]]>
+      </description>
+      
+        <category>Linux</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Linux下配置zsh和oh my zsh</title>
+      <link>https://blog.shqww.top/post/zsh_oh-my-zsh/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://blog.shqww.top/post/zsh_oh-my-zsh/</guid>
+      <description>
+        <![CDATA[<h1>Linux下配置zsh和oh my zsh</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          Linux下配置zsh和oh my zsh方法。
+        
+        <hr><p>本文2024-11-28首发于<a href='https://blog.shqww.top/'>MIMI的博客</a>，最后修改于2024-11-28</p>]]>
+      </description>
+      
+        <category>Linux</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>linux服务器使用ssh秘钥登录以及禁用ssh密码登录</title>
+      <link>https://blog.shqww.top/post/linux_ssh/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://blog.shqww.top/post/linux_ssh/</guid>
+      <description>
+        <![CDATA[<h1>linux服务器使用ssh秘钥登录以及禁用ssh密码登录</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          linux服务器使用ssh秘钥登录以及禁用ssh密码登录。
+        
+        <hr><p>本文2024-11-28首发于<a href='https://blog.shqww.top/'>MIMI的博客</a>，最后修改于2024-11-28</p>]]>
+      </description>
+      
+        <category>Linux</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Docker 之代理配置</title>
+      <link>https://blog.shqww.top/post/docker_proxy/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://blog.shqww.top/post/docker_proxy/</guid>
+      <description>
+        <![CDATA[<h1>Docker 之代理配置</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          本文介绍docker使用过程中的各种代理配置。
+        
+        <hr><p>本文2024-11-28首发于<a href='https://blog.shqww.top/'>MIMI的博客</a>，最后修改于2024-11-28</p>]]>
+      </description>
+      
+        <category>Linux</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Docker 部署Nginx 并获取SSL证书进行https反向代理</title>
+      <link>https://blog.shqww.top/post/docker_nginx_cert/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 &#43;0000</pubDate>
+      <author>haoruw@outlook.com (MIMI)</author>
+      <guid>https://blog.shqww.top/post/docker_nginx_cert/</guid>
+      <description>
+        <![CDATA[<h1>Docker 部署Nginx 并获取SSL证书进行https反向代理</h1><p>作者：MIMI（haoruw@outlook.com）</p>
+        
+          本文介绍如何在Docker上部署Nginx，并获取SSL证书，实现HTTPS反向代理。通过这种方式，可以安全地访问内部服务，同时保护数据传输的安全性。
+        
+        <hr><p>本文2024-11-28首发于<a href='https://blog.shqww.top/'>MIMI的博客</a>，最后修改于2024-11-28</p>]]>
+      </description>
+      
+        <category>Linux</category>
+      
+    </item>
+    
+  </channel>
+</rss>

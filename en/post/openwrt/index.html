@@ -339,8 +339,7 @@ This article does not have a corresponding language version
 </span></span></code></pre></div><p>按照提示输入<code>p</code>查看分区表，记录下分区号和起始扇区。然后按n创建新分区，输入分区号，起始扇区号尽量按提示最小的输入，结束扇区号按提示最大输入。然后按w保存退出。</p>
 <p>这里假设新建分区是<code>/dev/nvme0n1p3</code>，格式化新分区为ext4文件系统。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mkfs.ext4 /dev/nvme0n1p3
-</span></span></code></pre></div><p>设置好后使用<code>reboot</code>命令重启软路由。</p>
-<p>重启后进入Web管理界面，点击“System”-&gt;“Mount Points”，在Mount Points一栏下添加挂载点，选择新建分区uuid并映射到根目录<code>\</code>，然后点击保存。别忘了最后在页面底部点击“Save &amp; Apply”保存应用设置。系统会提示需要运行某些命令。</p>
+</span></span></code></pre></div><p>进入Web管理界面，点击<code>System</code>-&gt;<code>Mount Points</code>，在Mount Points一栏下添加挂载点，选择新建分区uuid并映射到根目录<code>\</code>，然后点击保存。别忘了最后在页面底部点击<code>Save &amp; Apply</code>保存应用设置。系统会提示需要运行某些命令。</p>
 <p>最后再进入ssh命令行执行（<code>/dev/nvme0n1p3</code>可能需要修改）：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mkdir -p /tmp/introot
 </span></span><span class="line"><span class="cl">mkdir -p /tmp/extroot
@@ -349,7 +348,8 @@ This article does not have a corresponding language version
 </span></span><span class="line"><span class="cl">tar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -
 </span></span><span class="line"><span class="cl">umount /tmp/introot
 </span></span><span class="line"><span class="cl">umount /tmp/extroot
-</span></span></code></pre></div><p>最后再一次重启后完成硬盘扩容。通过<code>Status</code>-&gt;<code>Overview</code>可以查看硬盘使用情况，若显示<code>Disk space</code>的大小已经变为新分区大小，则说明扩容成功。</p>
+</span></span></code></pre></div><p>重启系统后完成硬盘扩容。通过<code>Status</code>-&gt;<code>Overview</code>可以查看硬盘使用情况，若显示<code>Disk space</code>的大小已经变为新分区大小，则说明扩容成功。
+最后点击<code>System</code>-&gt;<code>Mount Points</code>, 在Mount Points一栏下删除旧的挂载点，别忘了最后在页面底部点击<code>Save &amp; Apply</code>保存应用设置。</p>
 <h2 id="6vpn安装">
 <a class="header-anchor" href="#6vpn%e5%ae%89%e8%a3%85"></a>
 6.VPN安装

@@ -376,8 +376,10 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">e2fsck -f /dev/loop0
 </span></span></code></pre></div><p>最后调整文件系统大小：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">resize2fs -f /dev/loop0
-</span></span></code></pre></div><p>重启系统后完成硬盘扩容。通过<code>Status</code>-&gt;<code>Overview</code>可以查看硬盘使用情况，若显示<code>Disk space</code>的大小已经变为新分区大小，则说明扩容成功。</p>
-<h2 id="6vpn安装">
+</span></span></code></pre></div><p>重启系统后完成硬盘扩容。通过<code>Status</code>-&gt;<code>Overview</code>可以查看硬盘使用情况，若显示<code>Disk space</code>的大小已经变为新分区大小，则说明扩容成功。
+最后卸载软件包：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apk del losetup resize2fs parted
+</span></span></code></pre></div><h2 id="6vpn安装">
 <a class="header-anchor" href="#6vpn%e5%ae%89%e8%a3%85"></a>
 6.VPN安装
 </h2><p>这里以OpenClash为例，直接通过命令行运行以下命令：</p>
